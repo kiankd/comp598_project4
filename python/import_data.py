@@ -46,6 +46,6 @@ def images_to_csv(directory):
             writer.writerow(row)
 
 if __name__ == '__main__':
-    images_to_csv(ORIGINAL_DIRECTORY)
-
+    #images_to_csv(ORIGINAL_DIRECTORY)
+    images_to_csv('../rotated_images')
 
