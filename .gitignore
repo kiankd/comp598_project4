@@ -2,3 +2,4 @@ import_data.py.swp
 rotated_images
 rotated_images.csv
 python/*.swp
+*.npy
