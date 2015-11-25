@@ -15,7 +15,7 @@ if __name__ == '__main__':
     for i in range(len(x)):
         image_matrix = x[i]
         image_class = y[i]
-    
+     
         randomized_degrees = np.random.uniform(0,360,12) 
         degree_rotations.append(randomized_degrees)  
         for d in randomized_degrees:
