@@ -1,6 +1,7 @@
 # Author: Kian Kenyon-Dean
 # Purpose: test baseline classifiers on the dataset.
 
+from normalize import normalize
 from get_data import get_train_val_test
 from sklearn.svm import SVC, LinearSVC
 from sklearn.naive_bayes import GaussianNB
@@ -15,11 +16,16 @@ def test_classifier(model, X, y, testX, testy):
 
 if __name__ == '__main__':
     trainX,trainy, valX,valy, testX,testy = get_train_val_test()
+    
+    trainX = normalize(trainX)
+    valX = normalize(valX)
+    testX = normalize(testX)
+
     names = []
     scores = []
     matrices = []
 
-    for model_class in [SVC, LinearSVC, GaussianNB, LogisticRegression]:
+    for model_class in [LinearSVC, GaussianNB, SVC, LogisticRegression]:
         model = model_class()
         print model
         names.append(type(model).__name__)
