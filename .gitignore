@@ -2,8 +2,7 @@ import_data.py.swp
 rotated_images
 rotated_images.csv
 python/*.swp
-*.npy
 rotated_data_features.npy
 python/*.pyc
-csv_data
-npy_data
+npy_data/*
+csv_data/*.csv
