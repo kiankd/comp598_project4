@@ -47,12 +47,8 @@ def images_to_csv(directory):
 
 if __name__ == '__main__':
     #images_to_csv(ORIGINAL_DIRECTORY)
-    x,y = import_csv('../rotated_images.csv')
+    x,y = import_csv('../csv_data/rotated_images.csv')
     np.save('rotated_data_features',x)
     np.save('y_classifications',y)
-
-
-
-
 
 
