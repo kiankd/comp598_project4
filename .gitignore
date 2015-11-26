@@ -4,5 +4,5 @@ rotated_images.csv
 python/*.swp
 rotated_data_features.npy
 python/*.pyc
-npy_data/*
-csv_data/*.csv
+npy_data
+csv_data
