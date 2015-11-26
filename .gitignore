@@ -6,4 +6,4 @@ rotated_data_features.npy
 python/*.pyc
 npy_data/
 csv_data/
-
+split/
