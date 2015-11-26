@@ -1,6 +1,7 @@
 # Author: Kian Kenyon-Dean
 # Purpose: test baseline classifiers on the dataset.
 
+import numpy as np
 from normalize import normalize
 from get_data import get_train_val_test
 from sklearn.svm import SVC, LinearSVC
