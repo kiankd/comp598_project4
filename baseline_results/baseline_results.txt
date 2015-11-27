@@ -1,0 +1,4 @@
+LinearSVC - f1_score: 0.218
+GaussianNB - f1_score: 0.268
+SVC - f1_score: 0.585
+LogisticRegression - f1_score: 0.246
