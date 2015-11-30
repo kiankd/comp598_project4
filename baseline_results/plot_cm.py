@@ -4,8 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 for string in ['GaussianNB', 'LinearSVC', 'LogisticRegression', 'SVC']:
-# for string in ['GaussianNB']:
-	cm = np.load('%s_confusion_matrix.npy' % string)
+	cm = np.load('lbp_%s_confusion_matrix.npy' % string)
 	cm = cm.astype('float')/cm.sum(axis=1)
 
 	plt.matshow(cm, cmap=plt.cm.Greens)
@@ -20,4 +19,5 @@ for string in ['GaussianNB', 'LinearSVC', 'LogisticRegression', 'SVC']:
 			if cm[x,y]>=0.15:
 				ax.annotate('%4.2f' % cm[x,y], xy=(y,x), horizontalalignment='center', verticalalignment='center', size=6.3)
 
-	plt.savefig('%s_cm.pdf' % string)
+	plt.savefig('lbp_%s_cm.pdf' % string)
+
