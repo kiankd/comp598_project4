@@ -1,0 +1,81 @@
+\input{./preamble.tex}
+\input{./title.tex}
+\linespread{1.05}
+\usepackage{lipsum}
+\usepackage{multicol}
+\usepackage{alltt}
+\usepackage[margin=1in]{geometry}
+\usepackage{mathtools}
+% \usepackage{subcaption}
+\usepackage{hyperref}
+\usepackage{paralist}
+\usepackage{float}
+\usepackage{microtype}
+\usepackage{abstract}
+\usepackage[utf8]{inputenc}
+\usepackage[numbers]{natbib}
+\usepackage{graphicx}
+\renewcommand{\abstractnamefont}{\large\bfseries} % Set the "Abstract" text to bold
+\renewcommand{\abstracttextfont}{\normalfont\itshape} % Set the abstract itself to small italic text
+\usepackage{lettrine}
+\usepackage{tabulary}
+\usepackage{import}
+\usepackage{enumitem}
+\usepackage{pgf}
+
+
+\usepackage{titlesec} % Allows customization of titles
+%\renewcommand\thesection{\Roman{section}} % Roman numerals for the sections
+%\renewcommand\thesubsection{\Roman{subsection}} % Roman numerals for subsections
+\titleformat{\section}[block]{\Large\scshape\centering\bfseries}{\thesection.}{1em}{} % Change the look of the section titles
+\titleformat{\subsection}[block]{\large\bfseries}{\thesubsection.}{1em}{} % Change the look of the section titles
+
+\usepackage{fancyhdr} % Headers and footers
+\pagestyle{fancy} % All pages have headers and footers
+\fancyhead{} % Blank out the default header
+\fancyfoot{} % Blank out the default footer
+\fancyhead[C]{Virus Classification from Transmission Electron Microscopy $\bullet$ Fall 2015} % Custom header text
+\fancyfoot[RO,LE]{\thepage} % Custom footer text
+
+\title{\fontsize{18pt}{10pt}\textbf{Classifiying Transmission Electron Microscopy Virus Textures}} % Article title
+
+% \author{
+% \large{Alan Do-Omri}\\[2mm] % Your name
+% \normalsize McGill University \\ % Your institution
+% \normalsize \href{mailto:alan.do-omri@mail.mcgill.ca}{alan.do-omri@mail.mcgill.ca}}
+
+\author{
+\large{Alan Do-Omri}\\[2mm] 
+\normalsize 260532985 \\ 
+\and 
+\large{Kian Kenyon-Dean}\\[2mm]
+\normalsize 260564475 \\
+\and
+\large{Genevieve Fried}\\[2mm]
+\normalsize 260564432 \\
+}
+
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Determining the identity of a virus sample is of utmost importance in today's medical community. An incorrect classification of the virus can be life-threatening not only to the patient, but to people surrounding him or her. A transmission electron microscopy image of a virus sample can be hard to discern for the human eye and a doctor needs to be positive about the identity of the virus i.e., if it's Influenza or Ebola. Fortunately, machine learning algorithms perform exceedingly well on image classification tasks and don't require expert knowledge to do so. Here we present a successful application of using convolutional neural networks to classify viruses samples into one of 15 categories and compare its performance to previous work done on the same task.
+\end{abstract} 
+\vspace{0.5cm}
+
+\begin{multicols}{2}
+\section{Introduction}
+\section{Related Work}
+In the work of \citet{kylberg2011virus}, texture analysis is performed on the virus samples and the resulting feature vector is fed to a Random Forest classifier. They are comparing the performance of different texture analysers such as Local Binary Patterns and Radial Density Profile along with their respective variants. First, we will briefly explain the feature extractors they used. Then, we will present the results they got. 
+\subsection{Local Binary Profile (LBP)}
+Given an image, for each pixel $p_i$ in it, sample $n$ equally-spaced points on the circle of radius $r$ with center $p_i$ and construct a vector $v(p_i)$ such that its $i$th entry is a 1 if the $i$th sampled pixel has a value bigger than $p_i$ or a 0 otherwise. With its sequence of 0s and 1s, $v(p_i)$ now makes a binary number $v_{p_i}$, hence the name. Once we have the $v_{p_i}$ for all pixels, we construct a histogram counting the number of appearances of each value $v_{p_i}$. The histogram is the feature vector associated with the given image. \citet{kylberg2011virus} denote this feature extraction method by LBP$_{n, r}$, where $n$ is the number of sampled points and $r$ is the radius, as described above. The resulting histogram is represented in a vector of counts with $2^n$ elements. 
+\par In order to reduce the size of that feature vector, \citet{kylberg2011virus} mention a modification of LBP in the following sense: instead of creating $v_{p_i}$ by interpreting the vector $v(p_i)$ and using $v_{p_i}$ as is, rotate the number $v_{p_i}$ bitwise until you get the smallest possible number. For example, the number 110 would turn into 011. They name it rotational invariant and denote it with LBP$^{\textnormal{ri}}_{n,r}$.
+\par To further reduce the size of the histogram, they also try restricting the values of $v_{p_i}$ to only numbers that have 2 or less transitions from 0 to 1 or from 1 to 0 and they call this variant "uniform binary patterns with at most 2 spatial transitions", denoted LBP$^{\textnormal{u2}}_{n,r}$. For example, 01010 has 2 transitions from 0 to 1 and 2 transitions from 1 to 0 which makes 4 transitions in total so this version LBP$^{\textnormal{u2}}_{n,r}$ would not count that number. On the other hand, 00111 has only 1 transition from 0 to 1 so it is accepted. 
+
+\newpage
+\bibliography{ref}
+\bibliographystyle{plainnat}
+\end{multicols}
+\end{document}
