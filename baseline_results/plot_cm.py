@@ -14,10 +14,12 @@ for string in ['GaussianNB', 'LinearSVC', 'LogisticRegression', 'SVC']:
 	ax = plt.gca()
 	ax.xaxis.set_ticks_position('bottom')
 
+        
 	for x in range(15):
 		for y in range(15):
 			if cm[x,y]>=0.15:
 				ax.annotate('%4.2f' % cm[x,y], xy=(y,x), horizontalalignment='center', verticalalignment='center', size=6.3)
+        
 
 	plt.savefig('lbp_%s_cm.pdf' % string)
 
