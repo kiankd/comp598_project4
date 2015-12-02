@@ -22,7 +22,10 @@
 \usepackage{import}
 \usepackage{enumitem}
 \usepackage{pgf}
-
+\usepackage{caption}
+\newenvironment{Figure}
+  {\par\medskip\noindent\minipage{\linewidth}}
+  {\endminipage\par\medskip}
 
 \usepackage{titlesec} % Allows customization of titles
 %\renewcommand\thesection{\Roman{section}} % Roman numerals for the sections
@@ -70,14 +73,34 @@ Determining the identity of a virus sample is of utmost importance in today's me
 \section{Related Work}
 In the work of \citet{kylberg2011virus}, texture analysis is performed on the virus samples and the resulting feature vector is fed to a Random Forest classifier. They are comparing the performance of different texture analysers such as Local Binary Patterns and Radial Density Profile along with their respective variants. First, we will briefly explain the feature extractors they used. Then, we will present the results they got. 
 \subsection{Local Binary Profile (LBP)}
-Given an image, for each pixel $p_i$ in it, sample $n$ equally-spaced points on the circle of radius $r$ with center $p_i$ and construct a vector $v(p_i)$ such that its $i$th entry is a 1 if the $i$th sampled pixel has a value bigger than $p_i$ or a 0 otherwise. With its sequence of 0s and 1s, $v(p_i)$ now makes a binary number $v_{p_i}$, hence the name. Once we have the $v_{p_i}$ for all pixels, we construct a histogram counting the number of appearances of each value $v_{p_i}$. The histogram is the feature vector associated with the given image. \citet{kylberg2011virus} denote this feature extraction method by LBP$_{n, r}$, where $n$ is the number of sampled points and $r$ is the radius, as described above. The resulting histogram is represented in a vector of counts with $2^n$ elements. 
+Given an image, for each pixel $p_i$ in it, sample $n$ equally-spaced points on the circle of radius $r$ with center $p_i$ -- an example of sampling is shown in figure \ref{fig:lbp_basic} -- and construct a vector $v(p_i)$ such that its $i$th entry is a 1 if the $i$th sampled pixel has a value bigger than $p_i$ or a 0 otherwise. 
+\begin{figure*}
+	\centering
+	\includegraphics[width=0.5\linewidth]{images/lbp_basic.pdf}
+	\captionof{figure}{Example of LBP sampling: The green points are the neighbouring sample points at distance $r$ from the central white point. In this case, we are sampling with $n=8$ neighbour points.}
+	\label{fig:lbp_basic}
+\end{figure*}
+With its sequence of 0s and 1s, $v(p_i)$ now makes a binary number $v_{p_i}$, hence the name. Once we have the $v_{p_i}$ for all pixels, we construct a histogram counting the number of appearances of each value $v_{p_i}$. The histogram is the feature vector associated with the given image. \citet{kylberg2011virus} denote this feature extraction method by LBP$_{n, r}$, where $n$ is the number of sampled points and $r$ is the radius, as described above. The resulting histogram is represented in a vector of counts with $2^n$ elements. 
 \paragraph{Rotational Invariant LBP} In order to reduce the size of that feature vector, \citet{kylberg2011virus} mention a modification of LBP in the following sense: instead of creating $v_{p_i}$ by interpreting the vector $v(p_i)$ and using $v_{p_i}$ as is, rotate the number $v_{p_i}$ bitwise until you get the smallest possible number. For example, the number 110 would turn into 011. They name it rotational invariant and denote it with LBP$^{\textnormal{ri}}_{n,r}$.
 \paragraph{Uniform LBP} To further reduce the size of the histogram, they also try restricting the values of $v_{p_i}$ to only numbers that have 2 or less transitions from 0 to 1 or from 1 to 0 and they call this variant \emph{uniform binary patterns with at most 2 spatial transitions}, denoted LBP$^{\textnormal{u2}}_{n,r}$. For example, 01010 has 2 transitions from 0 to 1 and 2 transitions from 1 to 0 which makes 4 transitions in total so this version LBP$^{\textnormal{u2}}_{n,r}$ would not count that number. On the other hand, 00111 has only 1 transition from 0 to 1 so it is accepted. 
 \par 
+\paragraph{Gaussian Filtered LBP} Finally, \citet{maenpaa2003multi} talk about an extension to the LBP that is also used in the work of \citet{kylberg2011virus} which consists in sampling the neighbours at different radii around the central pixel. Additionally, instead of sampling on circles with points spread in an equi-distant fashion, they would be sampled according to a Gaussian distribution. Figure \ref{fig:rdp} shows an example of such a sampling. \citet{kylberg2011virus} denote it as LBPF$^{\textnormal{ri}}_{n_1,r_1}$ $+$ $^{\textnormal{ri}}_{n_2,r_2}$ $+$ $\cdots$ $+$ $^{\textnormal{ri}}_{n_j,r_j}$ for the different numbers of sample points $n_1, n_2, \cdots, n_j$ and different radii distances $r_1, r_2, \cdots, r_j$.
+\begin{figure*}
+	\centering
+	\includegraphics[width=0.5\linewidth]{images/lbpf.pdf}
+	\captionof{figure}{Example of LBPF sampling: In the simple LBP, the points would be sampled at equal distances around the dotted circles for one radius as in figure \ref{fig:lbp_basic} but with this extension, the points are sampled according to a Gaussian distribution inside the solid black circles at multiple radii. In this picture, the number of neighbours also vary with the radii. This image comes from \citet{maenpaa2003multi}.}
+	\label{fig:lbpf}
+\end{figure*}
 \subsection{Radial Density Profile (RDP)}
 This method is a way to get the mean intensity in a ring around each pixel in the image. \citet{kylberg2011virus} defines the \emph{radial mean intensity $f$} around a center pixel $q_c$ as 
 \[ f(q_c, r) = \frac{1}{|N|} \sum\limits_{q\in N} I(q) \]
-where $I(q)$ is the pixel value for pixel $q$ and $N = \left\{ q: \Vert q-q_c \Vert_2 \in \left( r-\frac{1}{2}, r+\frac{1}{2} \right] \right\}$ is the set of pixels in a ring around $q_c$ of width 1 at distance $r$ from $q_c$. Following the notation from \citet{kylberg2011virus}, let $\bar{f}_{q_c}$ be the mean of the set $\{ f(q_c,i) \}_{i = 1, \cdots, n}$. Then they define the radial density profile for that pixel $q_c$ as $\textnormal{RDP}_n = \left[ f(q_c,1)-\bar{f}_{q_c}, f(q_c, 2)-\bar{f}_{q_c}, \cdots, f(q_c,n)-\bar{f}_{q_c} \right]$. 
+where $I(q)$ is the pixel value for pixel $q$ and $N = \left\{ q: \Vert q-q_c \Vert_2 \in \left( r-\frac{1}{2}, r+\frac{1}{2} \right] \right\}$ is the set of pixels in a ring around $q_c$ of width 1 at distance $r$ from $q_c$. Figure \ref{fig:rdp} shows an example of what the set $N$ may look like. Following the notation from \citet{kylberg2011virus}, let $\bar{f}_{q_c}$ be the mean of the set $\{ f(q_c,i) \}_{i = 1, \cdots, n}$. Then they define the radial density profile for that pixel $q_c$ as $\textnormal{RDP}_n = \left[ f(q_c,1)-\bar{f}_{q_c}, f(q_c, 2)-\bar{f}_{q_c}, \cdots, f(q_c,n)-\bar{f}_{q_c} \right]$. 
+\begin{figure*}
+	\centering
+	\includegraphics[width=0.5\linewidth]{images/rdp.pdf}
+	\captionof{figure}{Example of RDP sampling: The green zone is the set of sampled pixels for a given radius $r$.}
+	\label{fig:rdp}
+\end{figure*}
 \par It is not explained how the pixel features are combined to make the feature vector for the whole image but we would imagine that the feature vector for the whole image is either a concatenation of the pixel features or the concatenation of the mean of each pixel feature. 
 \paragraph{Fourier RDP} One variation \citet{kylberg2011virus} introduced is applying the same RDP technique on the image after it undergoes a Fourier transform and looking at it with respect to a base $e$ logarithmic scale. They denote it with FRDP$_n$. 
 
