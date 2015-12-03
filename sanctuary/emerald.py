@@ -37,7 +37,7 @@ def plot_curves(x, y1, y2, curve1_name, curve2_name, savename):
 	plt.plot(x, y2, '-', color='g', label=curve2_name)
 	# plt.axis([0, max(np.asarray(x)), 0, 1.3*max(np.maximum(y1,y2))])
 	plt.legend(loc='best')
-	plt.xlabel('Iterations')
+	plt.xlabel('Iteration')
 	if 'error' in savename:
 		plt.ylabel('Error')
 	else:
@@ -178,8 +178,8 @@ while not done_looping:
 				
 				if not os.path.exists(FIGURE_SAVE_DIR):
 					os.makedirs(FIGURE_SAVE_DIR)
-				plot_curves(plot_iters, plot_train_cost, plot_valid_cost, 'Train Cost', 'Validation Cost', 'train_val_cost.pdf')
-				plot_curves(plot_iters, plot_train_error, plot_valid_error, 'Train Error', 'Validation Error', 'train_val_error.pdf')
+				plot_curves(plot_iters, plot_train_cost, plot_valid_cost, 'Training Cost', 'Validation Cost', 'train_val_cost.pdf')
+				plot_curves(plot_iters, plot_train_error, plot_valid_error, 'Training Error', 'Validation Error', 'train_val_error.pdf')
 
 				plot_cm(train_pred, trainY, 'Confusion Matrix on the Training Set', 'cm_train.pdf')
 				plot_cm(valid_pred, valY, 'Confusion Matrix on the Validation Set', 'cm_valid.pdf')
