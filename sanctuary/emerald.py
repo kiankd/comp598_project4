@@ -20,6 +20,7 @@ import theano
 import theano.tensor as T
 import timeit
 
+# Hyperparameters
 NUM_EPOCHS = 8000
 LEARNING_RATE = 0.005
 N_CLASSES = 15
@@ -29,7 +30,7 @@ VALIDATION_FREQUENCY = 50
 PARAM_SAVE_DIR = './params'
 FIGURE_SAVE_DIR = './figures'
 DATASET_DIR = '/home/ml/adoomr/Archive/mlproject4/sanctuary/lbp_dataset_2_8'
-INIT_PATIENCE = 100 # if after INIT_PATIENCE validation checks, the score is not improved, then the training stops
+INIT_PATIENCE = np.inf # if after INIT_PATIENCE validation checks, the score is not improved, then the training stops
 
 def plot_curves(x, y1, y2, curve1_name, curve2_name, savename):
 	plt.grid()
@@ -90,12 +91,12 @@ trainX, trainY = shuffle(trainX, trainY)
 valX, valY = shuffle(valX, valY)
 testX, testY = shuffle(testX, testY)
 
+# Layers
 print "[X] Emerald building its layers."
-layer0 = lasagne.layers.InputLayer((BATCH_SIZE, trainX.shape[1]))
-layer1 = lasagne.layers.DenseLayer(layer0, num_units=256)
-layer2 = lasagne.layers.DenseLayer(layer1, num_units=256)
-layer3 = lasagne.layers.DenseLayer(layer2, num_units=N_CLASSES, nonlinearity=lasagne.nonlinearities.softmax)
-model = layer3
+model = lasagne.layers.InputLayer((BATCH_SIZE, trainX.shape[1]))
+model = lasagne.layers.DenseLayer(model, num_units=256)
+model = lasagne.layers.DenseLayer(model, num_units=256)
+model = lasagne.layers.DenseLayer(model, num_units=N_CLASSES, nonlinearity=lasagne.nonlinearities.softmax)
 
 x = T.matrix()
 y = T.ivector()
@@ -129,6 +130,12 @@ get_score = theano.function([x,y], [true_cost, true_error, true_output, true_pre
 	allow_input_downcast=True)
 
 best_validation_cost = np.inf
+best_validation_error = np.inf
+
+best_test_cost = np.inf
+best_test_error = np.inf
+
+
 best_iter = 0
 start_time = timeit.default_timer()
 
@@ -190,8 +197,8 @@ while not done_looping:
 
 				if valid_cost < best_validation_cost:
 					patience = INIT_PATIENCE
-					# print "----> New best score found!"
-					# print "--> Valid cost of %f and valid error of %f." % (valid_cost, valid_error)
+					print "----> New best score found!"
+					print "--> Valid cost of %f and valid error of %f." % (valid_cost, valid_error)
 					# print "--> Test cost of %f and test error of %f." % (test_cost, test_error)
 					if not os.path.exists(PARAM_SAVE_DIR):
 						os.makedirs(PARAM_SAVE_DIR)
@@ -201,19 +208,27 @@ while not done_looping:
 					joblib.dump(all_param_values, os.path.join(PARAM_SAVE_DIR, 'params.pkl'))
 					# print "----> Parameters saved."
 					best_validation_cost = valid_cost
+					best_validation_error = valid_error
+
+					best_test_cost = test_cost
+					best_test_error = test_error
+
+
 					best_iter = iter
 				else:
 					patience -= 1
-					if patience == 0:
+					if patience <= 0:
 						done_looping = True
-				print 'Patience: %d' % patience
+						break
+				print 'Patience:' + str(patience)
 
 	except KeyboardInterrupt:
 		done_looping = True
 
 end_time = timeit.default_timer()
 
-print "--> Best validation score of %f." % best_validation_cost
+print "--> Best validation score of %f with error %f." % (best_validation_cost, best_validation_error)
+print "--> Best testing score of %f with error %f." % (best_test_cost, best_test_error)
 print "--> Total runtime %.2f minutes." % ((end_time-start_time) / 60.)
 print "[X] Saving the scores."
 
