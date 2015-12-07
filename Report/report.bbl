@@ -1,9 +1,32 @@
-\begin{thebibliography}{2}
+\begin{thebibliography}{5}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Bastien et~al.(2012)Bastien, Lamblin, Pascanu, Bergstra, Goodfellow,
+  Bergeron, Bouchard, and Bengio]{Bastien-Theano-2012}
+Fr{\'{e}}d{\'{e}}ric Bastien, Pascal Lamblin, Razvan Pascanu, James Bergstra,
+  Ian~J. Goodfellow, Arnaud Bergeron, Nicolas Bouchard, and Yoshua Bengio.
+\newblock Theano: new features and speed improvements.
+\newblock Deep Learning and Unsupervised Feature Learning NIPS 2012 Workshop,
+  2012.
+
+\bibitem[Bergstra et~al.(2010)Bergstra, Breuleux, Bastien, Lamblin, Pascanu,
+  Desjardins, Turian, Warde-Farley, and Bengio]{bergstra+al:2010-scipy}
+James Bergstra, Olivier Breuleux, Fr{\'{e}}d{\'{e}}ric Bastien, Pascal Lamblin,
+  Razvan Pascanu, Guillaume Desjardins, Joseph Turian, David Warde-Farley, and
+  Yoshua Bengio.
+\newblock Theano: a {CPU} and {GPU} math expression compiler.
+\newblock In \emph{Proceedings of the Python for Scientific Computing
+  Conference ({SciPy})}, June 2010.
+\newblock Oral Presentation.
+
+\bibitem[Coelho(2012)]{coelho2012mahotas}
+Luis~Pedro Coelho.
+\newblock Mahotas: Open source software for scriptable computer vision.
+\newblock \emph{arXiv preprint arXiv:1211.4907}, 2012.
 
 \bibitem[Kylberg et~al.(2011)Kylberg, Uppstr{\"o}m, and
   Sintorn]{kylberg2011virus}
