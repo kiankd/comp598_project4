@@ -1,11 +1,11 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.8.13)  7 DEC 2015 11:28
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.8.8)  8 DEC 2015 00:43
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **report.tex
 (./report.tex
 LaTeX2e <2011/06/27>
-Babel <3.9h> and hyphenation patterns for 78 languages loaded.
+Babel <3.9h> and hyphenation patterns for 4 languages loaded.
 (./preamble.tex (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 (/usr/share/texlive/texmf-dist/tex/latex/base/size10.clo
@@ -1011,20 +1011,7 @@ File: block.tss 2011/12/15
 \f@ncyO@erf=\skip79
 \f@ncyO@olf=\skip80
 \f@ncyO@orf=\skip81
-) (./report.aux
-
-LaTeX Warning: Label `shrine0_curves' multiply defined.
-
-
-LaTeX Warning: Label `shrine0_mat' multiply defined.
-
-
-LaTeX Warning: Label `shrine0_curves' multiply defined.
-
-
-LaTeX Warning: Label `shrine0_mat' multiply defined.
-
-)
+) (./report.aux)
 \openout1 = `report.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 64.
@@ -1042,7 +1029,8 @@ LaTeX Font Info:    ... okay on input line 64.
 LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 64.
 LaTeX Font Info:    ... okay on input line 64.
 \c@lstlisting=\count157
- (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
+
+(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count158
 \scratchdimen=\dimen213
@@ -1162,154 +1150,138 @@ File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
 
 LaTeX Font Warning: Font shape `OT1/cmr/bx/sc' undefined
-(Font)              using `OT1/cmr/bx/n' instead on input line 78.
+(Font)              using `OT1/cmr/bx/n' instead on input line 75.
 
-<images/lbp_basic.pdf, id=45, 410.91374pt x 410.91374pt>
+[1
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+<images/lbp_basic.pdf, id=62, 410.91374pt x 410.91374pt>
 File: images/lbp_basic.pdf Graphic file (type pdf)
 
 <use images/lbp_basic.pdf>
-Package pdftex.def Info: images/lbp_basic.pdf used on input line 87.
+Package pdftex.def Info: images/lbp_basic.pdf used on input line 96.
 (pdftex.def)             Requested size: 114.93875pt x 114.93593pt.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 88.
+(caption)                particular \caption on input line 97.
 See the caption package documentation for explanation.
 
-[1
-
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./images/lbp_basic.pdf>] <
-images/lbpf.pdf, id=83, 600.98607pt x 601.20471pt>
+<images/lbpf.pdf, id=69, 600.98607pt x 601.20471pt>
 File: images/lbpf.pdf Graphic file (type pdf)
  <use images/lbpf.pdf>
-Package pdftex.def Info: images/lbpf.pdf used on input line 98.
+Package pdftex.def Info: images/lbpf.pdf used on input line 107.
 (pdftex.def)             Requested size: 114.93875pt x 114.97314pt.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 99.
+(caption)                particular \caption on input line 108.
 See the caption package documentation for explanation.
 
-<images/rdp.pdf, id=91, 410.91374pt x 410.91374pt>
+<images/rdp.pdf, id=77, 410.91374pt x 410.91374pt>
 File: images/rdp.pdf Graphic file (type pdf)
  <use images/rdp.pdf>
-Package pdftex.def Info: images/rdp.pdf used on input line 108.
+Package pdftex.def Info: images/rdp.pdf used on input line 117.
 (pdftex.def)             Requested size: 114.93875pt x 114.93593pt.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 109.
+(caption)                particular \caption on input line 118.
 See the caption package documentation for explanation.
 
-[2 <./images/lbpf.pdf> <./images/rdp.pdf
+[2 <./images/lbp_basic.pdf> <./images/lbpf.pdf
 
-pdfTeX warning: pdflatex (file ./images/rdp.pdf): PDF inclusion: multiple pdfs 
-with page group included in a single page
->] <images/boxes_results.png, id=127, 898.35625pt x 255.95625pt>
+pdfTeX warning: pdflatex (file ./images/lbpf.pdf): PDF inclusion: multiple pdfs
+ with page group included in a single page
+>] <images/boxes_results.png, id=114, 898.35625pt x 255.95625pt>
 File: images/boxes_results.png Graphic file (type png)
 
 <use images/boxes_results.png>
-Package pdftex.def Info: images/boxes_results.png used on input line 129.
+Package pdftex.def Info: images/boxes_results.png used on input line 138.
 (pdftex.def)             Requested size: 469.75502pt x 133.84006pt.
-
-
-LaTeX Warning: Reference `shrine1_curves' on page 3 undefined on input line 139
-.
-
-
-LaTeX Warning: Reference `shrine1_mat' on page 3 undefined on input line 139.
-
-(./shrine1_figures.tex
-<images/1/train_val_cost.pdf, id=138, 578.16pt x 433.62pt>
+ (./shrine1_figures.tex
+<images/1/train_val_cost.pdf, id=127, 578.16pt x 433.62pt>
 File: images/1/train_val_cost.pdf Graphic file (type pdf)
 
 <use images/1/train_val_cost.pdf>
 Package pdftex.def Info: images/1/train_val_cost.pdf used on input line 5.
 (pdftex.def)             Requested size: 211.38832pt x 158.53795pt.
 
-<images/1/train_val_error.pdf, id=139, 578.16pt x 433.62pt>
+<images/1/train_val_error.pdf, id=128, 578.16pt x 433.62pt>
 File: images/1/train_val_error.pdf Graphic file (type pdf)
 
 <use images/1/train_val_error.pdf>
 Package pdftex.def Info: images/1/train_val_error.pdf used on input line 11.
 (pdftex.def)             Requested size: 211.38832pt x 158.53795pt.
 
-<images/1/cm_valid.pdf, id=140, 433.62pt x 433.62pt>
+<images/1/cm_valid.pdf, id=129, 433.62pt x 433.62pt>
 File: images/1/cm_valid.pdf Graphic file (type pdf)
 
 <use images/1/cm_valid.pdf>
 Package pdftex.def Info: images/1/cm_valid.pdf used on input line 21.
 (pdftex.def)             Requested size: 211.38832pt x 211.39055pt.
 
-<images/1/cm_test.pdf, id=141, 433.62pt x 433.62pt>
+<images/1/cm_test.pdf, id=130, 433.62pt x 433.62pt>
 File: images/1/cm_test.pdf Graphic file (type pdf)
  <use images/1/cm_test.pdf>
 Package pdftex.def Info: images/1/cm_test.pdf used on input line 27.
 (pdftex.def)             Requested size: 211.38832pt x 211.39055pt.
 ) (./shrine0_figures.tex
-<images/0/train_val_cost.pdf, id=144, 578.16pt x 433.62pt>
+<images/0/train_val_cost.pdf, id=133, 578.16pt x 433.62pt>
 File: images/0/train_val_cost.pdf Graphic file (type pdf)
 
 <use images/0/train_val_cost.pdf>
 Package pdftex.def Info: images/0/train_val_cost.pdf used on input line 5.
 (pdftex.def)             Requested size: 211.38832pt x 158.53795pt.
 
-<images/0/train_val_error.pdf, id=145, 578.16pt x 433.62pt>
+<images/0/train_val_error.pdf, id=134, 578.16pt x 433.62pt>
 File: images/0/train_val_error.pdf Graphic file (type pdf)
 
 <use images/0/train_val_error.pdf>
 Package pdftex.def Info: images/0/train_val_error.pdf used on input line 11.
 (pdftex.def)             Requested size: 211.38832pt x 158.53795pt.
 
-<images/0/cm_valid.pdf, id=146, 433.62pt x 433.62pt>
+<images/0/cm_valid.pdf, id=135, 433.62pt x 433.62pt>
 File: images/0/cm_valid.pdf Graphic file (type pdf)
 
 <use images/0/cm_valid.pdf>
 Package pdftex.def Info: images/0/cm_valid.pdf used on input line 21.
 (pdftex.def)             Requested size: 211.38832pt x 211.39055pt.
 
-<images/0/cm_test.pdf, id=147, 433.62pt x 433.62pt>
+<images/0/cm_test.pdf, id=136, 433.62pt x 433.62pt>
 File: images/0/cm_test.pdf Graphic file (type pdf)
  <use images/0/cm_test.pdf>
 Package pdftex.def Info: images/0/cm_test.pdf used on input line 27.
 (pdftex.def)             Requested size: 211.38832pt x 211.39055pt.
-)
-
-LaTeX Warning: Reference `shrine2_curves' on page 3 undefined on input line 145
-.
-
-
-LaTeX Warning: Reference `shrine2_mat' on page 3 undefined on input line 145.
-
-(./shrine2_figures.tex
-<images/2/train_val_cost.pdf, id=148, 578.16pt x 433.62pt>
+) (./shrine2_figures.tex
+<images/2/train_val_cost.pdf, id=139, 578.16pt x 433.62pt>
 File: images/2/train_val_cost.pdf Graphic file (type pdf)
 
 <use images/2/train_val_cost.pdf>
 Package pdftex.def Info: images/2/train_val_cost.pdf used on input line 5.
 (pdftex.def)             Requested size: 211.38832pt x 158.53795pt.
 
-<images/2/train_val_error.pdf, id=149, 578.16pt x 433.62pt>
+<images/2/train_val_error.pdf, id=140, 578.16pt x 433.62pt>
 File: images/2/train_val_error.pdf Graphic file (type pdf)
 
 <use images/2/train_val_error.pdf>
 Package pdftex.def Info: images/2/train_val_error.pdf used on input line 11.
 (pdftex.def)             Requested size: 211.38832pt x 158.53795pt.
 
-<images/2/cm_valid.pdf, id=150, 433.62pt x 433.62pt>
+<images/2/cm_valid.pdf, id=141, 433.62pt x 433.62pt>
 File: images/2/cm_valid.pdf Graphic file (type pdf)
 
 <use images/2/cm_valid.pdf>
 Package pdftex.def Info: images/2/cm_valid.pdf used on input line 21.
 (pdftex.def)             Requested size: 211.38832pt x 211.39055pt.
 
-<images/2/cm_test.pdf, id=151, 433.62pt x 433.62pt>
+<images/2/cm_test.pdf, id=142, 433.62pt x 433.62pt>
 File: images/2/cm_test.pdf Graphic file (type pdf)
  <use images/2/cm_test.pdf>
 Package pdftex.def Info: images/2/cm_test.pdf used on input line 27.
 (pdftex.def)             Requested size: 211.38832pt x 211.39055pt.
-) [3] [4 <./images/boxes_results.png> <./images/1/train_val_cost.pdf> <./images
-/1/train_val_error.pdf
+) [3 <./images/rdp.pdf>] [4 <./images/boxes_results.png> <./images/1/train_val_
+cost.pdf> <./images/1/train_val_error.pdf
 
 pdfTeX warning: pdflatex (file ./images/1/train_val_error.pdf): PDF inclusion: 
 multiple pdfs with page group included in a single page
@@ -1338,18 +1310,18 @@ ultiple pdfs with page group included in a single page
 pdfTeX warning: pdflatex (file ./images/2/train_val_error.pdf): PDF inclusion: 
 multiple pdfs with page group included in a single page
 >] (./report.bbl)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 154.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 163.
  [7 <./images/2/cm_valid.pdf> <./images/2/cm_test.pdf
 
 pdfTeX warning: pdflatex (file ./images/2/cm_test.pdf): PDF inclusion: multiple
  pdfs with page group included in a single page
 >]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 154.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 163.
  (./report.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 154.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 154.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 163.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 163.
 Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: 1D8A9A78E8DE4687FDAF8A17B50E243B;522.
+(rerunfilecheck)             Checksum: 8B073E080AAFFAA16D7F82F1E1A678A7;565.
 
 
 LaTeX Font Warning: Size substitutions with differences
@@ -1358,21 +1330,15 @@ LaTeX Font Warning: Size substitutions with differences
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: There were multiply-defined labels.
-
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 154.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 163.
  ) 
 Here is how much of TeX's memory you used:
- 19986 strings out of 493304
- 330092 string characters out of 6139871
- 567279 words of memory out of 5000000
- 22881 multiletter control sequences out of 15000+600000
- 15444 words of font info for 94 fonts, out of 8000000 for 9000
- 957 hyphenation exceptions out of 8191
+ 19984 strings out of 494985
+ 330082 string characters out of 6180357
+ 564583 words of memory out of 5000000
+ 22640 multiletter control sequences out of 15000+600000
+ 15285 words of font info for 92 fonts, out of 8000000 for 9000
+ 36 hyphenation exceptions out of 8191
  49i,11n,53p,959b,698s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
@@ -1387,10 +1353,10 @@ amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
 .pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><
 /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/sh
 are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on report.pdf (7 pages, 1955444 bytes).
+Output written on report.pdf (7 pages, 2330259 bytes).
 PDF statistics:
- 685 PDF objects out of 1000 (max. 8388607)
- 267 compressed objects within 3 object streams
- 38 named destinations out of 1000 (max. 500000)
- 15525 words of extra memory for PDF output out of 17280 (max. 10000000)
+ 692 PDF objects out of 1000 (max. 8388607)
+ 275 compressed objects within 3 object streams
+ 39 named destinations out of 1000 (max. 500000)
+ 15533 words of extra memory for PDF output out of 17280 (max. 10000000)
 

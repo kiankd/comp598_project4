@@ -1,9 +1,10 @@
 \BOOKMARK [1][-]{section.1}{Introduction}{}% 1
 \BOOKMARK [1][-]{section.2}{Dataset}{}% 2
-\BOOKMARK [1][-]{section.3}{Related Work}{}% 3
-\BOOKMARK [2][-]{subsection.3.1}{Local Binary Profile \(LBP\)}{section.3}% 4
-\BOOKMARK [2][-]{subsection.3.2}{Radial Density Profile \(RDP\)}{section.3}% 5
-\BOOKMARK [2][-]{subsection.3.3}{Results}{section.3}% 6
-\BOOKMARK [1][-]{section.4}{Neural Networks Approach}{}% 7
-\BOOKMARK [2][-]{subsection.4.1}{Results}{section.4}% 8
-\BOOKMARK [2][-]{subsection.4.2}{Discussion}{section.4}% 9
+\BOOKMARK [1][-]{section.3}{Methods}{}% 3
+\BOOKMARK [1][-]{section.4}{Related Work}{}% 4
+\BOOKMARK [2][-]{subsection.4.1}{Local Binary Profile \(LBP\)}{section.4}% 5
+\BOOKMARK [2][-]{subsection.4.2}{Radial Density Profile \(RDP\)}{section.4}% 6
+\BOOKMARK [2][-]{subsection.4.3}{Results}{section.4}% 7
+\BOOKMARK [1][-]{section.5}{Neural Networks Approach}{}% 8
+\BOOKMARK [2][-]{subsection.5.1}{Results}{section.5}% 9
+\BOOKMARK [2][-]{subsection.5.2}{Discussion}{section.5}% 10
