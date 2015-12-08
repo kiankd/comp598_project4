@@ -140,7 +140,10 @@ def main(num_epochs=500):
     #X_train, y_train, X_val, y_val, X_test, y_test= pull_data()
     trainX, trainY, valX, valY, testX, testY = pull_data()
     trainX = trainX.reshape(trainX.shape[0],1, DIM, DIM)
-    
+    trainY = trainY-1
+    valY = valY -1
+    testY = testY - 1
+
     # Prepare Theano variables for inputs and targets
     input_var = T.tensor4('inputs')
     output_var = T.ivector('targets')
@@ -163,10 +166,14 @@ def main(num_epochs=500):
     noisy_cost = T.mean(T.nnet.categorical_crossentropy(noisy_output, output_var)) + l2_loss
     true_cost = T.mean(T.nnet.categorical_crossentropy(true_output, output_var)) + l2_loss
 
-    # noisy_error = T.mean(T.neq(T.argmax(noisy_output, 1), y))
-    # true_error = T.mean(T.neq(T.argmax(true_output, 1), y))
-    noisy_error = T.mean(T.neq(noisy_output, output_var))
-    true_error = T.mean(T.neq(true_output, output_var))
+    
+   # noisy_error = T.mean(T.neq(noisy_output, output_var))
+   # true_error = T.mean(T.neq(true_output, output_var))
+    noisy_error = 1-T.mean(lasagne.objectives.categorical_accuracy(noisy_output, output_var))
+    true_error = 1-T.mean(lasagne.objectives.categorical_accuracy(true_output, output_var))
+
+
+
     ## stochastic gradient descent updates
     #updates = lasagne.updates.sgd(noisy_cost, model_params, learning_rate=sh_lr)
     ##stochastic gradient descent with Nesterov momentum
@@ -267,134 +274,6 @@ def main(num_epochs=500):
     joblib.dump(plot_test_error, os.path.join(PARAM_SAVE_DIR, "test_error.pkl"))
 
       
-
-"""  
-    
-
-    best_validation_cost = np.inf
-    best_validation_error = np.inf
-
-    best_test_cost = np.inf
-    best_test_error = np.inf
-
-
-    best_iter = 0
-    start_time = timeit.default_timer()
-
-    ## returns ceiling of number
-    n_train_batches = int(np.ceil(trainX.shape[0] / float(BATCH_SIZE)))
-
-
-    plot_iters = []
-
-    plot_train_cost = []
-    plot_train_error = []
-
-    plot_valid_cost = []
-    plot_valid_error = []
-
-    plot_test_cost = []
-    plot_test_error = []
-
-    epoch = 0
-    done_looping = False
-    patience = INIT_PATIENCE
-
-    print "[X] CNN begins its training."
-    while not done_looping:
-        try:
-            epoch = epoch + 1
-            trainX, trainY = shuffle(trainX, trainY)
-            for minibatch_index in xrange(n_train_batches):
-                iter = (epoch - 1) * n_train_batches + minibatch_index  
-                if iter % 100 == 0:
-                    print "[O] Training at iteration %d." % iter
-
-                print trainX[minibatch_index*BATCH_SIZE:np.minimum((minibatch_index+1)*BATCH_SIZE, trainX.shape[0])].shape
-                print trainY[minibatch_index*BATCH_SIZE:np.minimum((minibatch_index+1)*BATCH_SIZE, trainY.shape[0])].shape
-
-                cost_ij = train(trainX[minibatch_index*BATCH_SIZE:np.minimum((minibatch_index+1)*BATCH_SIZE, trainX.shape[0])], 
-                        trainY[minibatch_index*BATCH_SIZE:np.minimum((minibatch_index+1)*BATCH_SIZE, trainY.shape[0])])
-
-
-                if (iter+1) % VALIDATION_FREQUENCY == 0:
-                    train_cost, train_error, train_output, train_pred = get_score(trainX, trainY)
-                    valid_cost, valid_error, valid_output, valid_pred = get_score(valX, valY)
-                    test_cost, test_error, test_output, test_pred = get_score(testX, testY)
-
-                    plot_train_cost.append(train_cost)
-                    plot_train_error.append(train_error)
-
-                    plot_valid_cost.append(valid_cost)
-                    plot_valid_error.append(valid_error)
-
-                    plot_test_cost.append(test_cost)
-                    plot_test_error.append(test_error)
-
-                    plot_iters.append(iter)
-                    
-                    if not os.path.exists(FIGURE_SAVE_DIR):
-                        os.makedirs(FIGURE_SAVE_DIR)
-                    plot_curves(plot_iters, plot_train_cost, plot_valid_cost, 'Training Cost', 'Validation Cost', 'train_val_cost.pdf')
-                    plot_curves(plot_iters, plot_train_error, plot_valid_error, 'Training Error', 'Validation Error', 'train_val_error.pdf')
-
-                    plot_cm(train_pred, trainY, 'Confusion Matrix on the Training Set', 'cm_train.pdf')
-                    plot_cm(valid_pred, valY, 'Confusion Matrix on the Validation Set', 'cm_valid.pdf')
-                    plot_cm(test_pred, testY, 'Confusion Matrix on the Test Set', 'cm_test.pdf')
-
-                    # print "--> Epoch %i, minibatch %i/%i has training true cost \t %f." % (epoch, minibatch_index+1, n_train_batches, train_cost)
-                    # print "--> Epoch %i, minibatch %i/%i has validation true cost \t %f and error of \t %f." % (epoch, minibatch_index+1, n_train_batches, valid_cost, valid_error)
-
-                    if valid_cost < best_validation_cost:
-                        patience = INIT_PATIENCE
-                        print "----> New best score found!"
-                        print "--> Valid cost of %f and valid error of %f." % (valid_cost, valid_error)
-                        # print "--> Test cost of %f and test error of %f." % (test_cost, test_error)
-                        if not os.path.exists(PARAM_SAVE_DIR):
-                            os.makedirs(PARAM_SAVE_DIR)
-                        for f in glob.glob(PARAM_SAVE_DIR+'/*'):
-                            os.remove(f)
-                        all_param_values = lasagne.layers.get_all_param_values(model)
-                        joblib.dump(all_param_values, os.path.join(PARAM_SAVE_DIR, 'params.pkl'))
-                        # print "----> Parameters saved."
-                        best_validation_cost = valid_cost
-                        best_validation_error = valid_error
-
-                        best_test_cost = test_cost
-                        best_test_error = test_error
-
-
-                        best_iter = iter
-                    else:
-                        patience -= 1
-                        if patience <= 0:
-                            done_looping = True
-                            break
-                    print 'Patience:' + str(patience)
-
-        except KeyboardInterrupt:
-            done_looping = True
-
-    end_time = timeit.default_timer()
-
-    print "--> Best validation score of %f with error %f." % (best_validation_cost, best_validation_error)
-    print "--> Best testing score of %f with error %f." % (best_test_cost, best_test_error)
-    print "--> Total runtime %.2f minutes." % ((end_time-start_time) / 60.)
-    print "[X] Saving the scores."
-
-    joblib.dump(plot_iters, os.path.join(PARAM_SAVE_DIR, "iters.pkl"))
-
-    joblib.dump(plot_train_cost, os.path.join(PARAM_SAVE_DIR, "train_cost.pkl"))
-    joblib.dump(plot_train_error, os.path.join(PARAM_SAVE_DIR, "train_error.pkl"))
-
-    joblib.dump(plot_valid_cost, os.path.join(PARAM_SAVE_DIR, "valid_cost.pkl"))
-    joblib.dump(plot_valid_error, os.path.join(PARAM_SAVE_DIR, "valid_error.pkl"))
-
-    joblib.dump(plot_test_cost, os.path.join(PARAM_SAVE_DIR, "test_cost.pkl"))
-    joblib.dump(plot_test_error, os.path.join(PARAM_SAVE_DIR, "test_error.pkl"))
-
-    print "[X] Prediction over."
-"""
 
 
 if __name__ == '__main__':
