@@ -1,12 +1,15 @@
 # Authors:
 #   Kian Kenyon-Dean
 #   Alan Do-Omri
+#   Genevieve Fried
+
 
 import numpy as np
 import theano
 import theano.tensor as T
 import lasagne
-from import_data import get_train_val_test as get_data
+from get_data import get_train_val_test as pull_data
+from lasagne.regularization import regularize_layer_params, l2
 
 
 PARAM_SAVE_DIR = './params'
@@ -21,12 +24,10 @@ NUM_EPOCHS = 8000
 LEARNING_RATE = 0.005
 
 
-
 if __name__ == '__main__':    
-    trainX,trainY, valX,valY, testX,testY = get_data()
+    trainX,trainY, valX,valY, testX,testY = pull_data()
     
     print 'Building the conv net...'
-    layer0 = lasagne.layers.InputLayer(shape=(None, 1, IMAGE_WIDTH, IMAGE_HEIGHT))
     layer0 = lasagne.layers.InputLayer(shape=(None, 1, IMAGE_WIDTH, IMAGE_HEIGHT))
     layer1 = lasagne.layers.Conv2DLayer(layer0, num_filters=16, filter_size=(8,8))
     layer2 = lasagne.layers.MaxPool2DLayer(layer1, pool_size=(2,2))
@@ -34,20 +35,20 @@ if __name__ == '__main__':
     layer4 = lasagne.layers.MaxPool2DLayer(layer3, pool_size=(2,2))
     layer5 = lasagne.layers.Conv2DLayer(layer4, num_filters=60, filter_size=(2,2))
     layer6 = lasagne.layers.MaxPool2DLayer(layer5, pool_size=(2,2))
-    layer7 = lasagne.layers.DenseLayer(layer6, num_units=256)
-    layer8 = lasagne.layers.DenseLayer(layer7, num_units=N_CLASSES, nonlinearity=lasagne.nonlinearities.softmax)
+    layer7 = lasagne.layers.DenseLayer(layer6, num_units=256, W=lasagne.init.GlorotUniform())
+    layer8 = lasagne.layers.DenseLayer(layer7, num_units=N_CLASSES, nonlinearity=lasagne.nonlinearities.softmax, W=lasagne.init.GlorotUniform())
     model = layer8
 
     x = T.tensor4()
     y = T.ivector()
 
-    model_params = lasagne.layers.get_all_params(model, trainable=True)
+    model_params = lasagne.layers.get_all_params(model,trainable=True)
     sh_lr = theano.shared(lasagne.utils.floatX(LEARNING_RATE))
 
     noisy_output = lasagne.layers.get_output(model, x, deterministic=False)
     true_output = lasagne.layers.get_output(model, x, deterministic=True)
 
-    l2_loss = regularize_layer_params(model, l2)*L2_REG
+    l2_loss = regularize_layer_params(model, l2)#*L2_REG <-- not sure what this should be
 
     noisy_cost = T.mean(T.nnet.categorical_crossentropy(noisy_output, y)) + l2_loss
     true_cost = T.mean(T.nnet.categorical_crossentropy(true_output, y)) + l2_loss
@@ -113,7 +114,7 @@ if __name__ == '__main__':
 
 
                     print "--> Epoch %i, minibatch %i/%i has training true cost \t %f." % (epoch, minibatch_index+1, n_train_batches, train_cost)
-                    print "--> Epoch %i, minibatch %i/%i has validation true cost \t %f and error of \t %f %%." % (epoch, minibatch_index+, n_train_batches, valid_cost, valid_error)
+                    print "--> Epoch %i, minibatch %i/%i has validation true cost \t %f and error of \t %f %%." % (epoch, minibatch_index+1, n_train_batches, valid_cost, valid_error)
 
                     if valid_cost < best_validation_cost:
                         print "----> New best score found!"
@@ -138,14 +139,14 @@ if __name__ == '__main__':
 
     joblib.dump(plot_iters, os.path.join(PARAM_SAVE_DIR, "iters.pkl"))
 
-    joblib.dump(plot_train_cost, os.path.join(PARAM_SAVE_DIR, "train_cost.pkl")
-    joblib.dump(plot_train_error, os.path.join(PARAM_SAVE_DIR, "train_error.pkl")
+    joblib.dump(plot_train_cost, os.path.join(PARAM_SAVE_DIR, "train_cost.pkl"))
+    joblib.dump(plot_train_error, os.path.join(PARAM_SAVE_DIR, "train_error.pkl"))
 
-    joblib.dump(plot_valid_cost, os.path.join(PARAM_SAVE_DIR, "valid_cost.pkl")
-    joblib.dump(plot_valid_error, os.path.join(PARAM_SAVE_DIR, "valid_error.pkl")
+    joblib.dump(plot_valid_cost, os.path.join(PARAM_SAVE_DIR, "valid_cost.pkl"))
+    joblib.dump(plot_valid_error, os.path.join(PARAM_SAVE_DIR, "valid_error.pkl"))
 
-    joblib.dump(plot_test_cost, os.path.join(PARAM_SAVE_DIR, "test_cost.pkl")
-    joblib.dump(plot_test_error, os.path.join(PARAM_SAVE_DIR, "test_error.pkl")
+    joblib.dump(plot_test_cost, os.path.join(PARAM_SAVE_DIR, "test_cost.pkl"))
+    joblib.dump(plot_test_error, os.path.join(PARAM_SAVE_DIR, "test_error.pkl"))
 
       
 

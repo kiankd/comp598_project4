@@ -66,10 +66,7 @@
 \maketitle
 
 \begin{abstract}
-Determining the identity of a virus in a blood sample is a critical problem for today's medical community. Incorrectly classifying a virus can have grave implications, not only for the patient in question but also for those who've come into contact with him or her. A virus, even after microscopy techniques like the transmission electron microscopy method have been applied, can still be difficult to discern by the human eye. Unfortunately this is not a problem that can afford a margin of error. Fortunately, machine learning methods present exceedingly high accuracy rates for image classification tasks and don't require expert knowledge to do so. Here we present a successful application of convolutional neural networks to the problem of virus classification. Using the Virus Texture Dataset from Uppsala University, we classify viruses samples into one of 15 categories and compare its performance to previous work done on the same task.
-
-
-
+Determining the identity of a virus in a blood sample is a critical problem for today's medical community. Incorrectly classifying a virus can have grave implications, not only for the patient in question but also for those who've come into contact with him or her. A virus, even after microscopy techniques like the transmission electron microscopy method have been applied, can still be difficult to discern by the human eye. Unfortunately, this is not a problem that can afford a margin of error. Fortunately, machine learning methods present exceedingly high accuracy rates for image classification tasks and don't require expert knowledge to do so. Here we present a successful application of convolutional neural networks to the problem of virus classification. Using the Virus Texture Dataset from Uppsala University, we classify viruses samples into one of 15 categories and compare its performance to previous work done on the same task.
 
 \end{abstract} 
 \vspace{0.5cm}
@@ -78,6 +75,18 @@ Determining the identity of a virus in a blood sample is a critical problem for 
 \section{Introduction}
 \section{Dataset}
 \label{text:dataset}
+
+
+\section{Methods}
+Convolutional Neural Networks (CNN) are biologically inspired variants of Multi-Layered Perceptrons that can encode non-linear features with atleast one hidden layer, and are specifically architected for image classification. Image processing with a Neural Network is computationally infeasible given how quickly parameters scale. CNN's on the other hand constrain their architecture to the nature of images. A neuron in the nth layer is not fully connected to all neurons before it, rather, 
+
+
+They work as follows. 
+
+ They're constrained to work with images, which specifically oriented towards image processi Image processing with a fully connected Neural Network 
+
+Unlike a fully connectd Neural Network, CNN's  a Neural Network, image classification is infeasibly computationally expensive, and CNN's  CNN's are made up of several layers: input, convolutional, pooling and fully connected.  
+
 \section{Related Work}
 In the work of \citet{kylberg2011virus}, texture analysis is performed on a dataset composed of 22 different  virus samples and the resulting feature vector is fed into a Random Forest classifier. The authors first compare the performance of different texture analysers, such as Local Binary Patterns, Radial Density Profile and their respective variants before proceeding to detail their results. We will briefly explain their feature extractors and results here. 
 \subsection{Local Binary Profile (LBP)}

@@ -1,7 +1,7 @@
 import numpy as np
 
 def get_data():
-    return np.load('../npy_data/rotated_features.npy'),np.load('../npy_data/y_classifications.npy')
+    return np.load('../npy_data/rotated_data_features.npy'),np.load('../npy_data/y_classifications.npy')
 
 def get_train_val_test():
     split_dir = '../split/'
