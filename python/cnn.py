@@ -12,12 +12,14 @@ import glob
 import lasagne
 import numpy as np
 import os
-import os
 import theano
 import theano.tensor as T
 import timeit
+import random
 
 from get_data import get_train_val_test as pull_data
+from normalize import normalize
+
 
 DIM = 41
 # Hyperparameters
@@ -25,8 +27,8 @@ NUM_EPOCHS = 8000
 LEARNING_RATE = 0.005
 N_CLASSES = 15
 L2_REG = 0.0001
-BATCH_SIZE = 16
-VALIDATION_FREQUENCY = 50
+BATCH_SIZE = 50 #Arbitrary!!
+VALIDATION_FREQUENCY = 40
 PARAM_SAVE_DIR = './params'
 FIGURE_SAVE_DIR = './figures'
 DATASET_DIR = '../sanctuary/lbp_dataset_2_8'
@@ -139,8 +141,12 @@ def main(num_epochs=500):
     print("Loading data...")
     #X_train, y_train, X_val, y_val, X_test, y_test= pull_data()
     trainX, trainY, valX, valY, testX, testY = pull_data()
-    trainX = trainX.reshape(trainX.shape[0],1, DIM, DIM)
-    trainY = trainY-1
+    
+    trainX = normalize(trainX.reshape(trainX.shape[0],1, DIM, DIM))
+    valX = normalize(valX.reshape(valX.shape[0],1, DIM, DIM))
+    testX = normalize(testX.reshape(trainX.shape[0],1, DIM, DIM))
+
+    trainY = trainY - 1
     valY = valY -1
     testY = testY - 1
 
@@ -213,7 +219,12 @@ def main(num_epochs=500):
         while True:
             epoch = epoch + 1
 
-            for minibatch_index in xrange(n_train_batches):
+            random.seed(epoch)
+            trainX = random.shuffle(trainX)
+            random.seed(epoch)
+            trainY = random.shuffle(trainY)
+
+        for minibatch_index in xrange(n_train_batches):
                 iter = (epoch - 1) * n_train_batches + minibatch_index  
                 if iter % 100 == 0:
                     print "[O] Training at iteration %d." % iter
