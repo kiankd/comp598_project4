@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.8.13)  11 DEC 2015 15:55
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.8.13)  11 DEC 2015 16:08
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1292,46 +1292,41 @@ File: images/boxes_results.png Graphic file (type png)
 Package pdftex.def Info: images/boxes_results.png used on input line 142.
 (pdftex.def)             Requested size: 469.75502pt x 133.84006pt.
 
-Overfull \hbox (23.4498pt too wide) in paragraph at lines 159--160
-[] 
+Overfull \hbox (38.4498pt too wide) in paragraph at lines 150--158
+[][] 
  []
 
-[3 <./images/rdp.pdf>] [4 <./images/boxes_results.png>]
+[3 <./images/rdp.pdf>] [4 <./images/boxes_results.png>] (./baseline_cms.tex
 <images/baseline/cm_log_reg.pdf, id=189, 433.62pt x 433.62pt>
 File: images/baseline/cm_log_reg.pdf Graphic file (type pdf)
 
 <use images/baseline/cm_log_reg.pdf>
-Package pdftex.def Info: images/baseline/cm_log_reg.pdf used on input line 185.
+Package pdftex.def Info: images/baseline/cm_log_reg.pdf used on input line 5.
+(pdftex.def)             Requested size: 211.38832pt x 211.39055pt.
 
-(pdftex.def)             Requested size: 187.90271pt x 187.90198pt.
-
-<images/baseline/cm_linear_svm.pdf, id=190, 433.62pt x 433.62pt>
-File: images/baseline/cm_linear_svm.pdf Graphic file (type pdf)
-
-<use images/baseline/cm_linear_svm.pdf>
-Package pdftex.def Info: images/baseline/cm_linear_svm.pdf used on input line 1
-90.
-(pdftex.def)             Requested size: 187.90271pt x 187.90198pt.
-
-<images/baseline/cm_svm.pdf, id=191, 433.62pt x 433.62pt>
-File: images/baseline/cm_svm.pdf Graphic file (type pdf)
-
-<use images/baseline/cm_svm.pdf>
-Package pdftex.def Info: images/baseline/cm_svm.pdf used on input line 195.
-(pdftex.def)             Requested size: 187.90271pt x 187.90198pt.
-
-<images/baseline/cm_naive_bayes.pdf, id=192, 433.62pt x 433.62pt>
+<images/baseline/cm_naive_bayes.pdf, id=190, 433.62pt x 433.62pt>
 File: images/baseline/cm_naive_bayes.pdf Graphic file (type pdf)
 
 <use images/baseline/cm_naive_bayes.pdf>
 Package pdftex.def Info: images/baseline/cm_naive_bayes.pdf used on input line 
-200.
-(pdftex.def)             Requested size: 187.90271pt x 187.90198pt.
+11.
+(pdftex.def)             Requested size: 211.38832pt x 211.39055pt.
 
+<images/baseline/cm_linear_svm.pdf, id=191, 433.62pt x 433.62pt>
+File: images/baseline/cm_linear_svm.pdf Graphic file (type pdf)
 
-LaTeX Warning: Float too large for page by 174.37798pt on input line 203.
+<use images/baseline/cm_linear_svm.pdf>
+Package pdftex.def Info: images/baseline/cm_linear_svm.pdf used on input line 1
+7.
+(pdftex.def)             Requested size: 211.38832pt x 211.39055pt.
 
-(./shrine1_figures.tex
+<images/baseline/cm_svm.pdf, id=192, 433.62pt x 433.62pt>
+File: images/baseline/cm_svm.pdf Graphic file (type pdf)
+
+<use images/baseline/cm_svm.pdf>
+Package pdftex.def Info: images/baseline/cm_svm.pdf used on input line 23.
+(pdftex.def)             Requested size: 211.38832pt x 211.39055pt.
+) (./shrine1_figures.tex
 <images/1/train_val_cost.pdf, id=193, 578.16pt x 433.62pt>
 File: images/1/train_val_cost.pdf Graphic file (type pdf)
 
@@ -1412,27 +1407,12 @@ File: images/2/cm_test.pdf Graphic file (type pdf)
  <use images/2/cm_test.pdf>
 Package pdftex.def Info: images/2/cm_test.pdf used on input line 27.
 (pdftex.def)             Requested size: 211.38832pt x 211.39055pt.
-) [5]
+) [5] [6 <./images/baseline/cm_log_reg.pdf> <./images/baseline/cm_naive_bayes.p
+df
 
-LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <17.7389> not available
-(Font)              size <17.28> substituted on input line 212.
-
-
-LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <26.65816> not available
-(Font)              size <24.88> substituted on input line 212.
-
-
-LaTeX Font Warning: Font shape `OT1/cmr/m/it' in size <26.65816> not available
-(Font)              size <24.88> substituted on input line 212.
-
-Package microtype Info: Loading generic settings for font family
-(microtype)             `cmtt' (encoding: OT1).
-(microtype)             For optimal results, create family-specific settings.
-(microtype)             See the microtype manual for details.
-(./report.bbl)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 220.
- [6] [7 <./images/baseline/cm_log_reg.pdf> <./images/baseline/cm_linear_svm.pdf
-
+pdfTeX warning: pdflatex (file ./images/baseline/cm_naive_bayes.pdf): PDF inclu
+sion: multiple pdfs with page group included in a single page
+> <./images/baseline/cm_linear_svm.pdf
 
 pdfTeX warning: pdflatex (file ./images/baseline/cm_linear_svm.pdf): PDF inclus
 ion: multiple pdfs with page group included in a single page
@@ -1440,11 +1420,7 @@ ion: multiple pdfs with page group included in a single page
 
 pdfTeX warning: pdflatex (file ./images/baseline/cm_svm.pdf): PDF inclusion: mu
 ltiple pdfs with page group included in a single page
-> <./images/baseline/cm_naive_bayes.pdf
-
-pdfTeX warning: pdflatex (file ./images/baseline/cm_naive_bayes.pdf): PDF inclu
-sion: multiple pdfs with page group included in a single page
->] [8 <./images/1/train_val_cost.pdf> <./images/1/train_val_error.pdf
+>] [7 <./images/1/train_val_cost.pdf> <./images/1/train_val_error.pdf
 
 pdfTeX warning: pdflatex (file ./images/1/train_val_error.pdf): PDF inclusion: 
 multiple pdfs with page group included in a single page
@@ -1456,7 +1432,7 @@ e pdfs with page group included in a single page
 
 pdfTeX warning: pdflatex (file ./images/1/cm_test.pdf): PDF inclusion: multiple
  pdfs with page group included in a single page
->] [9 <./images/0/train_val_cost.pdf> <./images/0/train_val_error.pdf
+>] [8 <./images/0/train_val_cost.pdf> <./images/0/train_val_error.pdf
 
 pdfTeX warning: pdflatex (file ./images/0/train_val_error.pdf): PDF inclusion: 
 multiple pdfs with page group included in a single page
@@ -1468,7 +1444,7 @@ e pdfs with page group included in a single page
 
 pdfTeX warning: pdflatex (file ./images/0/cm_test.pdf): PDF inclusion: multiple
  pdfs with page group included in a single page
->] [10 <./images/2/train_val_cost.pdf> <./images/2/train_val_error.pdf
+>] [9 <./images/2/train_val_cost.pdf> <./images/2/train_val_error.pdf
 
 pdfTeX warning: pdflatex (file ./images/2/train_val_error.pdf): PDF inclusion: 
 multiple pdfs with page group included in a single page
@@ -1481,10 +1457,29 @@ e pdfs with page group included in a single page
 pdfTeX warning: pdflatex (file ./images/2/cm_test.pdf): PDF inclusion: multiple
  pdfs with page group included in a single page
 >]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 220.
+
+LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <17.7389> not available
+(Font)              size <17.28> substituted on input line 190.
+
+
+LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <26.65816> not available
+(Font)              size <24.88> substituted on input line 190.
+
+
+LaTeX Font Warning: Font shape `OT1/cmr/m/it' in size <26.65816> not available
+(Font)              size <24.88> substituted on input line 190.
+
+Package microtype Info: Loading generic settings for font family
+(microtype)             `cmtt' (encoding: OT1).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+(./report.bbl)
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 198.
+ [10]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 198.
  (./report.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 220.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 220.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 198.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 198.
 Package rerunfilecheck Info: File `report.out' has not changed.
 (rerunfilecheck)             Checksum: 6282512E6588E9224D4A95042105F8B0;777.
 
@@ -1495,16 +1490,16 @@ LaTeX Font Warning: Size substitutions with differences
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 220.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 198.
  ) 
 Here is how much of TeX's memory you used:
- 20830 strings out of 493304
- 343724 string characters out of 6139871
- 588699 words of memory out of 5000000
+ 20833 strings out of 493304
+ 343769 string characters out of 6139871
+ 581786 words of memory out of 5000000
  23662 multiletter control sequences out of 15000+600000
  16901 words of font info for 103 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 53i,11n,92p,1176b,595s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 53i,11n,92p,1176b,601s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texl
@@ -1520,7 +1515,7 @@ amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
 are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/te
 xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on report.pdf (10 pages, 2449294 bytes).
+Output written on report.pdf (10 pages, 2449589 bytes).
 PDF statistics:
  881 PDF objects out of 1000 (max. 8388607)
  336 compressed objects within 4 object streams

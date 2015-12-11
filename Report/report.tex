@@ -147,16 +147,14 @@ All values are chosen after a grid search. Figure \ref{fig:relwork_results} show
 \section{Baseline Classification Approach}
 We tested 4 different classifiers using algorithms from the scikit-learn \citet{scikit-learn} machine learning library. These baseline classifiers provide results that help to reveal the dataset's complexity. We trained and tested these classifiers over the rotated dataset. Not surprisingly, the SVM with an rbf kernel performed the best since it allows projection of the pixel feature space to a higher dimension, thus making it capable of capturing aspects of the data that cannot be observed by the other classifiers. These classifiers clearly have poor results, but they provide a good baseline understanding of the dataset, showing that the image pixel space is not easily separable and requires a stronger non-linear function approximator in order to be properly understood. See the appendix for the confusion matrices of the results.
 
-\begin{adjustbox}{max width=\textwidth}
 	\begin{tabular}{llc}
 	\toprule
-	\textbf{Classifier} & \textbf{Parameters} & \textbf{F1-Accuracy} \\ \midrule
+	\multicolumn{1}{c}{\textbf{Classifier}} & \textbf{Parameters} & \textbf{F1-Accuracy} \\ \midrule
 	Logistic Regression  & default         & 0.271 \\ 
 	Linear 	SVM   	     & linear kernel   & 0.248 \\
 	SVM                  & rbf kernel      & 0.327 \\
 	Gaussian Naive Bayes & none            & 0.273 \\ \bottomrule
 	\end{tabular}
-\end{adjustbox}
 
 \section{Neural Networks Approach}
 In order to establish a baseline, we combine ideas from \citet{kylberg2011virus} and ourselves by attempting to use a neural network with the LBP features. Our neural networks are built using the Lasagne and Theano \cite{Bastien-Theano-2012, bergstra+al:2010-scipy} libraries. In our experiments, we will not rescale the images and we will use LBP$_{8,2}$, an implementation given by the \emph{Mahotas} computer vision library \citet{coelho2012mahotas}. We are not scaling the images because we are later comparing to convolutional neural networks which will not used rescaled images. The values of $8,2$ come from the best values as checked by \citet{kylberg2011virus}. \emph{Mahotas}' implementation of LBP is done so that the feature vector is of smaller dimension than the usual dimension of a histogram with $2^N$ values where $N$ is the number of sampled points. This is achieved by some optimization on their end. 
@@ -178,29 +176,9 @@ We notice that the neural network with one hidden layer took the longest time to
 \newpage
 \section*{Appendix}
 \appendix
+
 \section{Baseline Classification Results}
-\begin{figure}[ht]
-	\begin{subfigure}{.5\textwidth}
-	\centering
-	\includegraphics[width=.8\linewidth]{images/baseline/cm_log_reg.pdf}
-	\caption{Logistic Regression Confusion Matrix}
-	\end{subfigure}
-	
-	\begin{subfigure}{.5\textwidth}
-	\includegraphics[width=.8\linewidth]{images/baseline/cm_linear_svm.pdf}
-	\caption{Linear SVM Confusion Matrix}
-	\end{subfigure}
-	
-	\begin{subfigure}{.5\textwidth}
-	\includegraphics[width=.8\linewidth]{images/baseline/cm_svm.pdf}
-	\caption{SVM Confusion Matrix}
-	\end{subfigure}
-	
-	\begin{subfigure}{.5\textwidth}
-	\includegraphics[width=.8\linewidth]{images/baseline/cm_naive_bayes.pdf}
-	\caption{Naive Bayes Confusion Matrix}
-	\end{subfigure}
-\end{figure}
+\input{baseline_cms.tex}
 
 \section{Neural Network Trained on LBP - Results} \label{appendix:images}
 \input{shrine1_figures.tex}
