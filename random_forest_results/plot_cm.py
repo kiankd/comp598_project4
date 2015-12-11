@@ -5,15 +5,21 @@ import numpy as np
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
+import os
 
-for string in ['RandomForestClassifier']:#['GaussianNB', 'LinearSVC', 'LogisticRegression', 'SVC', 'RandomForestClassifier']:
-    
-    if string == 'RandomForestClassifier':
-        PREFIX = 'new_tests/'+argv[1]
-    else:
-        PREFIX = argv[1]
+file_names = os.listdir('.')
+file_names = [x for x in file_names if x.endswith('.npy')]
 
-    cm = np.load(PREFIX+'_%s_confusion_matrix.npy' % string)
+for s in file_names: 
+    idx = s.find('confusion')
+    PREFIX = s[:idx]    
+
+    strings = PREFIX.split('_')
+    string = ''
+    for sub in strings:
+        string += sub
+
+    cm = np.load(PREFIX+'confusion_matrix.npy')
     cm = cm.astype('float')/cm.sum(axis=1)
 
     plt.matshow(cm, cmap=plt.cm.Greens)
@@ -28,6 +34,5 @@ for string in ['RandomForestClassifier']:#['GaussianNB', 'LinearSVC', 'LogisticR
             if cm[x,y]>=0.15:
                 ax.annotate('%4.2f' % cm[x,y], xy=(y,x), horizontalalignment='center', verticalalignment='center', size=6.3)
         
-
     plt.savefig(PREFIX+'_%s_cm.pdf' % string)
 
