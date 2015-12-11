@@ -7,7 +7,6 @@
 \usepackage[margin=1in]{geometry}
 \usepackage{mathtools}
 % \usepackage{subcaption}
-\usepackage{adjustbox}
 \usepackage{hyperref}
 \usepackage{paralist}
 \usepackage{float}
@@ -75,23 +74,28 @@ On a daily basis doctors are tasked with determining the identity of viruses fro
 
 \begin{multicols}{2}
 \section{Introduction}
-Identifying viral pathogens is a continuous endeavor medical professionals  essential to public health. 
+Identifying viral pathogens, existing and emerging, is a critical priority for public health. Current diagnostic methods include direct examination of a speciman by an trained medical professional using Electron Microscopy methods. Unfortunately, even with magnification techniques it can be difficult for doctors to identify specific viral types. 
 
-\section{Dataset}
-\label{text:dataset}
+On the other hand, automatic classification methods in machine learning have proven quite successful at image classification. In particular, research employing neural networks has reshaped image classification in recent years \citet{Juergen_2015}. Specifically, Max Pooling Convolutional Neural Networks have set the bar at it's highest for an array of tasks, including the multi-digit number recognition in Google Street View images, reCAPTCHA box classification \citet{DBLP:journals/corr/GoodfellowBIAS13}, and ImageNet classification \citet{NIPS2012_4824}. 
+
+The high degree of accuracy obtained with these automated methods is highly desirable for a problem like virus classification. In the desire to determine a model that accurately predicts known virus types, we treat the virus classification as an image classification problem. We use the Virus Texture Dataset from Uppsala University containing images of fifteen different virus types, which we extend through random rotations to enlarge our dataset. 
+
+We experiment with an array of machine learning classifiers, including Support Vector Machines with linear and radial basis function kernels, Gaussian Naive Bayes, Logistic Regression, Random Forest Trees and Feed Forward Neural Networks with local binary pattern feature extractors. Our best results come from our Convolutional Neural Network using max pooling, with which we classify virus samples from our dataset into one of 15 categories with an accuracy of ----. 
 
 
-\section{Methods}
-Convolutional Neural Networks (CNN) are biologically inspired variants of Multi-Layered Perceptrons that can encode non-linear features with atleast one hidden layer, and are specifically architected for image classification. Image processing with a Neural Network is computationally infeasible given how quickly parameters scale. CNN's on the other hand constrain their architecture to the nature of images. A neuron in the nth layer is not fully connected to all neurons before it, rather, 
+\section{Problem Definition}
 
+Our research takes place in a greater context of a desire to use machine learning classification methods to accurately classify viruses from viral sample images. This extends to both viruses which are currently known, and potentially evolved viruses like the H1N1 influenza pandemic virus in Mexico and the US in 2009,  which was a modified version of known influenza strains. Convolutional Neural Networks with all the function approximation power of Neural Networks, but specifically architected for images, present a highly promising solution for computer automated virus identification, and a useful supplementation to traditional virology research. 
 
-They work as follows. 
+As it stands, from our survey of the word done with...
 
- They're constrained to work with images, which specifically oriented towards image processi Image processing with a fully connected Neural Network 
+\section{Methodology}
 
-Unlike a fully connectd Neural Network, CNN's  a Neural Network, image classification is infeasibly computationally expensive, and CNN's  CNN's are made up of several layers: input, convolutional, pooling and fully connected.  
+\subsection{Feature Design and Selection Methods}
+%% related work shit should actually go here
+%%TODO: PUT RELATED WORKS UNDER FEATURE DESIGN
 
-\section{Related Work}
+\subsubsection{Related Work}
 In the work of \citet{kylberg2011virus}, texture analysis is performed on a dataset composed of 22 different  virus samples and the resulting feature vector is fed into a Random Forest classifier. The authors first compare the performance of different texture analysers, such as Local Binary Patterns, Radial Density Profile and their respective variants before proceeding to detail their results. We will briefly explain their feature extractors and results here. 
 \subsection{Local Binary Pattern (LBP)}
 Local Binary Pattern works such that, given an image, for each pixel $p_i$ in it we sample $n$ equally-spaced points on the circle of radius $r$ with center $p_i$ -- an example of sampling is shown in figure \ref{fig:lbp_basic} -- and construct a vector $v(p_i)$ such that its $i$th entry is a 1 if the $i$th sampled pixel has a value bigger than $p_i$ and 0 otherwise. 
@@ -123,7 +127,7 @@ where $I(q)$ is the pixel value for pixel $q$ and $N = \left\{ q: \Vert q-q_c \V
 	\label{fig:rdp}
 \end{Figure}
 \par It is not explained how the pixel features are combined to make the feature vector for the whole image but we would imagine that the feature vector for the whole image is either a concatenation of the pixel features or the concatenation of the mean of each pixel feature. 
-\paragraph{Fourier RDP} One variation \citet{kylberg2011virus} introduced is applying the same RDP technique on the image after it undergoes a Fourier transform and looking at it with respect to a base $e$ logarithmic scale. They denote it with FRDP$_n$. 
+\paragraph{Fourier RDP} One variation \citet{kylberg2011virus} introduced is applying the same RDP technique on the image after it undergoes a Fourier transform and looking at it with respect to a base $e$ logarithmic scale. They denote it with FRDP$_n$.
 
 \subsection{Results}
 \label{text:relwork_results}
@@ -142,7 +146,13 @@ All values are chosen after a grid search. Figure \ref{fig:relwork_results} show
 	\includegraphics[width=\linewidth]{images/boxes_results.png}
 	\captionof{figure}{This figure comes from \citet{kylberg2011virus}. The classification errors are shown for a Random Forest classifier using the 6 different texture extractors as described in section \ref{text:relwork_results}. The boxes' vertical lines represent the median and the red $\times$ represent outliers that are at least 1.5 times the size of the box away from it. The error bars are from the lower to the upper quartile.}
 	\label{fig:relwork_results}
-\end{figure*}
+\end{figure*} 
+
+
+\subsection{Data and Pre-Processing Methods}
+\label{text:dataset}
+The Virus Texture Dataset contains images (texture samples) of 15 virus types obtained through transmission electron microscopy (TEM). The texture samples are extracted using an automatic segmentation method used in \citet{JMI:JMI3556} that detects virus particles of various shapes in TEM using a series of analytical steps. Each virus class has 100 unique texture patches, each of size 41x41 pixels. We chose to extend the dataset by generating twelve random rotations of each image to add noise and improve the performance of our classifier. 
+
 
 \section{Baseline Classification Approach}
 We tested 4 different classifiers using algorithms from the scikit-learn \citet{scikit-learn} machine learning library. These baseline classifiers provide results that help to reveal the dataset's complexity. We trained and tested these classifiers over the rotated dataset. Not surprisingly, the SVM with an rbf kernel performed the best since it allows projection of the pixel feature space to a higher dimension, thus making it capable of capturing aspects of the data that cannot be observed by the other classifiers. These classifiers clearly have poor results, but they provide a good baseline understanding of the dataset, showing that the image pixel space is not easily separable and requires a stronger non-linear function approximator in order to be properly understood. See the appendix for the confusion matrices of the results.
@@ -178,10 +188,16 @@ We notice that the neural network with one hidden layer took the longest time to
 \par Compared to the work of \citet{kylberg2011virus}, we can see from Figure \ref{fig:relwork_results} that the LBP$^{\textnormal{ri}}$ on fixed scale performed at about 30 \% error whereas on the object scale it performed at about 63 \%. Since we didn't perform any rescaling of the images, we expect the error to be within that interval. Finally, \emph{Mahotas}' implementation of LBP does not necessarily match the implementation of LBP$^{\textnormal{ri}}$ so this can induce some error as well. 
 \end{multicols}
 
+
+\section{Convolutional Neural Network Approach}
+Convolutional Neural Networks (CNN) are often used in image classification tasks as they possess the power of a Feed Forward Neural Network but are specifically architected to efficiently process images. We fed images from our dataset into our CNN in their original 41x41 pixel form. Our CNN consisted of three convolutional two-dimensional layers, each followd by a 2x2 max pooling layer. Two fully connected layers with 50\% dropout on their inputs concluded the network. 
+
+
+
+
 \newpage
 \section*{Appendix}
 \appendix
-
 \section{Baseline Classification Results}
 \input{baseline_cms.tex}
 
@@ -193,10 +209,10 @@ We notice that the neural network with one hidden layer took the longest time to
 \newpage
 \begin{multicols}{2}
 \paragraph*{} \lettrine[nindent=0em,lines=1]{\textit{W}}{}\textit{e hereby state that all the work presented in this report is that of the authors. }
-\paragraph*{} Alan wrote the sections \emph{Related Work} and \emph{Neural Network Approach}. Alan programmed the feed-forward neural network in \texttt{emerald.py} and extracted the Local Binary Patterns from the dataset in \texttt{purify\_dataset.py}. 
-\par Kian created the rotated dataset and wrote its section \emph{Transformed Dataset}, programmed the baseline learners and wrote its section \emph{Baseline Results} and also wrote the \emph{Conclusion}. 
-\par Genevieve wrote the \emph{Introduction} and the CNN results and discussion. 
-\par Kian and Genevieve both collaborated to writing the CNN with help from Alan's \texttt{emerald.py}. 
+\paragraph*{} Alan wrote the sections for \emph{Related Work} and \emph{Neural Network Approach}. Alan programmed the feed-forward neural network in \texttt{emerald.py} and extracted the Local Binary Patterns from the dataset in \texttt{purify\_dataset.py}. 
+\par Kian created the rotated dataset and wrote its section \emph{Transformed Dataset}, programmed the baseline learners and wrote the content for \emph{Baseline Results} and \emph{Conclusion}. 
+\par Genevieve wrote the \emph{Introduction} and results and discussion section for the CNN.
+\par Genevieve and Kian programmed the CNN with help from Alan's \texttt{emerald.py}. 
 \bibliography{ref}
 \bibliographystyle{plainnat}
 \end{multicols}
