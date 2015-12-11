@@ -1,3 +1,6 @@
+# @author : Genevieve Fried
+# credit to Alan whose code was used
+
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
@@ -16,6 +19,7 @@ import theano
 import theano.tensor as T
 import timeit
 import random
+from sklearn.utils import shuffle
 
 from get_data import get_train_val_test as pull_data
 from normalize import normalize
@@ -31,9 +35,8 @@ N_CLASSES = 15
 L2_REG = 0.001
 BATCH_SIZE = 60 #Arbitrary!!
 VALIDATION_FREQUENCY = 40
-PARAM_SAVE_DIR = './params'
-FIGURE_SAVE_DIR = './figures'
-DATASET_DIR = '../sanctuary/lbp_dataset_2_8'
+PARAM_SAVE_DIR = './cnn/params'
+FIGURE_SAVE_DIR = './cnn/figures'
 INIT_PATIENCE = np.inf # if after INIT_PATIENCE validation checks, the score is not improved, then the training stops
 
 def plot_curves(x, y1, y2, curve1_name, curve2_name, savename):
@@ -152,6 +155,10 @@ def main(num_epochs=500):
     valY = valY - 1
     testY = testY - 1
 
+    trainX, trainY = shuffle(trainX, trainY)
+    valX, valY = shuffle(valX, valY)
+    testX, testY = shuffle(testX, testY)
+
     # Prepare Theano variables for inputs and targets
     input_var = T.tensor4('inputs')
     output_var = T.ivector('targets')
@@ -171,15 +178,13 @@ def main(num_epochs=500):
 
     l2_loss = regularize_layer_params(model, l2)*L2_REG
 
+    ## Loss expression
     noisy_cost = T.mean(T.nnet.categorical_crossentropy(noisy_output, output_var)) + l2_loss
     true_cost = T.mean(T.nnet.categorical_crossentropy(true_output, output_var)) + l2_loss
 
-    
-    #noisy_error = 1.0 - T.mean(lasagne.objectives.categorical_accuracy(noisy_output, output_var))
-    #true_error = 1.0 - T.mean(lasagne.objectives.categorical_accuracy(true_output, output_var))
-
-    noisy_error = (lasagne.objectives.categorical_crossentropy(noisy_output, output_var)).mean()
-    true_error = (lasagne.objectives.categorical_crossentropy(true_output, output_var)).mean()
+    ## error values
+    noisy_error = 1.0 - T.mean(lasagne.objectives.categorical_accuracy(noisy_output, output_var))
+    true_error = 1.0 - T.mean(lasagne.objectives.categorical_accuracy(true_output, output_var))
 
     ## stochastic gradient descent updates
     #updates = lasagne.updates.sgd(noisy_cost, model_params, learning_rate=sh_lr)
@@ -220,11 +225,6 @@ def main(num_epochs=500):
         while True:
             epoch = epoch + 1
 
-            random.seed(epoch)
-            random.shuffle(trainX)
-            random.seed(epoch)
-            random.shuffle(trainY)
-
             for minibatch_index in xrange(n_train_batches):
                 iter = (epoch - 1) * n_train_batches + minibatch_index  
                 if iter % 100 == 0:
@@ -249,6 +249,15 @@ def main(num_epochs=500):
 
                     plot_iters.append(iter)
 
+                    ## plotting functions
+                    if not os.path.exists(FIGURE_SAVE_DIR):
+                        os.makedirs(FIGURE_SAVE_DIR)
+                    plot_curves(plot_iters, plot_train_cost, plot_valid_cost, 'Training Cost', 'Validation Cost', 'train_val_cost.pdf')
+                    plot_curves(plot_iters, plot_train_error, plot_valid_error, 'Training Error', 'Validation Error', 'train_val_error.pdf')
+
+                    plot_cm(train_pred, trainY, 'Confusion Matrix on the Training Set', 'cm_train.pdf')
+                    plot_cm(valid_pred, valY, 'Confusion Matrix on the Validation Set', 'cm_valid.pdf')
+                    plot_cm(test_pred, testY, 'Confusion Matrix on the Test Set', 'cm_test.pdf')
 
                     print "--> Epoch %i, minibatch %i/%i has training true cost \t %f." % (epoch, minibatch_index+1, n_train_batches, train_cost)
                     print "--> Epoch %i, minibatch %i/%i has validation true cost \t %f and error of \t %f %%." % (epoch, minibatch_index+1, n_train_batches, valid_cost, valid_error)
