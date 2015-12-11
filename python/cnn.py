@@ -198,9 +198,7 @@ def main(num_epochs=500):
         allow_input_downcast=True)
 
     get_score = theano.function([input_var,output_var], [true_cost, true_error], 
-        updates=updates,
         allow_input_downcast=True)
-
 
     best_validation_cost = np.inf
     best_iter = 0
