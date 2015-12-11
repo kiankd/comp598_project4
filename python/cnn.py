@@ -252,10 +252,10 @@ def main(num_epochs=500):
                         os.makedirs(FIGURE_SAVE_DIR)
                     plot_curves(plot_iters, plot_train_cost, plot_valid_cost, 'Training Cost', 'Validation Cost', 'train_val_cost.pdf')
                     plot_curves(plot_iters, plot_train_error, plot_valid_error, 'Training Error', 'Validation Error', 'train_val_error.pdf')
-
-                    plot_cm(train_pred, trainY, 'Confusion Matrix on the Training Set', 'cm_train.pdf')
-                    plot_cm(valid_pred, valY, 'Confusion Matrix on the Validation Set', 'cm_valid.pdf')
-                    plot_cm(test_pred, testY, 'Confusion Matrix on the Test Set', 'cm_test.pdf')
+                    
+                    #plot_cm(train_pred, trainY, 'Confusion Matrix on the Training Set', 'cm_train.pdf')
+                    #plot_cm(valid_pred, valY, 'Confusion Matrix on the Validation Set', 'cm_valid.pdf')
+                    #plot_cm(test_pred, testY, 'Confusion Matrix on the Test Set', 'cm_test.pdf')
 
                     print "--> Epoch %i, minibatch %i/%i has training true cost \t %f." % (epoch, minibatch_index+1, n_train_batches, train_cost)
                     print "--> Epoch %i, minibatch %i/%i has validation true cost \t %f and error of \t %f %%." % (epoch, minibatch_index+1, n_train_batches, valid_cost, valid_error)

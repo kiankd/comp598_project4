@@ -232,6 +232,14 @@ print "--> Best testing score of %f with error %f." % (best_test_cost, best_test
 print "--> Total runtime %.2f minutes." % ((end_time-start_time) / 60.)
 print "[X] Saving the scores."
 
+plot_curves(plot_iters, plot_train_cost, plot_valid_cost, 'Training Cost', 'Validation Cost', 'train_val_cost.pdf')
+plot_curves(plot_iters, plot_train_error, plot_valid_error, 'Training Error', 'Validation Error', 'train_val_error.pdf')
+
+plot_cm(train_pred, trainY, 'Confusion Matrix on the Training Set', 'cm_train.pdf')
+plot_cm(valid_pred, valY, 'Confusion Matrix on the Validation Set', 'cm_valid.pdf')
+plot_cm(test_pred, testY, 'Confusion Matrix on the Test Set', 'cm_test.pdf')
+
+
 joblib.dump(plot_iters, os.path.join(PARAM_SAVE_DIR, "iters.pkl"))
 
 joblib.dump(plot_train_cost, os.path.join(PARAM_SAVE_DIR, "train_cost.pkl"))

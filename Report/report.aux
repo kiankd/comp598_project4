@@ -22,7 +22,7 @@
 \newlabel{text:dataset}{{2}{1}{Dataset}{section.2}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {3}Methods}{1}{section.3}}
 \@writefile{toc}{\contentsline {section}{\numberline {4}Related Work}{1}{section.4}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Local Binary Profile (LBP)}{1}{subsection.4.1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Local Binary Pattern (LBP)}{1}{subsection.4.1}}
 \citation{kylberg2011virus}
 \citation{kylberg2011virus}
 \citation{maenpaa2003multi}
@@ -45,6 +45,7 @@
 \citation{kylberg2011virus}
 \citation{kylberg2011virus}
 \citation{kylberg2011virus}
+\citation{scikit-learn}
 \citation{kylberg2011virus}
 \citation{Bastien-Theano-2012,bergstra+al:2010-scipy}
 \citation{coelho2012mahotas}
@@ -54,28 +55,42 @@
 \@writefile{toc}{\contentsline {paragraph}{Fourier RDP}{3}{figure.3}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Results}{3}{subsection.4.3}}
 \newlabel{text:relwork_results}{{4.3}{3}{Results}{subsection.4.3}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {5}Neural Networks Approach}{3}{section.5}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Results}{3}{subsection.5.1}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Discussion}{3}{subsection.5.2}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Baseline Classification Approach}{3}{section.5}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Neural Networks Approach}{3}{section.6}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Results}{3}{subsection.6.1}}
+\citation{kylberg2011virus}
 \@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces This figure comes from \citet  {kylberg2011virus}. The classification errors are shown for a Random Forest classifier using the 6 different texture extractors as described in section \ref  {text:relwork_results}. The boxes' vertical lines represent the median and the red $\times $ represent outliers that are at least 1.5 times the size of the box away from it. The error bars are from the lower to the upper quartile.\relax }}{4}{figure.caption.1}}
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
 \newlabel{fig:relwork_results}{{4}{4}{This figure comes from \citet {kylberg2011virus}. The classification errors are shown for a Random Forest classifier using the 6 different texture extractors as described in section \ref {text:relwork_results}. The boxes' vertical lines represent the median and the red $\times $ represent outliers that are at least 1.5 times the size of the box away from it. The error bars are from the lower to the upper quartile.\relax }{figure.caption.1}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Learning curves for a feed-forward neural network with one hidden layer of 256 units.\relax }}{4}{figure.caption.2}}
-\newlabel{shrine1_curves}{{5}{4}{Learning curves for a feed-forward neural network with one hidden layer of 256 units.\relax }{figure.caption.2}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Confusion Matrices for a feed-forward neural network with one hidden layer of 256 unit.\relax }}{5}{figure.caption.3}}
-\newlabel{shrine1_mat}{{6}{5}{Confusion Matrices for a feed-forward neural network with one hidden layer of 256 unit.\relax }{figure.caption.3}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Learning curves for a feed-forward neural network with two hidden layers of 256 units each.\relax }}{5}{figure.caption.4}}
-\newlabel{shrine0_curves}{{7}{5}{Learning curves for a feed-forward neural network with two hidden layers of 256 units each.\relax }{figure.caption.4}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Confusion Matrices for a feed-forward neural network with two hidden layers of 256 units each.\relax }}{6}{figure.caption.5}}
-\newlabel{shrine0_mat}{{8}{6}{Confusion Matrices for a feed-forward neural network with two hidden layers of 256 units each.\relax }{figure.caption.5}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Learning curves for a feed-forward neural network with three hidden layers of 256, 128, 64 units.\relax }}{6}{figure.caption.6}}
-\newlabel{shrine2_curves}{{9}{6}{Learning curves for a feed-forward neural network with three hidden layers of 256, 128, 64 units.\relax }{figure.caption.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Discussion}{4}{subsection.6.2}}
+\@writefile{toc}{\contentsline {section}{\numberline {A}Baseline Classification Results}{5}{appendix.A}}
+\@writefile{toc}{\contentsline {section}{\numberline {B}Neural Network Trained on LBP - Results}{5}{appendix.B}}
+\newlabel{appendix:images}{{B}{5}{Neural Network Trained on LBP - Results}{appendix.B}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Logistic Regression Confusion Matrix\relax }}{6}{figure.caption.2}}
+\newlabel{log_reg}{{5}{6}{Logistic Regression Confusion Matrix\relax }{figure.caption.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Linear SVM Confusion Matrix\relax }}{7}{figure.caption.3}}
+\newlabel{linear_svm}{{6}{7}{Linear SVM Confusion Matrix\relax }{figure.caption.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces SVM Confusion Matrix\relax }}{8}{figure.caption.4}}
+\newlabel{svm}{{7}{8}{SVM Confusion Matrix\relax }{figure.caption.4}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Naive Bayes Confusion Matrix\relax }}{9}{figure.caption.5}}
+\newlabel{naive_bayes}{{8}{9}{Naive Bayes Confusion Matrix\relax }{figure.caption.5}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Learning curves for a feed-forward neural network with one hidden layer of 256 units trained on LBP.\relax }}{10}{figure.caption.6}}
+\newlabel{shrine1_curves}{{9}{10}{Learning curves for a feed-forward neural network with one hidden layer of 256 units trained on LBP.\relax }{figure.caption.6}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Confusion Matrices for a feed-forward neural network with one hidden layer of 256 unit trained on LBP.\relax }}{10}{figure.caption.7}}
+\newlabel{shrine1_mat}{{10}{10}{Confusion Matrices for a feed-forward neural network with one hidden layer of 256 unit trained on LBP.\relax }{figure.caption.7}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Learning curves for a feed-forward neural network with two hidden layers of 256 units each trained on LBP.\relax }}{11}{figure.caption.8}}
+\newlabel{shrine0_curves}{{11}{11}{Learning curves for a feed-forward neural network with two hidden layers of 256 units each trained on LBP.\relax }{figure.caption.8}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces Confusion Matrices for a feed-forward neural network with two hidden layers of 256 units each trained on LBP.\relax }}{11}{figure.caption.9}}
+\newlabel{shrine0_mat}{{12}{11}{Confusion Matrices for a feed-forward neural network with two hidden layers of 256 units each trained on LBP.\relax }{figure.caption.9}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces Learning curves for a feed-forward neural network with three hidden layers of 256, 128, 64 units trained on LBP.\relax }}{12}{figure.caption.10}}
+\newlabel{shrine2_curves}{{13}{12}{Learning curves for a feed-forward neural network with three hidden layers of 256, 128, 64 units trained on LBP.\relax }{figure.caption.10}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {14}{\ignorespaces Confusion Matrices for a feed-forward neural network with three hidden layers of 256, 128, 64 units trained on LBP.\relax }}{12}{figure.caption.11}}
+\newlabel{shrine2_mat}{{14}{12}{Confusion Matrices for a feed-forward neural network with three hidden layers of 256, 128, 64 units trained on LBP.\relax }{figure.caption.11}{}}
 \bibdata{ref}
 \bibcite{Bastien-Theano-2012}{{1}{2012}{{Bastien et~al.}}{{Bastien, Lamblin, Pascanu, Bergstra, Goodfellow, Bergeron, Bouchard, and Bengio}}}
 \bibcite{bergstra+al:2010-scipy}{{2}{2010}{{Bergstra et~al.}}{{Bergstra, Breuleux, Bastien, Lamblin, Pascanu, Desjardins, Turian, Warde-Farley, and Bengio}}}
 \bibcite{coelho2012mahotas}{{3}{2012}{{Coelho}}{{}}}
 \bibcite{kylberg2011virus}{{4}{2011}{{Kylberg et~al.}}{{Kylberg, Uppstr{\"o}m, and Sintorn}}}
 \bibcite{maenpaa2003multi}{{5}{2003}{{M{\"a}enp{\"a}{\"a} and Pietik{\"a}inen}}{{}}}
+\bibcite{scikit-learn}{{6}{2011}{{Pedregosa et~al.}}{{Pedregosa, Varoquaux, Gramfort, Michel, Thirion, Grisel, Blondel, Prettenhofer, Weiss, Dubourg, Vanderplas, Passos, Cournapeau, Brucher, Perrot, and Duchesnay}}}
 \bibstyle{plainnat}
-\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Confusion Matrices for a feed-forward neural network with three hidden layers of 256, 128, 64 units.\relax }}{7}{figure.caption.7}}
-\newlabel{shrine2_mat}{{10}{7}{Confusion Matrices for a feed-forward neural network with three hidden layers of 256, 128, 64 units.\relax }{figure.caption.7}{}}

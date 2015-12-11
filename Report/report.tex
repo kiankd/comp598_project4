@@ -25,6 +25,7 @@
 \usepackage{pgf}
 \usepackage{caption}
 \usepackage{subcaption}
+\usepackage{booktabs}
 \newenvironment{Figure}
   {\par\medskip\noindent\minipage{\linewidth}}
   {\endminipage\par\medskip}
@@ -105,8 +106,8 @@ Unlike a fully connectd Neural Network, CNN's  a Neural Network, image classific
 
 \section{Related Work}
 In the work of \citet{kylberg2011virus}, texture analysis is performed on a dataset composed of 22 different  virus samples and the resulting feature vector is fed into a Random Forest classifier. The authors first compare the performance of different texture analysers, such as Local Binary Patterns, Radial Density Profile and their respective variants before proceeding to detail their results. We will briefly explain their feature extractors and results here. 
-\subsection{Local Binary Profile (LBP)}
-Local Binary Profile works such that, given an image, for each pixel $p_i$ in it we sample $n$ equally-spaced points on the circle of radius $r$ with center $p_i$ -- an example of sampling is shown in figure \ref{fig:lbp_basic} -- and construct a vector $v(p_i)$ such that its $i$th entry is a 1 if the $i$th sampled pixel has a value bigger than $p_i$ and 0 otherwise. 
+\subsection{Local Binary Pattern (LBP)}
+Local Binary Pattern works such that, given an image, for each pixel $p_i$ in it we sample $n$ equally-spaced points on the circle of radius $r$ with center $p_i$ -- an example of sampling is shown in figure \ref{fig:lbp_basic} -- and construct a vector $v(p_i)$ such that its $i$th entry is a 1 if the $i$th sampled pixel has a value bigger than $p_i$ and 0 otherwise. 
 \begin{Figure}
 	\centering
 	\includegraphics[width=0.5\linewidth]{images/lbp_basic.pdf}
@@ -145,10 +146,10 @@ The first thing to note is that \citet{kylberg2011virus} made modifications to t
 \item LBP$^\textnormal{riu2}_{8,2}$
 \item LBPF$^\textnormal{ri}_{8,1}+^\textnormal{ri}_{8,2.4}+^\textnormal{ri}_{8, 5.4}$
 \item LBPF$^\textnormal{riu2}_{8,1}+^\textnormal{riu2}_{8,2.4}+^\textnormal{riu2}_{8, 5.4}$
-\item RDP$_20$
-\item FRDP$_20$
+\item RDP$_{20}$
+\item FRDP$_{20}$
 \end{compactenum}
-All values are chosen after a grid search. Figure \ref{fig:relwork_results} shows their results with respect to the six aforementioned texture extractors and on both fixed and object scale images. They conclude that LBPF$^\textnormal{ri}_{8,1}+^\textnormal{ri}_{8,2.4}+^\textnormal{ri}_{8, 5.4}$ performed the best in fixed scale (median 21\% error) whereas FRDP$_20$ performed the best in object scale (median 22\% error). They also noticed that combining these two texture extractors, they could get an even better result (median 13\% error). 
+All values are chosen after a grid search. Figure \ref{fig:relwork_results} shows their results with respect to the six aforementioned texture extractors and on both fixed and object scale images. They conclude that LBPF$^\textnormal{ri}_{8,1}+^\textnormal{ri}_{8,2.4}+^\textnormal{ri}_{8, 5.4}$ performed the best in fixed scale (median 21\% error) whereas FRDP$_{20}$ performed the best in object scale (median 22\% error). They also noticed that combining these two texture extractors, they could get an even better result (median 13\% error). 
 \begin{figure*}
 	\centering
 	\includegraphics[width=\linewidth]{images/boxes_results.png}
@@ -156,23 +157,76 @@ All values are chosen after a grid search. Figure \ref{fig:relwork_results} show
 	\label{fig:relwork_results}
 \end{figure*}
 
+\section{Baseline Classification Approach}
+We tested 4 different classifiers using algorithms from the scikit-learn \citet{scikit-learn} machine learning library. These baseline classifiers provide results that help to reveal the dataset's complexity. We trained and tested these classifiers over the rotated dataset. Not surprisingly, the SVM with an rbf kernel performed the best since it allows projection of the pixel feature space to a higher dimension, thus making it capable of capturing aspects of the data that cannot be observed by the other classifiers. These classifiers clearly have poor results, but they provide a good baseline understanding of the dataset, showing that the image pixel space is not easily separable and requires a stronger non-linear function approximator in order to be properly understood.
+
+\begin{tabular}{llcc}
+\toprule
+\textbf{Classifier} & \textbf{Parameters} & \textbf{F1-Accuracy} & \textbf{Figs}\\ \midrule
+Logistic Regression  & default         & 0.271 & \ref{fig:log_reg}\\ 
+Linear SVM   	     & linear kernel   & 0.248 & \ref{fig:linear_svm}\\
+SVM                  & rbf kernel      & 0.327 & \ref{fig:svm}\\
+Gaussian Naive Bayes & none            & 0.273 & \ref{fig:naive_bayes}\\ \bottomrule
+\end{tabular}
+
 \section{Neural Networks Approach}
-In order to establish a baseline, we combine ideas from \citet{kylberg2011virus} and ourselves by attempting to use a neural network with the LBP features. Our neural networks are built using the Lasagne and Theano \cite{Bastien-Theano-2012, bergstra+al:2010-scipy} libraries. In our experiments, we will not rescale the images and we will use LBP$_{8,2}$, an implementation given by the \emph{Mahotas} computer vision library \citet{coelho2012mahotas}. We are not scaling the images because we are later comparing to convolutional neural networks which will not used rescaled images. The values of $8,2$ come from the best values as checked by \citet{kylberg2011virus}. \emph{Mahotas}'s implementation of LBP is done so that the feature vector is of smaller dimension than the usual dimension of a histogram with $2^N$ values where $N$ is the number of sampled points. This is achieved by some optimization on their end. 
+In order to establish a baseline, we combine ideas from \citet{kylberg2011virus} and ourselves by attempting to use a neural network with the LBP features. Our neural networks are built using the Lasagne and Theano \cite{Bastien-Theano-2012, bergstra+al:2010-scipy} libraries. In our experiments, we will not rescale the images and we will use LBP$_{8,2}$, an implementation given by the \emph{Mahotas} computer vision library \citet{coelho2012mahotas}. We are not scaling the images because we are later comparing to convolutional neural networks which will not used rescaled images. The values of $8,2$ come from the best values as checked by \citet{kylberg2011virus}. \emph{Mahotas}' implementation of LBP is done so that the feature vector is of smaller dimension than the usual dimension of a histogram with $2^N$ values where $N$ is the number of sampled points. This is achieved by some optimization on their end. 
 \subsection{Results}
-To normalize the data, we chose to divide the entire dataset by 1.1 times the maximum value of a feature in the training set in order to be more certain that no features in the normalized test set would have a value greater than 1. In all cases, we are using a learning rate of 0.005 and an L2 regularization weight of 0.0001, both arbitrarily chosen and the last layer was a 15 units softmax layer. The dataset described in section \ref{text:dataset} is shuffled and the training is done with a batch size of 16 by stochastic gradient descent. 
+To normalize the data, we chose to divide the entire dataset by 1.1 times the maximum value of a feature in the training set in order to be more certain that no features in the normalized test set would have a value greater than 1. In all cases, we are using a learning rate of 0.005 and an L2 regularization weight of 0.0001, both arbitrarily chosen and the last layer was a 15 units softmax layer. The dataset described in section \ref{text:dataset} is shuffled and the training is done with a batch size of 16 by stochastic gradient descent. All images pertaining to the results such as the confusion matrices for the validation and testing set and the learning curves can be found in the Appendix: the first neural network results are found in figures \ref{shrine1_curves} and \ref{shrine1_mat}; the second neural network results are found in figures \ref{shrine0_curves} and \ref{shrine0_mat}; the third nerual network results are found in figures \ref{shrine2_curves} and \ref{shrine2_mat}. The table below shows the results obtained on the test set. The first column represent, in order, the number of units in each of the hidden layers. 
 
-\par The first feed-forward neural network architecture we used was comprised of 1 hidden layer with 256 units. The results can be found in figures \ref{shrine1_curves} and \ref{shrine1_mat}. We note that the best test error was about 52.22\%. 
-\input{shrine1_figures.tex}
-
-\par The second feed-forward neural network architecture we used was comprised of 2 hidden layers with 256 units each. The results can be found in figures \ref{shrine0_curves} and \ref{shrine0_mat}. We note that the best test error was about 52.22\%. 
-\input{shrine0_figures.tex}
-
-\par The third feed-forward neural network architecture we used was comprised of 3 hidden layers with 256, 128 and 64 units. The results can be found in figures \ref{shrine2_curves} and \ref{shrine2_mat}. We note that the best test error was about 51.94\%. 
-\input{shrine2_figures.tex}
+\begin{tabular}{lc}
+\multicolumn{1}{c}{\textbf{Hidden Layers}} & \textbf{Test Error} \\
+\textbf{256 units}                         &         99\%            \\
+\textbf{256 and 256 units}                 &   52.22 \%                \\
+\textbf{256, 128 and 64 units}             &   51.94 \%                 
+\end{tabular}
 
 \subsection{Discussion}
+We notice that the neural network with one hidden layer took the longest time to converge whereas the one with three hidden layers took the shortest time. On the other hand, the network with three hidden layers overfitted the quickest. This is to be expected since it has many more parameters than the network with one layer. We also notice that the network with one hidden layer has the biggest error and we think this is because the network does not have enough neurons to learn properly. The three hidden layers network has too many neurons and is overfitting but we think its results can be improved by adding Gaussian noise to neurons and dropping out some of them. This is why the two hidden layers network performs the best. 
+\par Compared to the work of \citet{kylberg2011virus}, we can see from Figure \ref{fig:relwork_results} that the LBP$^{\textnormal{ri}}$ on fixed scale performed at about 30 \% error whereas on the object scale it performed at about 63 \%. Since we didn't perform any rescaling of the images, we expect the error to be within that interval. Finally, \emph{Mahotas}' implementation of LBP does not necessarily match the implementation of LBP$^{\textnormal{ri}}$ so this can induce some error as well. 
+\end{multicols}
 
 \newpage
+\section*{Appendix}
+\appendix
+\section{Baseline Classification Results}
+\begin{figure}
+\centering
+\includegraphics[width=\linewidth]{images/baseline/cm_log_reg.pdf}
+\caption{Logistic Regression Confusion Matrix}
+\label{log_reg}
+\end{figure}
+\begin{figure}
+\centering
+\includegraphics[width=\linewidth]{images/baseline/cm_linear_svm.pdf}
+\caption{Linear SVM Confusion Matrix}
+\label{linear_svm}
+\end{figure}
+\begin{figure}
+\centering
+\includegraphics[width=\linewidth]{images/baseline/cm_svm.pdf}
+\caption{SVM Confusion Matrix}
+\label{svm}
+\end{figure}
+\begin{figure}
+\centering
+\includegraphics[width=\linewidth]{images/baseline/cm_naive_bayes.pdf}
+\caption{Naive Bayes Confusion Matrix}
+\label{naive_bayes}
+\end{figure}
+
+\section{Neural Network Trained on LBP - Results} \label{appendix:images}
+\input{shrine1_figures.tex}
+\input{shrine0_figures.tex}
+\input{shrine2_figures.tex}
+
+\newpage
+\begin{multicols}{2}
+\paragraph*{} \lettrine[nindent=0em,lines=1]{\textit{W}}{}\textit{e hereby state that all the work presented in this report is that of the authors. }
+\paragraph*{} Alan wrote the sections \emph{Related Work} and \emph{Neural Network Approach}. Alan programmed the feed-forward neural network in \texttt{emerald.py} and extracted the Local Binary Patterns from the dataset in \texttt{purify\_dataset.py}. 
+\par Kian created the rotated dataset and wrote its section \emph{Transformed Dataset}, programmed the baseline learners and wrote its section \emph{Baseline Results} and also wrote the \emph{Conclusion}. 
+\par Genevieve wrote the \emph{Introduction} and the CNN results and discussion. 
+\par Kian and Genevieve both collaborated to writing the CNN with help from Alan's \texttt{emerald.py}. 
 \bibliography{ref}
 \bibliographystyle{plainnat}
 \end{multicols}
