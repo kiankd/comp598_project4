@@ -73,7 +73,21 @@ On a daily basis doctors are tasked with determining the identity of viruses fro
 
 \begin{multicols}{2}
 \section{Introduction}
-Identifying viral pathogens is a continuous endeavor medical professionals  essential to public health. 
+Identifying viral pathogens, existing and emerging, is a critical priority for public health. Current diagnostic methods include direct examination of a speciman by an trained medical professional using Electron Microscopy methods. Unfortunately, even with magnification techniques it can be difficult for doctors to identify specific viral types. 
+
+On the other hand, automatic classification methods in machine learning have proven quite successful at image classification. In particular, research employing neural networks has reshaped image classification in recent years[2]. Specifically, Max Pooling Convolutional Neural Networks have set the bar at it's highest for an array of tasks, including the multi-digit number recognition in Google Street View images, reCAPTCHA box classification [3], and ImageNet classification [4]. 
+
+The high degree of accuracy obtained with these automated methods is highly desirable for a problem like virus classification. In the desire to determine a model that accurately predicts known virus types, we treat the virus classification as an image classification problem. We use the Virus Texture Dataset from Uppsala University containing images of fifteen different virus types, which we extend through random rotations to enlarge our dataset. 
+
+.We experiment with an array of machine learning classifiers, including Support Vector Machines with linear and radial basis function kernels, Gaussian Naive Bayes, Logistic Regression, and Feed Forward Neural Networks with local binary pattern feature extractors. Our best results come from our Convolutional Neural Network using max pooling, with which we classify virus samples from our dataset into one of 15 categories with an accuracy of ----. 
+
+Our research takes place in a greater context of a desire to use machine learning classification methods to accurately classify viruses from viral sample images. This extends to both viruses which are currently known, and potentially evolved viruses like the H1N1 influenza pandemic virus in Mexico and the US in 2009,  which was a modified version of known influenza strains. Convolutional Neural Networks with all the function approximation power of Neural Networks, but specifically architected for images, present a highly promising solution for computer automated virus identification, and a useful supplementation to traditional virology research. 
+
+
+[2] J. Schmidhuber, Deep learning in neural networks: an overview, Neural Netw., vol. 61, pp. 85117, Jan. 2015.
+[3] I. J. Goodfellow, Y. Bulatov, J. Ibarz, S. Arnoud, and V. Shet, Multi-digit Number Recognition from Street View Imagery using Deep Convolutional Neural Networks, arXiv [cs.CV], 20-Dec-2013.
+[4] A. Krizhevsky, I. Sutskever, and G. E. Hinton, ImageNet Classification with Deep Convolutional Neural Networks, in Advances in Neural Information Processing Systems 25, F. Pereira, C. J. C. Burges, L. Bottou, and K. Q. Weinberger, Eds. Curran Associates, Inc., 2012, pp. 10971105.
+[4] 
 
 \section{Dataset}
 \label{text:dataset}
