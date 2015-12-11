@@ -7,6 +7,7 @@
 \usepackage[margin=1in]{geometry}
 \usepackage{mathtools}
 % \usepackage{subcaption}
+\usepackage{adjustbox,lipsum}
 \usepackage{hyperref}
 \usepackage{paralist}
 \usepackage{float}
@@ -146,14 +147,17 @@ All values are chosen after a grid search. Figure \ref{fig:relwork_results} show
 \section{Baseline Classification Approach}
 We tested 4 different classifiers using algorithms from the scikit-learn \citet{scikit-learn} machine learning library. These baseline classifiers provide results that help to reveal the dataset's complexity. We trained and tested these classifiers over the rotated dataset. Not surprisingly, the SVM with an rbf kernel performed the best since it allows projection of the pixel feature space to a higher dimension, thus making it capable of capturing aspects of the data that cannot be observed by the other classifiers. These classifiers clearly have poor results, but they provide a good baseline understanding of the dataset, showing that the image pixel space is not easily separable and requires a stronger non-linear function approximator in order to be properly understood.
 
-\begin{tabular}{llcc}
-\toprule
-\textbf{Classifier} & \textbf{Parameters} & \textbf{F1-Accuracy} & \textbf{Figs}\\ \midrule
-Logistic Regression  & default         & 0.271 & \ref{fig:log_reg}\\ 
-Linear SVM   	     & linear kernel   & 0.248 & \ref{fig:linear_svm}\\
-SVM                  & rbf kernel      & 0.327 & \ref{fig:svm}\\
-Gaussian Naive Bayes & none            & 0.273 & \ref{fig:naive_bayes}\\ \bottomrule
-\end{tabular}
+\adjustbox{max width=\columnwidth}
+{
+	\begin{tabular}{llcc}
+	\toprule
+	\textbf{Classifier} & \textbf{Parameters} & \textbf{F1-Accuracy} & \textbf{Figs}\\ \midrule
+	Logistic Regression  & default         & 0.271 & \ref{fig:log_reg}\\ 
+	Linear 	SVM   	     & linear kernel   & 0.248 & \ref{fig:linear_svm}\\
+	SVM                  & rbf kernel      & 0.327 & \ref{fig:svm}\\
+	Gaussian Naive Bayes & none            & 0.273 & \ref{fig:naive_bayes}\\ \bottomrule
+	\end{tabular}
+}
 
 \section{Neural Networks Approach}
 In order to establish a baseline, we combine ideas from \citet{kylberg2011virus} and ourselves by attempting to use a neural network with the LBP features. Our neural networks are built using the Lasagne and Theano \cite{Bastien-Theano-2012, bergstra+al:2010-scipy} libraries. In our experiments, we will not rescale the images and we will use LBP$_{8,2}$, an implementation given by the \emph{Mahotas} computer vision library \citet{coelho2012mahotas}. We are not scaling the images because we are later comparing to convolutional neural networks which will not used rescaled images. The values of $8,2$ come from the best values as checked by \citet{kylberg2011virus}. \emph{Mahotas}' implementation of LBP is done so that the feature vector is of smaller dimension than the usual dimension of a histogram with $2^N$ values where $N$ is the number of sampled points. This is achieved by some optimization on their end. 
@@ -176,25 +180,25 @@ We notice that the neural network with one hidden layer took the longest time to
 \section*{Appendix}
 \appendix
 \section{Baseline Classification Results}
-\begin{figure}
+\begin{figure}[H]
 \centering
 \includegraphics[width=\linewidth]{images/baseline/cm_log_reg.pdf}
 \caption{Logistic Regression Confusion Matrix}
 \label{log_reg}
 \end{figure}
-\begin{figure}
+\begin{figure}[H]
 \centering
 \includegraphics[width=\linewidth]{images/baseline/cm_linear_svm.pdf}
 \caption{Linear SVM Confusion Matrix}
 \label{linear_svm}
 \end{figure}
-\begin{figure}
+\begin{figure}[H]
 \centering
 \includegraphics[width=\linewidth]{images/baseline/cm_svm.pdf}
 \caption{SVM Confusion Matrix}
 \label{svm}
 \end{figure}
-\begin{figure}
+\begin{figure}[H]
 \centering
 \includegraphics[width=\linewidth]{images/baseline/cm_naive_bayes.pdf}
 \caption{Naive Bayes Confusion Matrix}
