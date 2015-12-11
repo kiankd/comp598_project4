@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.8.13)  11 DEC 2015 16:08
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.8.13)  11 DEC 2015 16:21
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1292,9 +1292,17 @@ File: images/boxes_results.png Graphic file (type png)
 Package pdftex.def Info: images/boxes_results.png used on input line 142.
 (pdftex.def)             Requested size: 469.75502pt x 133.84006pt.
 
-Overfull \hbox (38.4498pt too wide) in paragraph at lines 150--158
+Overfull \hbox (239.92145pt too wide) in paragraph at lines 152--161
 [][] 
  []
+
+
+Package multicol Warning: Floats and marginpars not allowed inside `multicols' 
+environment!.
+
+
+Package multicol Warning: Floats and marginpars not allowed inside `multicols' 
+environment!.
 
 [3 <./images/rdp.pdf>] [4 <./images/boxes_results.png>] (./baseline_cms.tex
 <images/baseline/cm_log_reg.pdf, id=189, 433.62pt x 433.62pt>
@@ -1459,27 +1467,27 @@ pdfTeX warning: pdflatex (file ./images/2/cm_test.pdf): PDF inclusion: multiple
 >]
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <17.7389> not available
-(Font)              size <17.28> substituted on input line 190.
+(Font)              size <17.28> substituted on input line 195.
 
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <26.65816> not available
-(Font)              size <24.88> substituted on input line 190.
+(Font)              size <24.88> substituted on input line 195.
 
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/it' in size <26.65816> not available
-(Font)              size <24.88> substituted on input line 190.
+(Font)              size <24.88> substituted on input line 195.
 
 Package microtype Info: Loading generic settings for font family
 (microtype)             `cmtt' (encoding: OT1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 (./report.bbl)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 198.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 203.
  [10]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 198.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 203.
  (./report.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 198.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 198.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 203.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 203.
 Package rerunfilecheck Info: File `report.out' has not changed.
 (rerunfilecheck)             Checksum: 6282512E6588E9224D4A95042105F8B0;777.
 
@@ -1490,13 +1498,16 @@ LaTeX Font Warning: Size substitutions with differences
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 198.
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 203.
  ) 
 Here is how much of TeX's memory you used:
- 20833 strings out of 493304
- 343769 string characters out of 6139871
- 581786 words of memory out of 5000000
- 23662 multiletter control sequences out of 15000+600000
+ 20834 strings out of 493304
+ 343786 string characters out of 6139871
+ 582786 words of memory out of 5000000
+ 23663 multiletter control sequences out of 15000+600000
  16901 words of font info for 103 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
  53i,11n,92p,1176b,601s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1515,7 +1526,7 @@ amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
 are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/te
 xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on report.pdf (10 pages, 2449589 bytes).
+Output written on report.pdf (10 pages, 2448383 bytes).
 PDF statistics:
  881 PDF objects out of 1000 (max. 8388607)
  336 compressed objects within 4 object streams
