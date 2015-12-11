@@ -55,11 +55,16 @@ for i in range(len(files)):
 
         print parameters
         print parameters_file_struct
+        
 
         plt.figure()
         plt.plot(x,y,'go')
         plt.suptitle('Random Forest Classification Results')
         plt.title('Params: %s'%list_str(parameters))
+        plt.axis([-2, 102, 0.0, 50.0])
+        plt.xticks([j*10 for j in range(11)])
+        plt.xlabel('Number of Estimators')
+        plt.ylabel('F1 Accuracy')
         plt.savefig(params[i] + '.pdf')
         
 
