@@ -1,11 +1,11 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.8.8)  9 DEC 2015 15:00
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.8.13)  11 DEC 2015 14:34
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **report.tex
 (./report.tex
 LaTeX2e <2011/06/27>
-Babel <3.9h> and hyphenation patterns for 4 languages loaded.
+Babel <3.9h> and hyphenation patterns for 78 languages loaded.
 (./preamble.tex (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 (/usr/share/texlive/texmf-dist/tex/latex/base/size10.clo
@@ -1155,137 +1155,137 @@ LaTeX Font Warning: Font shape `OT1/cmr/bx/sc' undefined
 [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-<images/lbp_basic.pdf, id=62, 410.91374pt x 410.91374pt>
+<images/lbp_basic.pdf, id=65, 410.91374pt x 410.91374pt>
 File: images/lbp_basic.pdf Graphic file (type pdf)
 
 <use images/lbp_basic.pdf>
-Package pdftex.def Info: images/lbp_basic.pdf used on input line 96.
+Package pdftex.def Info: images/lbp_basic.pdf used on input line 98.
 (pdftex.def)             Requested size: 114.93875pt x 114.93593pt.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 97.
+(caption)                particular \caption on input line 99.
 See the caption package documentation for explanation.
 
-<images/lbpf.pdf, id=69, 600.98607pt x 601.20471pt>
+<images/lbpf.pdf, id=72, 600.98607pt x 601.20471pt>
 File: images/lbpf.pdf Graphic file (type pdf)
  <use images/lbpf.pdf>
-Package pdftex.def Info: images/lbpf.pdf used on input line 107.
+Package pdftex.def Info: images/lbpf.pdf used on input line 109.
 (pdftex.def)             Requested size: 114.93875pt x 114.97314pt.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 108.
+(caption)                particular \caption on input line 110.
 See the caption package documentation for explanation.
 
-<images/rdp.pdf, id=77, 410.91374pt x 410.91374pt>
+<images/rdp.pdf, id=80, 410.91374pt x 410.91374pt>
 File: images/rdp.pdf Graphic file (type pdf)
  <use images/rdp.pdf>
-Package pdftex.def Info: images/rdp.pdf used on input line 117.
+Package pdftex.def Info: images/rdp.pdf used on input line 119.
 (pdftex.def)             Requested size: 114.93875pt x 114.93593pt.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 118.
+(caption)                particular \caption on input line 120.
 See the caption package documentation for explanation.
 
 [2 <./images/lbp_basic.pdf> <./images/lbpf.pdf
 
 pdfTeX warning: pdflatex (file ./images/lbpf.pdf): PDF inclusion: multiple pdfs
  with page group included in a single page
->] <images/boxes_results.png, id=114, 898.35625pt x 255.95625pt>
+>] <images/boxes_results.png, id=118, 898.35625pt x 255.95625pt>
 File: images/boxes_results.png Graphic file (type png)
 
 <use images/boxes_results.png>
-Package pdftex.def Info: images/boxes_results.png used on input line 138.
+Package pdftex.def Info: images/boxes_results.png used on input line 140.
 (pdftex.def)             Requested size: 469.75502pt x 133.84006pt.
- (./shrine1_figures.tex
-<images/1/train_val_cost.pdf, id=127, 578.16pt x 433.62pt>
+ [3 <./images/rdp.pdf>] [4 <./images/boxes_results.png>] (./shrine1_figures.tex
+
+<images/1/train_val_cost.pdf, id=167, 578.16pt x 433.62pt>
 File: images/1/train_val_cost.pdf Graphic file (type pdf)
 
 <use images/1/train_val_cost.pdf>
 Package pdftex.def Info: images/1/train_val_cost.pdf used on input line 5.
 (pdftex.def)             Requested size: 211.38832pt x 158.53795pt.
 
-<images/1/train_val_error.pdf, id=128, 578.16pt x 433.62pt>
+<images/1/train_val_error.pdf, id=168, 578.16pt x 433.62pt>
 File: images/1/train_val_error.pdf Graphic file (type pdf)
 
 <use images/1/train_val_error.pdf>
 Package pdftex.def Info: images/1/train_val_error.pdf used on input line 11.
 (pdftex.def)             Requested size: 211.38832pt x 158.53795pt.
 
-<images/1/cm_valid.pdf, id=129, 433.62pt x 433.62pt>
+<images/1/cm_valid.pdf, id=169, 433.62pt x 433.62pt>
 File: images/1/cm_valid.pdf Graphic file (type pdf)
 
 <use images/1/cm_valid.pdf>
 Package pdftex.def Info: images/1/cm_valid.pdf used on input line 21.
 (pdftex.def)             Requested size: 211.38832pt x 211.39055pt.
 
-<images/1/cm_test.pdf, id=130, 433.62pt x 433.62pt>
+<images/1/cm_test.pdf, id=170, 433.62pt x 433.62pt>
 File: images/1/cm_test.pdf Graphic file (type pdf)
  <use images/1/cm_test.pdf>
 Package pdftex.def Info: images/1/cm_test.pdf used on input line 27.
 (pdftex.def)             Requested size: 211.38832pt x 211.39055pt.
 ) (./shrine0_figures.tex
-<images/0/train_val_cost.pdf, id=133, 578.16pt x 433.62pt>
+<images/0/train_val_cost.pdf, id=171, 578.16pt x 433.62pt>
 File: images/0/train_val_cost.pdf Graphic file (type pdf)
 
 <use images/0/train_val_cost.pdf>
 Package pdftex.def Info: images/0/train_val_cost.pdf used on input line 5.
 (pdftex.def)             Requested size: 211.38832pt x 158.53795pt.
 
-<images/0/train_val_error.pdf, id=134, 578.16pt x 433.62pt>
+<images/0/train_val_error.pdf, id=172, 578.16pt x 433.62pt>
 File: images/0/train_val_error.pdf Graphic file (type pdf)
 
 <use images/0/train_val_error.pdf>
 Package pdftex.def Info: images/0/train_val_error.pdf used on input line 11.
 (pdftex.def)             Requested size: 211.38832pt x 158.53795pt.
 
-<images/0/cm_valid.pdf, id=135, 433.62pt x 433.62pt>
+<images/0/cm_valid.pdf, id=173, 433.62pt x 433.62pt>
 File: images/0/cm_valid.pdf Graphic file (type pdf)
 
 <use images/0/cm_valid.pdf>
 Package pdftex.def Info: images/0/cm_valid.pdf used on input line 21.
 (pdftex.def)             Requested size: 211.38832pt x 211.39055pt.
 
-<images/0/cm_test.pdf, id=136, 433.62pt x 433.62pt>
+<images/0/cm_test.pdf, id=174, 433.62pt x 433.62pt>
 File: images/0/cm_test.pdf Graphic file (type pdf)
  <use images/0/cm_test.pdf>
 Package pdftex.def Info: images/0/cm_test.pdf used on input line 27.
 (pdftex.def)             Requested size: 211.38832pt x 211.39055pt.
 ) (./shrine2_figures.tex
-<images/2/train_val_cost.pdf, id=139, 578.16pt x 433.62pt>
+<images/2/train_val_cost.pdf, id=175, 578.16pt x 433.62pt>
 File: images/2/train_val_cost.pdf Graphic file (type pdf)
 
 <use images/2/train_val_cost.pdf>
 Package pdftex.def Info: images/2/train_val_cost.pdf used on input line 5.
 (pdftex.def)             Requested size: 211.38832pt x 158.53795pt.
 
-<images/2/train_val_error.pdf, id=140, 578.16pt x 433.62pt>
+<images/2/train_val_error.pdf, id=176, 578.16pt x 433.62pt>
 File: images/2/train_val_error.pdf Graphic file (type pdf)
 
 <use images/2/train_val_error.pdf>
 Package pdftex.def Info: images/2/train_val_error.pdf used on input line 11.
 (pdftex.def)             Requested size: 211.38832pt x 158.53795pt.
 
-<images/2/cm_valid.pdf, id=141, 433.62pt x 433.62pt>
+<images/2/cm_valid.pdf, id=177, 433.62pt x 433.62pt>
 File: images/2/cm_valid.pdf Graphic file (type pdf)
 
 <use images/2/cm_valid.pdf>
 Package pdftex.def Info: images/2/cm_valid.pdf used on input line 21.
 (pdftex.def)             Requested size: 211.38832pt x 211.39055pt.
 
-<images/2/cm_test.pdf, id=142, 433.62pt x 433.62pt>
+<images/2/cm_test.pdf, id=178, 433.62pt x 433.62pt>
 File: images/2/cm_test.pdf Graphic file (type pdf)
  <use images/2/cm_test.pdf>
 Package pdftex.def Info: images/2/cm_test.pdf used on input line 27.
 (pdftex.def)             Requested size: 211.38832pt x 211.39055pt.
-) [3 <./images/rdp.pdf>] [4 <./images/boxes_results.png> <./images/1/train_val_
-cost.pdf> <./images/1/train_val_error.pdf
+) [5 <./images/1/train_val_cost.pdf> <./images/1/train_val_error.pdf
 
 pdfTeX warning: pdflatex (file ./images/1/train_val_error.pdf): PDF inclusion: 
 multiple pdfs with page group included in a single page
->] [5 <./images/1/cm_valid.pdf> <./images/1/cm_test.pdf
+>] [6 <./images/1/cm_valid.pdf> <./images/1/cm_test.pdf
 
 pdfTeX warning: pdflatex (file ./images/1/cm_test.pdf): PDF inclusion: multiple
  pdfs with page group included in a single page
@@ -1297,7 +1297,7 @@ ultiple pdfs with page group included in a single page
 
 pdfTeX warning: pdflatex (file ./images/0/train_val_error.pdf): PDF inclusion: 
 multiple pdfs with page group included in a single page
->] [6 <./images/0/cm_valid.pdf> <./images/0/cm_test.pdf
+>] [7 <./images/0/cm_valid.pdf> <./images/0/cm_test.pdf
 
 pdfTeX warning: pdflatex (file ./images/0/cm_test.pdf): PDF inclusion: multiple
  pdfs with page group included in a single page
@@ -1309,37 +1309,50 @@ ultiple pdfs with page group included in a single page
 
 pdfTeX warning: pdflatex (file ./images/2/train_val_error.pdf): PDF inclusion: 
 multiple pdfs with page group included in a single page
->] (./report.bbl)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 163.
- [7 <./images/2/cm_valid.pdf> <./images/2/cm_test.pdf
+>]
+
+LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <17.7389> not available
+(Font)              size <17.28> substituted on input line 172.
+
+
+LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <26.65816> not available
+(Font)              size <24.88> substituted on input line 172.
+
+
+LaTeX Font Warning: Font shape `OT1/cmr/m/it' in size <26.65816> not available
+(Font)              size <24.88> substituted on input line 172.
+
+(./report.bbl)
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 177.
+ [8 <./images/2/cm_valid.pdf> <./images/2/cm_test.pdf
 
 pdfTeX warning: pdflatex (file ./images/2/cm_test.pdf): PDF inclusion: multiple
  pdfs with page group included in a single page
 >]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 163.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 177.
  (./report.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 163.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 163.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 177.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 177.
 Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: 8B073E080AAFFAA16D7F82F1E1A678A7;565.
+(rerunfilecheck)             Checksum: 6E91C67F3A9E45C198464FCF42BC0436;641.
 
 
 LaTeX Font Warning: Size substitutions with differences
-(Font)              up to 0.72pt have occurred.
+(Font)              up to 1.77815pt have occurred.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 163.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 177.
  ) 
 Here is how much of TeX's memory you used:
- 19982 strings out of 494985
- 330068 string characters out of 6180357
- 564585 words of memory out of 5000000
- 22640 multiletter control sequences out of 15000+600000
- 15234 words of font info for 91 fonts, out of 8000000 for 9000
- 36 hyphenation exceptions out of 8191
- 49i,11n,53p,959b,698s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 20009 strings out of 493304
+ 330442 string characters out of 6139871
+ 563874 words of memory out of 5000000
+ 22894 multiletter control sequences out of 15000+600000
+ 16574 words of font info for 100 fonts, out of 8000000 for 9000
+ 957 hyphenation exceptions out of 8191
+ 49i,11n,53p,958b,538s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texl
@@ -1352,11 +1365,12 @@ amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
 /cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9
 .pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><
 /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/sh
-are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on report.pdf (7 pages, 2330436 bytes).
+are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/te
+xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
+Output written on report.pdf (8 pages, 2341869 bytes).
 PDF statistics:
- 692 PDF objects out of 1000 (max. 8388607)
- 275 compressed objects within 3 object streams
- 39 named destinations out of 1000 (max. 500000)
- 15533 words of extra memory for PDF output out of 17280 (max. 10000000)
+ 700 PDF objects out of 1000 (max. 8388607)
+ 281 compressed objects within 3 object streams
+ 41 named destinations out of 1000 (max. 500000)
+ 18613 words of extra memory for PDF output out of 20736 (max. 10000000)
 
