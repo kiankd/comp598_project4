@@ -2,7 +2,7 @@
 \BOOKMARK [1][-]{section.2}{Dataset}{}% 2
 \BOOKMARK [1][-]{section.3}{Methods}{}% 3
 \BOOKMARK [1][-]{section.4}{Related Work}{}% 4
-\BOOKMARK [2][-]{subsection.4.1}{Local Binary Profile \(LBP\)}{section.4}% 5
+\BOOKMARK [2][-]{subsection.4.1}{Local Binary Pattern \(LBP\)}{section.4}% 5
 \BOOKMARK [2][-]{subsection.4.2}{Radial Density Profile \(RDP\)}{section.4}% 6
 \BOOKMARK [2][-]{subsection.4.3}{Results}{section.4}% 7
 \BOOKMARK [1][-]{section.5}{Neural Networks Approach}{}% 8
