@@ -76,26 +76,46 @@ On a daily basis doctors are tasked with determining the identity of viruses fro
 \section{Introduction}
 Identifying viral pathogens, existing and emerging, is a critical priority for public health. Current diagnostic methods include direct examination of a speciman by an trained medical professional using Electron Microscopy methods. Unfortunately, even with magnification techniques it can be difficult for doctors to identify specific viral types. 
 
-On the other hand, automatic classification methods in machine learning have proven quite successful at image classification. In particular, research employing neural networks has reshaped image classification in recent years[2]. Specifically, Max Pooling Convolutional Neural Networks have set the bar at it's highest for an array of tasks, including the multi-digit number recognition in Google Street View images, reCAPTCHA box classification [3], and ImageNet classification [4]. 
+On the other hand, automatic classification methods in machine learning have proven quite successful at image classification. In particular, research employing neural networks has reshaped image classification in recent years \citet{Juergen_2015}. Specifically, Max Pooling Convolutional Neural Networks have set the bar at it's highest for an array of tasks, including the multi-digit number recognition in Google Street View images, reCAPTCHA box classification \citet{DBLP:journals/corr/GoodfellowBIAS13}, and ImageNet classification \citet{NIPS2012_4824}. 
 
 The high degree of accuracy obtained with these automated methods is highly desirable for a problem like virus classification. In the desire to determine a model that accurately predicts known virus types, we treat the virus classification as an image classification problem. We use the Virus Texture Dataset from Uppsala University containing images of fifteen different virus types, which we extend through random rotations to enlarge our dataset. 
 
-.We experiment with an array of machine learning classifiers, including Support Vector Machines with linear and radial basis function kernels, Gaussian Naive Bayes, Logistic Regression, and Feed Forward Neural Networks with local binary pattern feature extractors. Our best results come from our Convolutional Neural Network using max pooling, with which we classify virus samples from our dataset into one of 15 categories with an accuracy of ----. 
+We experiment with an array of machine learning classifiers, including Support Vector Machines with linear and radial basis function kernels, Gaussian Naive Bayes, Logistic Regression, Random Forest Trees and Feed Forward Neural Networks with local binary pattern feature extractors. Our best results come from our Convolutional Neural Network using max pooling, with which we classify virus samples from our dataset into one of 15 categories with an accuracy of ----. 
+
+
+\section{Problem Definition}
 
 Our research takes place in a greater context of a desire to use machine learning classification methods to accurately classify viruses from viral sample images. This extends to both viruses which are currently known, and potentially evolved viruses like the H1N1 influenza pandemic virus in Mexico and the US in 2009,  which was a modified version of known influenza strains. Convolutional Neural Networks with all the function approximation power of Neural Networks, but specifically architected for images, present a highly promising solution for computer automated virus identification, and a useful supplementation to traditional virology research. 
 
+As it stands, from our survey of the word done with
 
-[2] J. Schmidhuber, Deep learning in neural networks: an overview, Neural Netw., vol. 61, pp. 85117, Jan. 2015.
-[3] I. J. Goodfellow, Y. Bulatov, J. Ibarz, S. Arnoud, and V. Shet, Multi-digit Number Recognition from Street View Imagery using Deep Convolutional Neural Networks, arXiv [cs.CV], 20-Dec-2013.
-[4] A. Krizhevsky, I. Sutskever, and G. E. Hinton, ImageNet Classification with Deep Convolutional Neural Networks, in Advances in Neural Information Processing Systems 25, F. Pereira, C. J. C. Burges, L. Bottou, and K. Q. Weinberger, Eds. Curran Associates, Inc., 2012, pp. 10971105.
-[4] 
+\section{Methodology}
 
-\section{Dataset}
+\section{Feature Design and Selection Methods}
+%% related work shit should actually go here
+
+\section{Data and Pre-Processing Methods}
 \label{text:dataset}
+The Virus Texture Dataset contains images (texture samples) of 15 virus types obtained through transmission electron microscopy (TEM). The texture samples are extracted using an automatic segmentation method used in \citet{JMI:JMI3556} that detects virus particles of various shapes in TEM using a series of analytical steps. Each virus class has 100 unique texture patches, each of size 41x41 pixels. We chose to extend the dataset by generating twelve random rotations of each image to add noise and improve the performance of our classifier. 
 
+\subsection{Algorithms}
+\subsubsection{Baseline Classification Approach}
+We tested 4 different classifiers using algorithms from the scikit-learn \citet{scikit-learn} machine learning library. These baseline classifiers provide results that help to reveal the dataset's complexity. We trained and tested these classifiers over the rotated dataset. Not surprisingly, the SVM with an rbf kernel performed the best since it allows projection of the pixel feature space to a higher dimension, thus making it capable of capturing aspects of the data that cannot be observed by the other classifiers. These classifiers clearly have poor results, but they provide a good baseline understanding of the dataset, showing that the image pixel space is not linearly separable and requires a stronger non-linear function approximator in order to be properly understood.
 
-\section{Methods}
-Convolutional Neural Networks (CNN) are biologically inspired variants of Multi-Layered Perceptrons that can encode non-linear features with atleast one hidden layer, and are specifically architected for image classification. Image processing with a Neural Network is computationally infeasible given how quickly parameters scale. CNN's on the other hand constrain their architecture to the nature of images. A neuron in the nth layer is not fully connected to all neurons before it, rather, 
+\begin{tabular}{llcc}
+\toprule
+\textbf{Classifier} & \textbf{Parameters} & \textbf{F1-Accuracy} & \textbf{Figs}\\ \midrule
+Logistic Regression  & default         & 0.271 & \ref{fig:log_reg}\\ 
+Linear SVM   	     & linear kernel   & 0.248 & \ref{fig:linear_svm}\\
+SVM                  & rbf kernel      & 0.327 & \ref{fig:svm}\\
+Gaussian Naive Bayes & none            & 0.273 & \ref{fig:naive_bayes}\\ \bottomrule
+\end{tabular}
+
+\subsubsection{Neural Networks Approach}
+In order to establish a baseline, we use a neural network with LBP features as described in \citet{kylberg2011virus}. Our neural networks are built using the Lasagne and Theano \cite{Bastien-Theano-2012, bergstra+al:2010-scipy} libraries. In our experiments, we will not rescale the images and we will use LBP$_{8,2}$, an implementation given by the \emph{Mahotas} computer vision library \citet{coelho2012mahotas}. We did not scale the images because wished to later compare them to convolutional neural networks, which do not use rescaled images. The values of $8,2$ are taken from the best values detailed by \citet{kylberg2011virus}. \emph{Mahotas}' implementation of LBP is done so that the feature vector is of smaller dimension than the usual dimension of a histogram with $2^N$ values where $N$ is the number of sampled points. This is achieved by some optimization on their end. 
+
+\subsubsection{Convolutional Neural Network Approach}
+Convolutional Neural Networks (CNN) are often used in image classification tasks as they possess the power of a Feed Forward Neural Network but are specifically architected to efficiently process images. We fed images from our dataset into our CNN in their original 41x41 pixel form. Our CNN consisted of three convolutional two-dimensional layers, each followd by a 2x2 max pooling layer. Two fully connected layers with 50\% dropout on their inputs concluded the network. 
 
 
 They work as follows. 
@@ -103,6 +123,8 @@ They work as follows.
  They're constrained to work with images, which specifically oriented towards image processi Image processing with a fully connected Neural Network 
 
 Unlike a fully connectd Neural Network, CNN's  a Neural Network, image classification is infeasibly computationally expensive, and CNN's  CNN's are made up of several layers: input, convolutional, pooling and fully connected.  
+
+
 
 \section{Related Work}
 In the work of \citet{kylberg2011virus}, texture analysis is performed on a dataset composed of 22 different  virus samples and the resulting feature vector is fed into a Random Forest classifier. The authors first compare the performance of different texture analysers, such as Local Binary Patterns, Radial Density Profile and their respective variants before proceeding to detail their results. We will briefly explain their feature extractors and results here. 
@@ -138,6 +160,8 @@ where $I(q)$ is the pixel value for pixel $q$ and $N = \left\{ q: \Vert q-q_c \V
 \par It is not explained how the pixel features are combined to make the feature vector for the whole image but we would imagine that the feature vector for the whole image is either a concatenation of the pixel features or the concatenation of the mean of each pixel feature. 
 \paragraph{Fourier RDP} One variation \citet{kylberg2011virus} introduced is applying the same RDP technique on the image after it undergoes a Fourier transform and looking at it with respect to a base $e$ logarithmic scale. They denote it with FRDP$_n$. 
 
+
+
 \subsection{Results}
 \label{text:relwork_results}
 The first thing to note is that \citet{kylberg2011virus} made modifications to the images' scales. In one case, one pixel in the image corresponded to 1 nanometer, they refer to that scale as \emph{fixed scale}. In the other case, the radius of the virus is set to take 20 pixels, they refer to that scale as \emph{object scale}. The classifier used was a Random forest with 100 trees (they tried up to 200 with no significant improvement with respect to 100 trees). The different textures \citet{kylberg2011virus} used were among 
@@ -157,21 +181,8 @@ All values are chosen after a grid search. Figure \ref{fig:relwork_results} show
 	\label{fig:relwork_results}
 \end{figure*}
 
-\section{Baseline Classification Approach}
-We tested 4 different classifiers using algorithms from the scikit-learn \citet{scikit-learn} machine learning library. These baseline classifiers provide results that help to reveal the dataset's complexity. We trained and tested these classifiers over the rotated dataset. Not surprisingly, the SVM with an rbf kernel performed the best since it allows projection of the pixel feature space to a higher dimension, thus making it capable of capturing aspects of the data that cannot be observed by the other classifiers. These classifiers clearly have poor results, but they provide a good baseline understanding of the dataset, showing that the image pixel space is not easily separable and requires a stronger non-linear function approximator in order to be properly understood.
 
-\begin{tabular}{llcc}
-\toprule
-\textbf{Classifier} & \textbf{Parameters} & \textbf{F1-Accuracy} & \textbf{Figs}\\ \midrule
-Logistic Regression  & default         & 0.271 & \ref{fig:log_reg}\\ 
-Linear SVM   	     & linear kernel   & 0.248 & \ref{fig:linear_svm}\\
-SVM                  & rbf kernel      & 0.327 & \ref{fig:svm}\\
-Gaussian Naive Bayes & none            & 0.273 & \ref{fig:naive_bayes}\\ \bottomrule
-\end{tabular}
-
-\section{Neural Networks Approach}
-In order to establish a baseline, we combine ideas from \citet{kylberg2011virus} and ourselves by attempting to use a neural network with the LBP features. Our neural networks are built using the Lasagne and Theano \cite{Bastien-Theano-2012, bergstra+al:2010-scipy} libraries. In our experiments, we will not rescale the images and we will use LBP$_{8,2}$, an implementation given by the \emph{Mahotas} computer vision library \citet{coelho2012mahotas}. We are not scaling the images because we are later comparing to convolutional neural networks which will not used rescaled images. The values of $8,2$ come from the best values as checked by \citet{kylberg2011virus}. \emph{Mahotas}' implementation of LBP is done so that the feature vector is of smaller dimension than the usual dimension of a histogram with $2^N$ values where $N$ is the number of sampled points. This is achieved by some optimization on their end. 
-\subsection{Results}
+\section{Results}
 To normalize the data, we chose to divide the entire dataset by 1.1 times the maximum value of a feature in the training set in order to be more certain that no features in the normalized test set would have a value greater than 1. In all cases, we are using a learning rate of 0.005 and an L2 regularization weight of 0.0001, both arbitrarily chosen and the last layer was a 15 units softmax layer. The dataset described in section \ref{text:dataset} is shuffled and the training is done with a batch size of 16 by stochastic gradient descent. All images pertaining to the results such as the confusion matrices for the validation and testing set and the learning curves can be found in the Appendix: the first neural network results are found in figures \ref{shrine1_curves} and \ref{shrine1_mat}; the second neural network results are found in figures \ref{shrine0_curves} and \ref{shrine0_mat}; the third nerual network results are found in figures \ref{shrine2_curves} and \ref{shrine2_mat}. The table below shows the results obtained on the test set. The first column represent, in order, the number of units in each of the hidden layers. 
 
 \begin{tabular}{lc}
@@ -181,7 +192,9 @@ To normalize the data, we chose to divide the entire dataset by 1.1 times the ma
 \textbf{256, 128 and 64 units}             &   51.94 \%                 
 \end{tabular}
 
-\subsection{Discussion}
+
+
+\section{Discussion}
 We notice that the neural network with one hidden layer took the longest time to converge whereas the one with three hidden layers took the shortest time. On the other hand, the network with three hidden layers overfitted the quickest. This is to be expected since it has many more parameters than the network with one layer. We also notice that the network with one hidden layer has the biggest error and we think this is because the network does not have enough neurons to learn properly. The three hidden layers network has too many neurons and is overfitting but we think its results can be improved by adding Gaussian noise to neurons and dropping out some of them. This is why the two hidden layers network performs the best. 
 \par Compared to the work of \citet{kylberg2011virus}, we can see from Figure \ref{fig:relwork_results} that the LBP$^{\textnormal{ri}}$ on fixed scale performed at about 30 \% error whereas on the object scale it performed at about 63 \%. Since we didn't perform any rescaling of the images, we expect the error to be within that interval. Finally, \emph{Mahotas}' implementation of LBP does not necessarily match the implementation of LBP$^{\textnormal{ri}}$ so this can induce some error as well. 
 \end{multicols}
@@ -223,10 +236,10 @@ We notice that the neural network with one hidden layer took the longest time to
 \newpage
 \begin{multicols}{2}
 \paragraph*{} \lettrine[nindent=0em,lines=1]{\textit{W}}{}\textit{e hereby state that all the work presented in this report is that of the authors. }
-\paragraph*{} Alan wrote the sections \emph{Related Work} and \emph{Neural Network Approach}. Alan programmed the feed-forward neural network in \texttt{emerald.py} and extracted the Local Binary Patterns from the dataset in \texttt{purify\_dataset.py}. 
-\par Kian created the rotated dataset and wrote its section \emph{Transformed Dataset}, programmed the baseline learners and wrote its section \emph{Baseline Results} and also wrote the \emph{Conclusion}. 
-\par Genevieve wrote the \emph{Introduction} and the CNN results and discussion. 
-\par Kian and Genevieve both collaborated to writing the CNN with help from Alan's \texttt{emerald.py}. 
+\paragraph*{} Alan wrote the sections for \emph{Related Work} and \emph{Neural Network Approach}. Alan programmed the feed-forward neural network in \texttt{emerald.py} and extracted the Local Binary Patterns from the dataset in \texttt{purify\_dataset.py}. 
+\par Kian created the rotated dataset and wrote its section \emph{Transformed Dataset}, programmed the baseline learners and wrote the content for \emph{Baseline Results} and \emph{Conclusion}. 
+\par Genevieve wrote the \emph{Introduction} and results and discussion section for the CNN.
+\par Genevieve and Kian programmed the CNN with help from Alan's \texttt{emerald.py}. 
 \bibliography{ref}
 \bibliographystyle{plainnat}
 \end{multicols}
