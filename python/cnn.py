@@ -20,14 +20,16 @@ import random
 from get_data import get_train_val_test as pull_data
 from normalize import normalize
 
+start_time = timeit.default_timer()
+
 
 DIM = 41
 # Hyperparameters
 NUM_EPOCHS = 8000
 LEARNING_RATE = 0.005
 N_CLASSES = 15
-L2_REG = 0.0001
-BATCH_SIZE = 50 #Arbitrary!!
+L2_REG = 0.001
+BATCH_SIZE = 60 #Arbitrary!!
 VALIDATION_FREQUENCY = 40
 PARAM_SAVE_DIR = './params'
 FIGURE_SAVE_DIR = './figures'
@@ -144,10 +146,10 @@ def main(num_epochs=500):
     
     trainX = normalize(trainX.reshape(trainX.shape[0],1, DIM, DIM))
     valX = normalize(valX.reshape(valX.shape[0],1, DIM, DIM))
-    testX = normalize(testX.reshape(trainX.shape[0],1, DIM, DIM))
+    testX = normalize(testX.reshape(testX.shape[0],1, DIM, DIM))
 
     trainY = trainY - 1
-    valY = valY -1
+    valY = valY - 1
     testY = testY - 1
 
     # Prepare Theano variables for inputs and targets
@@ -173,19 +175,18 @@ def main(num_epochs=500):
     true_cost = T.mean(T.nnet.categorical_crossentropy(true_output, output_var)) + l2_loss
 
     
-   # noisy_error = T.mean(T.neq(noisy_output, output_var))
-   # true_error = T.mean(T.neq(true_output, output_var))
-    noisy_error = 1-T.mean(lasagne.objectives.categorical_accuracy(noisy_output, output_var))
-    true_error = 1-T.mean(lasagne.objectives.categorical_accuracy(true_output, output_var))
+    #noisy_error = 1.0 - T.mean(lasagne.objectives.categorical_accuracy(noisy_output, output_var))
+    #true_error = 1.0 - T.mean(lasagne.objectives.categorical_accuracy(true_output, output_var))
 
-
+    noisy_error = (lasagne.objectives.categorical_crossentropy(noisy_output, output_var)).mean()
+    true_error = (lasagne.objectives.categorical_crossentropy(true_output, output_var)).mean()
 
     ## stochastic gradient descent updates
     #updates = lasagne.updates.sgd(noisy_cost, model_params, learning_rate=sh_lr)
     ##stochastic gradient descent with Nesterov momentum
 
     updates = lasagne.updates.nesterov_momentum(
-            noisy_cost, model_params, learning_rate=sh_lr, momentum=0.9)
+            noisy_cost, model_params, learning_rate=sh_lr, momentum=0.99)
 
     train = theano.function([input_var,output_var], [noisy_cost, noisy_error], 
         updates=updates, 
@@ -220,11 +221,11 @@ def main(num_epochs=500):
             epoch = epoch + 1
 
             random.seed(epoch)
-            trainX = random.shuffle(trainX)
+            random.shuffle(trainX)
             random.seed(epoch)
-            trainY = random.shuffle(trainY)
+            random.shuffle(trainY)
 
-        for minibatch_index in xrange(n_train_batches):
+            for minibatch_index in xrange(n_train_batches):
                 iter = (epoch - 1) * n_train_batches + minibatch_index  
                 if iter % 100 == 0:
                     print "[O] Training at iteration %d." % iter
@@ -234,7 +235,7 @@ def main(num_epochs=500):
 
                 if (iter+1) % VALIDATION_FREQUENCY == 0:
                     train_cost, train_error = get_score(trainX, trainY)
-                    valid_cost, valid_error = get_score(validX, validY)
+                    valid_cost, valid_error = get_score(valX, valY)
                     test_cost, test_error = get_score(testX, testY)
 
                     plot_train_cost.append(train_cost)
