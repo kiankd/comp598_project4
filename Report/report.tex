@@ -191,8 +191,13 @@ We notice that the neural network with one hidden layer took the longest time to
 \section{Convolutional Neural Network Approach}
 CNN's are often used in image classification tasks as they possess the power of Feed Forward Neural Networks but are specifically architected to efficiently process images. We fed images from our dataset into our CNN in their original 41x41 pixel form. Our CNN consisted of three convolutional two-dimensional layers, each followd by a 2x2 max pooling layer. Two fully connected layers with 50\% dropout on their inputs concluded the network. Like the Neural Network, we normalized our data simply by dividng 
 
+\subsection{Results}
+\subsection{Discussion}
 
 
+\section{Reflection}
+As discussed, due to the high performing nature of our CNN on classifying a virus from an image of it obtained through microscopy techniques, this particular aspect of virus identification seems worth pursuing. Obtaining this type of data could be difficult, but as we've shown, the number of images obtained for any known virus can be extended with different techniques, including rotations, embossing, and other additive noise measures. Clearly this represents a powerful aid for doctors and other members of the medical profession to inform and verify diagnostics. 
+The nature of viruses is that they're constantly evolving, but we'd like to posit that machine learning methods for image classification are not just limited to classifying known virus strains. \citet{work_A} showed a sparse, tree-structured models could be learned from decision rules based on genetic subsequences for predicting viral hosts using discriminative machine learning tools. In this instance, the hosts of a novel virus can be determined even if it shares distant similarity with a known viral host.  It's a worthwhile endeavor to see if a CNN could be trained to predict unknown viruses in the context of training on a set of labelled viral strains from a family, and testing on a particular modified or evolved strain from the same family. 
 
 \newpage
 \section*{Appendix}
