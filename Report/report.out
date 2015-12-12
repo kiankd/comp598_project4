@@ -1,13 +1,19 @@
 \BOOKMARK [1][-]{section.1}{Introduction}{}% 1
-\BOOKMARK [1][-]{section.2}{Dataset}{}% 2
-\BOOKMARK [1][-]{section.3}{Methods}{}% 3
-\BOOKMARK [1][-]{section.4}{Related Work}{}% 4
-\BOOKMARK [2][-]{subsection.4.1}{Local Binary Pattern \(LBP\)}{section.4}% 5
-\BOOKMARK [2][-]{subsection.4.2}{Radial Density Profile \(RDP\)}{section.4}% 6
-\BOOKMARK [2][-]{subsection.4.3}{Results}{section.4}% 7
-\BOOKMARK [1][-]{section.5}{Baseline Classification Approach}{}% 8
-\BOOKMARK [1][-]{section.6}{Neural Networks Approach}{}% 9
-\BOOKMARK [2][-]{subsection.6.1}{Results}{section.6}% 10
-\BOOKMARK [2][-]{subsection.6.2}{Discussion}{section.6}% 11
-\BOOKMARK [1][-]{appendix.A}{Baseline Classification Results}{}% 12
-\BOOKMARK [1][-]{appendix.B}{Neural Network Trained on LBP - Results}{}% 13
+\BOOKMARK [1][-]{section.2}{Problem Definition}{}% 2
+\BOOKMARK [1][-]{section.3}{Methodology}{}% 3
+\BOOKMARK [2][-]{subsection.3.1}{Feature Design and Selection Methods}{section.3}% 4
+\BOOKMARK [3][-]{subsubsection.3.1.1}{Related Work}{subsection.3.1}% 5
+\BOOKMARK [2][-]{subsection.3.2}{Local Binary Pattern \(LBP\)}{section.3}% 6
+\BOOKMARK [2][-]{subsection.3.3}{Radial Density Profile \(RDP\)}{section.3}% 7
+\BOOKMARK [2][-]{subsection.3.4}{Results}{section.3}% 8
+\BOOKMARK [2][-]{subsection.3.5}{Data and Pre-Processing Methods}{section.3}% 9
+\BOOKMARK [1][-]{section.4}{Baseline Classification Approach}{}% 10
+\BOOKMARK [1][-]{section.5}{Neural Networks Approach}{}% 11
+\BOOKMARK [2][-]{subsection.5.1}{Results}{section.5}% 12
+\BOOKMARK [2][-]{subsection.5.2}{Discussion}{section.5}% 13
+\BOOKMARK [1][-]{section.6}{Convolutional Neural Network Approach}{}% 14
+\BOOKMARK [2][-]{subsection.6.1}{Results}{section.6}% 15
+\BOOKMARK [2][-]{subsection.6.2}{Discussion}{section.6}% 16
+\BOOKMARK [1][-]{section.7}{Reflection}{}% 17
+\BOOKMARK [1][-]{appendix.A}{Baseline Classification Results}{}% 18
+\BOOKMARK [1][-]{appendix.B}{Neural Network Trained on LBP - Results}{}% 19

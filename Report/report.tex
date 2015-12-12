@@ -177,13 +177,13 @@ To normalize the data, we chose to divide the entire dataset by 1.1 times the ma
 
 \begin{tabular}{lc}
 \multicolumn{1}{c}{\textbf{Hidden Layers}} & \textbf{Test Error} \\
-\textbf{256 units}                         &         99\%            \\
-\textbf{256 and 256 units}                 &   52.22 \%                \\
+\textbf{256 units}                         &   52.77 \%          \\
+\textbf{256 and 256 units}                 &   52.22 \%          \\
 \textbf{256, 128 and 64 units}             &   51.94 \%                 
 \end{tabular}
 
 \subsection{Discussion}
-We notice that the neural network with one hidden layer took the longest time to converge whereas the one with three hidden layers took the shortest time. On the other hand, the network with three hidden layers overfitted the quickest. This is to be expected since it has many more parameters than the network with one layer. We also notice that the network with one hidden layer has the biggest error and we think this is because the network does not have enough neurons to learn properly. The three hidden layers network has too many neurons and is overfitting but we think its results can be improved by adding Gaussian noise to neurons and dropping out some of them. This is why the two hidden layers network performs the best. 
+We had to stop the training of the one hidden layer neural network due to time constraints. We notice that the neural network with one hidden layer takes the longest time to converge whereas the one with three hidden layers took the shortest time. On the other hand, the network with three hidden layers overfitted the quickest. This is to be expected since it has many more parameters than the network with one layer. We also notice that the network with one hidden layer has the biggest error and we think this is because the network does not have enough neurons to learn properly. The three hidden layers network has too many neurons and is overfitting but we think its results can be improved by adding Gaussian noise to neurons and dropping out some of them. Nonetheless, it is still the network that gave the best results. 
 \par Compared to the work of \citet{kylberg2011virus}, we can see from Figure \ref{fig:relwork_results} that the LBP$^{\textnormal{ri}}$ on fixed scale performed at about 30 \% error whereas on the object scale it performed at about 63 \%. Since we didn't perform any rescaling of the images, we expect the error to be within that interval. Finally, \emph{Mahotas}' implementation of LBP does not necessarily match the implementation of LBP$^{\textnormal{ri}}$ so this can induce some error as well. 
 \end{multicols}
 

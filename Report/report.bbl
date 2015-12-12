@@ -1,9 +1,23 @@
-\begin{thebibliography}{6}
+\begin{thebibliography}{13}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Attaluri et~al.(2009)Attaluri, Zheng, Chen, and Lu]{work_B}
+Pavan~K Attaluri, Ximeng Zheng, Zhengxin Chen, and Guoqing Lu.
+\newblock Applying machine learning techniques to classify h1n1 viral strains
+  occurring in 2009 flu pandemic.
+\newblock \emph{BIOT-2009}, 21, 2009.
+
+\bibitem[Attaluri et~al.(2010)Attaluri, Chen, and Lu]{work_C}
+Pavan~K Attaluri, Zhengxin Chen, and Guoqing Lu.
+\newblock Applying neural networks to classify influenza virus antigenic types
+  and hosts.
+\newblock In \emph{Computational Intelligence in Bioinformatics and
+  Computational Biology (CIBCB), 2010 IEEE Symposium on}, pages 1--6. IEEE,
+  2010.
 
 \bibitem[Bastien et~al.(2012)Bastien, Lamblin, Pascanu, Bergstra, Goodfellow,
   Bergeron, Bouchard, and Bengio]{Bastien-Theano-2012}
@@ -28,13 +42,43 @@ Luis~Pedro Coelho.
 \newblock Mahotas: Open source software for scriptable computer vision.
 \newblock \emph{arXiv preprint arXiv:1211.4907}, 2012.
 
-\bibitem[Kylberg et~al.(2011)Kylberg, Uppstr{\"o}m, and
+\bibitem[Goodfellow et~al.(2013)Goodfellow, Bulatov, Ibarz, Arnoud, and
+  Shet]{DBLP:journals/corr/GoodfellowBIAS13}
+Ian~J. Goodfellow, Yaroslav Bulatov, Julian Ibarz, Sacha Arnoud, and Vinay~D.
+  Shet.
+\newblock Multi-digit number recognition from street view imagery using deep
+  convolutional neural networks.
+\newblock \emph{CoRR}, abs/1312.6082, 2013.
+\newblock URL \url{http://arxiv.org/abs/1312.6082}.
+
+\bibitem[Krizhevsky et~al.(2012)Krizhevsky, Sutskever, and
+  Hinton]{NIPS2012_4824}
+Alex Krizhevsky, Ilya Sutskever, and Geoffrey~E. Hinton.
+\newblock Imagenet classification with deep convolutional neural networks.
+\newblock In F.~Pereira, C.J.C. Burges, L.~Bottou, and K.Q. Weinberger,
+  editors, \emph{Advances in Neural Information Processing Systems 25}, pages
+  1097--1105. Curran Associates, Inc., 2012.
+\newblock URL
+  \url{http://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf}.
+
+\bibitem[Kylberg et~al.(2011{\natexlab{a}})Kylberg, Uppström, Hedlund,
+  Borgefors, and Sintorn]{JMI:JMI3556}
+G.~Kylberg, M.~Uppström, K.-O. Hedlund, G.~Borgefors, and I.-M. Sintorn.
+\newblock Segmentation of virus particle candidates in transmission electron
+  microscopy images.
+\newblock \emph{Journal of Microscopy}, pages no--no, 2011{\natexlab{a}}.
+\newblock ISSN 1365-2818.
+\newblock \doi{10.1111/j.1365-2818.2011.03556.x}.
+\newblock URL \url{http://dx.doi.org/10.1111/j.1365-2818.2011.03556.x}.
+
+\bibitem[Kylberg et~al.(2011{\natexlab{b}})Kylberg, Uppstr{\"o}m, and
   Sintorn]{kylberg2011virus}
 Gustaf Kylberg, Mats Uppstr{\"o}m, and Ida-Maria Sintorn.
 \newblock Virus texture analysis using local binary patterns and radial density
   profiles.
 \newblock In \emph{Progress in Pattern Recognition, Image Analysis, Computer
-  Vision, and Applications}, pages 573--580. Springer Berlin Heidelberg, 2011.
+  Vision, and Applications}, pages 573--580. Springer Berlin Heidelberg,
+  2011{\natexlab{b}}.
 
 \bibitem[M{\"a}enp{\"a}{\"a} and Pietik{\"a}inen(2003)]{maenpaa2003multi}
 Topi M{\"a}enp{\"a}{\"a} and Matti Pietik{\"a}inen.
@@ -50,5 +94,17 @@ F.~Pedregosa, G.~Varoquaux, A.~Gramfort, V.~Michel, B.~Thirion, O.~Grisel,
 \newblock Scikit-learn: Machine learning in {P}ython.
 \newblock \emph{Journal of Machine Learning Research}, 12:\penalty0 2825--2830,
   2011.
+
+\bibitem[Raj et~al.(2011)Raj, Dewar, Palacios, Rabadan, and Wiggins]{work_A}
+Anil Raj, Michael Dewar, Gustavo Palacios, Raul Rabadan, and Christopher~H
+  Wiggins.
+\newblock Identifying hosts of families of viruses: A machine learning
+  approach.
+\newblock 2011.
+
+\bibitem[Schmidhuber(2015)]{Juergen_2015}
+J{\"u}rgen Schmidhuber.
+\newblock Deep learning in neural networks: An overview.
+\newblock \emph{Neural Networks}, 61:\penalty0 85--117, 2015.
 
 \end{thebibliography}
