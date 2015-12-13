@@ -80,14 +80,14 @@ On the other hand, automatic classification methods in machine learning have pro
 
 The high degree of accuracy obtained with these automated methods is highly desirable for a problem like virus classification. In the desire to determine a model that accurately predicts known virus types, we treat the virus classification as an image classification problem. We use the Virus Texture Dataset from Uppsala University containing images of fifteen different virus types, which we extend through random rotations to enlarge our dataset. 
 
-We experiment with an array of machine learning classifiers, including Support Vector Machines with linear and radial basis function kernels, Gaussian Naive Bayes, Logistic Regression, Random Forest Trees and Feed Forward Neural Networks with local binary pattern feature extractors. Our best results come from our Convolutional Neural Network (CNN)using max pooling, with which we classify virus samples from our dataset into one of 15 categories with an accuracy of ----. 
+We experiment with an array of machine learning classifiers, including Support Vector Machines with linear and radial basis function kernels, Gaussian Naive Bayes, Logistic Regression, Random Forest Trees and Feed Forward Neural Networks with local binary pattern feature extractors. Our best results come from our Convolutional Neural Network (CNN)using max pooling, with which we classify virus samples from our dataset into one of 15 categories with an accuracy of approximately 85\%. 
 
 
 \section{Problem Definition}
 
 Our research takes place in a greater context of a desire to use machine learning classification methods to accurately classify viruses from viral sample images. This extends to both viruses which are currently known, and potentially evolved viruses like the H1N1 influenza pandemic virus in Mexico and the US in 2009, which was a modified version of known influenza strains. Convolutional Neural Networks with all the function approximation power of Neural Networks, but specifically architected for images, present a highly promising solution for computer automated virus identification, and a useful supplementation to traditional virology research. 
 
-From our survey of the work done in virus classification, treating virus classification as an image classification problem is not common. Most researchers have used Support Vector Machines, tree modeling structures like Random Forests, and Feed Forward Neural Networks to classify and predict known and emerging viral strains through analysis of genome segments and genetic sequences \citet{work_A} \citet{work_B} \citet{work_C}. \citet{kylberg2011virus}, which we looked to for insight into feature extraction methods, use a Random Forest classifier to assess the discriminant potential of various texture measures on virus images. As far as we can tell, using a CNN is rather unprecedented for this problem. Thus we find the application of CNN's to virus classification a pertinent one that would be fruitful to explore further.
+From our survey of the work done in virus classification, treating virus classification as an image classification problem is not common. Most researchers have used Support Vector Machines, tree modeling structures like Random Forests, and Feed Forward Neural Networks to classify and predict known and emerging viral strains through analysis of genome segments and genetic sequences \citet{work_A} \citet{work_B} \citet{work_C}. \citet{kylberg2011virus}, which we looked to for insight into feature extraction methods, use a Random Forest classifier to assess the discriminant potential of various texture measures on virus images. As far as we can tell, using a CNN is rather unprecedented for this problem. Thus we find the application of CNNs to virus classification a pertinent one that would be fruitful to explore further.
 
 \section{Methodology}
 
@@ -171,9 +171,9 @@ We tested 4 different classifiers using algorithms from the scikit-learn \citet{
 
 
 \section{Neural Networks Approach}
-In order to establish a baseline, we combine ideas from \citet{kylberg2011virus} and ourselves by attempting to use a neural network with the LBP features. Our neural networks are built using the Lasagne and Theano \cite{Bastien-Theano-2012, bergstra+al:2010-scipy} libraries. In our experiments, we will not rescale the images and we will use LBP$_{8,2}$, an implementation given by the \emph{Mahotas} computer vision library \citet{coelho2012mahotas}. We are not scaling the images because we are later comparing to CNN's, which will not use rescaled images. The values of $8,2$ come from the best values as checked by \citet{kylberg2011virus}. \emph{Mahotas}' implementation of LBP is done so that the feature vector is of smaller dimension than the usual dimension of a histogram with $2^N$ values where $N$ is the number of sampled points. This is achieved by some optimization on their end. 
-\subsection{Results}
+In order to establish a baseline, we combine ideas from \citet{kylberg2011virus} and ourselves by attempting to use a neural network with the LBP features. Our neural networks are built using the Lasagne and Theano \cite{Bastien-Theano-2012, bergstra+al:2010-scipy} libraries. In our experiments, we will not rescale the images and we will use LBP$_{8,2}$, an implementation given by the \emph{Mahotas} computer vision library \citet{coelho2012mahotas}. We are not scaling the images because we are later comparing to CNNs, which will not use rescaled images. The values of $8,2$ come from the best values as checked by \citet{kylberg2011virus}. \emph{Mahotas}' implementation of LBP is done so that the feature vector is of smaller dimension than the usual dimension of a histogram with $2^N$ values where $N$ is the number of sampled points. This is achieved by some optimization on their end. 
 To normalize the data, we chose to divide the entire dataset by 1.1 times the maximum value of a feature in the training set in order to be more certain that no features in the normalized test set would have a value greater than 1. In all cases, we are using a learning rate of 0.005 and an L2 regularization weight of 0.0001, both arbitrarily chosen and the last layer was a 15 units softmax layer. The dataset described in section \ref{text:dataset} is shuffled and the training is done with a batch size of 16 by stochastic gradient descent. All images pertaining to the results such as the confusion matrices for the validation and testing set and the learning curves can be found in the Appendix: the first neural network results are found in figures \ref{shrine1_curves} and \ref{shrine1_mat}; the second neural network results are found in figures \ref{shrine0_curves} and \ref{shrine0_mat}; the third nerual network results are found in figures \ref{shrine2_curves} and \ref{shrine2_mat}. The table below shows the results obtained on the test set. The first column represent, in order, the number of units in each of the hidden layers. 
+\subsection{Results}
 
 \begin{tabular}{lc}
 \multicolumn{1}{c}{\textbf{Hidden Layers}} & \textbf{Test Error} \\
@@ -189,11 +189,26 @@ We had to stop the training of the one hidden layer neural network due to time c
 
 
 \section{Convolutional Neural Network Approach}
-CNN's are often used in image classification tasks as they possess the power of Feed Forward Neural Networks but are specifically architected to efficiently process images. We fed images from our dataset into our CNN in their original 41x41 pixel form. Our CNN consisted of three convolutional two-dimensional layers, each followd by a 2x2 max pooling layer. Two fully connected layers with 50\% dropout on their inputs concluded the network. Like the Neural Network, we normalized our data simply by dividng 
+CNNs are often used in image classification tasks as they possess the power of Feed Forward Neural Networks but are specifically structured to process images efficiently. As we approached the problem of virus classification from an image classification approach, CNNs seemed a natural method to use.
+Our CNN is build with the Lasagne and Theano \cite{Bastien-Theano-2012, bergstra+al:2010-scipy} libraries. Our CNNs first convolutional layer is fed by a 41x41 normalized input image. This layer consists of 16 8x8 filters, followed by a 2x2 max pooling layer. Two more convolutions are performed on top of this, the first with 48 5x5 filters, the second with 60 2x2 filters; both convolutions are fed into a max pooling layer. Two fully connected layers with 50\% dropout on their inputs conclude the network. We used a learning rate of 0.005 and an L2 regularization weight of 0.0001, both arbitrarily chosen. Normalization was performed to place all pixel intensities between a range of 0 and 255. Training was performed with a batch size of 60 by stochastic gradient descent.
 
 \subsection{Results}
-\subsection{Discussion}
+Images pertaining to the results of our CNN in figures \ref{cnn_cm} and \ref{cnn_plot} in the Appendix. The table below shows the best error costs found on our training, validation and test sets. 
 
+\begin{center}
+\begin{tabular}{ c c }
+ \textbf{Best Train Error} 			& 0.0120 \% \\ 
+ \textbf{Best Validation Error}     & 0.1500 \% \\  
+ \textbf{Best Test Error} 			& 0.1511 \%   
+\end{tabular}
+\end{center}
+
+\subsection{Discussion}
+Our CNN classifies viruses on our training set with an accuracy of 85\%. Due to the critical nature of the task, this is not as high as we had hoped for a standalone virus classifier, but certainly high enough to be a constructive aid to medical professionals performing virus classification (to verify or inform their diagnoses). Our results might have been improved with a more exhuastive hyperparameter search. The search itself is computationally expensive as CNNs, and Neural Networks in general, have many parameters. Nevertheless, experimenting with the nuber of convolutional layers, percentage of dropout, learning rate, to name a few, is a worthwhile investment given more time and effort. 
+
+In addition, in the last few years several papers have shown that ensemble methods perform very well for reducing testing error \citet{chenlearning}. While it is not understood why ensembles of CNNs perform so well, using these methods in our classification task might have improved performance.
+
+**** FINISH LATER
 
 \section{Reflection}
 As discussed, due to the high performing nature of our CNN on classifying a virus from an image of it obtained through microscopy techniques, this particular aspect of virus identification seems worth pursuing. Obtaining this type of data could be difficult, but as we've shown, the number of images obtained for any known virus can be extended with different techniques, including rotations, embossing, and other additive noise measures. Clearly this represents a powerful aid for doctors and other members of the medical profession to inform and verify diagnostics. 
@@ -205,10 +220,14 @@ The nature of viruses is that they're constantly evolving, but we'd like to posi
 \section{Baseline Classification Results}
 \input{baseline_cms.tex}
 
-\section{Neural Network Trained on LBP - Results} \label{appendix:images}
+\section{Neural Network Trained on LBP Results} \label{appendix:images}
 \input{shrine1_figures.tex}
 \input{shrine0_figures.tex}
 \input{shrine2_figures.tex}
+
+\section{Convolutional Neural Network Results}
+\input{cnn_cm.tex}
+\input{cnn_plot.tex}
 
 \newpage
 \begin{multicols}{2}
