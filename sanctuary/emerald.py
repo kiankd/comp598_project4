@@ -1,9 +1,9 @@
 import sys
 sys.path.insert(0,'/home/2013/adoomr/.local/lib/python2.7/site-packages')
-sys.path.remove('/usr/lib/python2.7')
+sys.path.remove('/usr/lib/python2.7') # This is because Python versions were conflicting and I want to use the one from anaconda. 
 
 import matplotlib
-matplotlib.use('Agg')
+matplotlib.use('Agg') # So that I can use matshow while SSHing. 
 import matplotlib.pyplot as plt
 
 from lasagne.regularization import regularize_layer_params, l2
@@ -20,7 +20,10 @@ import theano
 import theano.tensor as T
 import timeit
 
-# Hyperparameters
+#########################
+#### Hyperparameters ####
+#########################
+
 NUM_EPOCHS = 8000
 LEARNING_RATE = 0.005
 N_CLASSES = 15
@@ -73,6 +76,7 @@ def plot_cm(pred_y, true_y, title, filename, display_threshold=0.15):
 
 
 print "[X] Emerald is loading its data."
+# Because the given data gives classes from 1 to 15, we subtract 1 so that we get classes from 0 to 14. 
 trainX = np.load(os.path.join(DATASET_DIR, 'lbp_trainX.npy'))
 trainY = np.load(os.path.join(DATASET_DIR, 'lbp_trainY.npy'))-1
 
@@ -82,16 +86,20 @@ valY = np.load(os.path.join(DATASET_DIR, 'lbp_valY.npy'))-1
 testX = np.load(os.path.join(DATASET_DIR, 'lbp_testX.npy'))
 testY = np.load(os.path.join(DATASET_DIR, 'lbp_testY.npy'))-1
 
+# The feature values are LBP histogram counts. They are always greater than or equal to zero so we chose a max normalization according to the max value in the training set but we multiply it by 1.1 to get a higher maximum in case there is a max value even greater in the testing set. 
 norm_value = 1.1*trainX.max()
 trainX /= norm_value
 valX /= norm_value
 testX /= norm_value
 
+# Shuffle the data.
 trainX, trainY = shuffle(trainX, trainY)
 valX, valY = shuffle(valX, valY)
 testX, testY = shuffle(testX, testY)
 
-# Layers
+################
+#### Layers ####
+################
 print "[X] Emerald building its layers."
 model = lasagne.layers.InputLayer((BATCH_SIZE, trainX.shape[1]))
 model = lasagne.layers.DenseLayer(model, num_units=256)
@@ -104,6 +112,8 @@ y = T.ivector()
 print "[X] Emerald defining its goals."
 model_params = lasagne.layers.get_all_params(model, trainable=True)
 sh_lr = theano.shared(lasagne.utils.floatX(LEARNING_RATE))
+
+# All noisy variables are in the event we want to use dropout or add Gaussian noise to the training. 
 
 noisy_output = lasagne.layers.get_output(model, x, deterministic=False)
 true_output = lasagne.layers.get_output(model, x, deterministic=True)
@@ -185,12 +195,10 @@ while not done_looping:
 				
 				if not os.path.exists(FIGURE_SAVE_DIR):
 					os.makedirs(FIGURE_SAVE_DIR)
+
 				plot_curves(plot_iters, plot_train_cost, plot_valid_cost, 'Training Cost', 'Validation Cost', 'train_val_cost.pdf')
 				plot_curves(plot_iters, plot_train_error, plot_valid_error, 'Training Error', 'Validation Error', 'train_val_error.pdf')
 
-				plot_cm(train_pred, trainY, 'Confusion Matrix on the Training Set', 'cm_train.pdf')
-				plot_cm(valid_pred, valY, 'Confusion Matrix on the Validation Set', 'cm_valid.pdf')
-				plot_cm(test_pred, testY, 'Confusion Matrix on the Test Set', 'cm_test.pdf')
 
 				# print "--> Epoch %i, minibatch %i/%i has training true cost \t %f." % (epoch, minibatch_index+1, n_train_batches, train_cost)
 				# print "--> Epoch %i, minibatch %i/%i has validation true cost \t %f and error of \t %f." % (epoch, minibatch_index+1, n_train_batches, valid_cost, valid_error)
@@ -207,6 +215,11 @@ while not done_looping:
 					all_param_values = lasagne.layers.get_all_param_values(model)
 					joblib.dump(all_param_values, os.path.join(PARAM_SAVE_DIR, 'params.pkl'))
 					# print "----> Parameters saved."
+
+					plot_cm(train_pred, trainY, 'Confusion Matrix on the Training Set', 'cm_train.pdf')
+					plot_cm(valid_pred, valY, 'Confusion Matrix on the Validation Set', 'cm_valid.pdf')
+					plot_cm(test_pred, testY, 'Confusion Matrix on the Test Set', 'cm_test.pdf')
+
 					best_validation_cost = valid_cost
 					best_validation_error = valid_error
 
@@ -234,11 +247,6 @@ print "[X] Saving the scores."
 
 plot_curves(plot_iters, plot_train_cost, plot_valid_cost, 'Training Cost', 'Validation Cost', 'train_val_cost.pdf')
 plot_curves(plot_iters, plot_train_error, plot_valid_error, 'Training Error', 'Validation Error', 'train_val_error.pdf')
-
-plot_cm(train_pred, trainY, 'Confusion Matrix on the Training Set', 'cm_train.pdf')
-plot_cm(valid_pred, valY, 'Confusion Matrix on the Validation Set', 'cm_valid.pdf')
-plot_cm(test_pred, testY, 'Confusion Matrix on the Test Set', 'cm_test.pdf')
-
 
 joblib.dump(plot_iters, os.path.join(PARAM_SAVE_DIR, "iters.pkl"))
 
