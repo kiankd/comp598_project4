@@ -63,8 +63,7 @@ Alex Krizhevsky, Ilya Sutskever, and Geoffrey~E. Hinton.
   editors, \emph{Advances in Neural Information Processing Systems 25}, pages
   1097--1105. Curran Associates, Inc., 2012.
 \newblock URL
-  \url{http://papers.nips.cc/paper/4824-imagenet-classification-with-deep-\newline
-  convolutional-neural-networks.pdf}.
+  \url{http://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf}.
 
 \bibitem[Kylberg et~al.(2011{\natexlab{a}})Kylberg, Uppström, Hedlund,
   Borgefors, and Sintorn]{JMI:JMI3556}

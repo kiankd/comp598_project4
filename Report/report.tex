@@ -6,7 +6,7 @@
 \usepackage{alltt}
 \usepackage[margin=1in]{geometry}
 \usepackage{mathtools}
-% \usepackage{subcaption}
+\usepackage{subcaption}
 \usepackage{hyperref}
 \usepackage{paralist}
 \usepackage{float}
@@ -27,7 +27,6 @@
 \usepackage{caption}
 \usepackage{subcaption}
 \usepackage{booktabs}
-\usepackage{breakurl}
 \usepackage{cite}
 
 
@@ -95,6 +94,7 @@ From our survey of the work done in virus classification, treating virus classif
 
 
 \section{Related Work}
+\label{text:relwork_results}
 In the work of \citet{kylberg2011virus}, texture analysis is performed on a dataset composed of 22 different  virus samples and the resulting feature vector is fed into a Random Forest classifier. The authors first compare the performance of different texture analysers. Included in their study were Local Binary Patterns (LBP), Radial Density Profile (RDP) and their respective variants, before proceeding to detail their results. 
 
 We implement the LBP feature extraction method in our Feed Forward Neural Networks because a variant of it performs best among the texture measures used on virus images in \citet{kylberg2011virus}. With respect to \citet{kylberg2011virus} results, the first thing to note is the differences betwen our and their preprocessing methods. \citet{kylberg2011virus} made modifications to the scales of their images'. In one case, one pixel in the image corresponds to 1 nanometer, which they refer to as \emph{fixed scale}. In the other case, the radius of the virus is set to take 20 pixels, and they refer to this as \emph{object scale}. 
@@ -154,7 +154,7 @@ We tested several different Random Forest configurations when using the LBP feat
 Since this is far from optimal, we decided that cross-validation for hyperparameter optmization would not have resulted in significant improvement.  If we were attempting to mimic the results of \citet{kylberg2011virus}, we would have used their more complex feature extraction methods that they used to get $87\%$ accuracy with a Random Forest. Our results here show that more complex variants of LBP are necessary to use with a Random Forest classifier in order to get strong results, and they are similar to \citet{kylberg2011virus} since they got the best results using $100$ decision trees in the forest, which directly corresponds to the $90$ that we used. Additionally, the differences in results here may also be due to the fact that they did not use the extended dataset that we created; they used $100$ $16$-bit images per class, while we had $1200$ randomly rotated $8$-bit images per class.
 
 \section{Neural Networks Approach}
-In order to establish a baseline, we combine ideas from \citet{kylberg2011virus} and ourselves by attempting to use a neural network with the LBP features. Our neural networks are built using the Lasagne and Theano \cite{Bastien-Theano-2012, bergstra+al:2010-scipy} libraries. In our experiments, we will not rescale the images and we will use LBP$_{8,2}$, an implementation given by the \emph{Mahotas} computer vision library \citet{coelho2012mahotas}. We are not scaling the images because we are later comparing to CNNs, which will not use rescaled images. The values of $8,2$ come from the best values as checked by \citet{kylberg2011virus}. \emph{Mahotas}' implementation of LBP is done so that the feature vector is of smaller dimension than the usual dimension of a histogram with $2^N$ values where $N$ is the number of sampled points. This is achieved by some optimization on their end. 
+In order to establish a baseline, we combine ideas from \citet{kylberg2011virus} and ourselves by attempting to use a neural network with the LBP features. Our neural networks are built using the Lasagne and Theano \citet{Bastien-Theano-2012, bergstra+al:2010-scipy} libraries. In our experiments, we will not rescale the images and we will use LBP$_{8,2}$, an implementation given by the \emph{Mahotas} computer vision library \citet{coelho2012mahotas}. We are not scaling the images because we are later comparing to CNNs, which will not use rescaled images. The values of $8,2$ come from the best values as checked by \citet{kylberg2011virus}. \emph{Mahotas}' implementation of LBP is done so that the feature vector is of smaller dimension than the usual dimension of a histogram with $2^N$ values where $N$ is the number of sampled points. This is achieved by some optimization on their end. 
 \subsection{Results}
 To normalize the data, we chose to divide the entire dataset by 1.1 times the maximum value of a feature in the training set in order to be more certain that no features in the normalized test set would have a value greater than 1. In all cases, we are using a learning rate of 0.005 and an L2 regularization weight of 0.0001, both arbitrarily chosen and the last layer was a 15 units softmax layer. The dataset described in section \ref{text:dataset} is shuffled and the training is done with a batch size of 16 by stochastic gradient descent. All images pertaining to the results such as the confusion matrices for the validation and testing set and the learning curves can be found in the Appendix: the first neural network results are found in figures \ref{shrine1_curves} and \ref{shrine1_mat}; the second neural network results are found in figures \ref{shrine0_curves} and \ref{shrine0_mat}; the third nerual network results are found in figures \ref{shrine2_curves} and \ref{shrine2_mat}. The table below shows the results obtained on the test set. The first column represent, in order, the number of units in each of the hidden layers. 
 
@@ -178,7 +178,7 @@ Chat Conversation End
 
 \section{Convolutional Neural Network Approach}
 CNNs are often used in image classification tasks as they possess the power of Feed Forward Neural Networks but are specifically structured to process images efficiently. As we approached the problem of virus classification from an image classification approach, CNNs seemed a natural method to use.
-Our CNN is build with the Lasagne and Theano \cite{Bastien-Theano-2012, bergstra+al:2010-scipy} libraries. Our CNNs first convolutional layer is fed by a 41x41 normalized input image. This layer consists of 16 8x8 filters, followed by a 2x2 max pooling layer. Two more convolutions are performed on top of this, the first with 48 5x5 filters, the second with 60 2x2 filters; both convolutions are fed into a max pooling layer. Two fully connected layers with 50\% dropout on their inputs conclude the network. We used a learning rate of 0.005 and an L2 regularization weight of 0.0001, both arbitrarily chosen. Normalization was performed to place all pixel intensities between a range of 0 and 255. Training was performed with a batch size of 60 by stochastic gradient descent.
+Our CNN is build with the Lasagne and Theano \citet{Bastien-Theano-2012, bergstra+al:2010-scipy} libraries. Our CNNs first convolutional layer is fed by a 41x41 normalized input image. This layer consists of 16 8x8 filters, followed by a 2x2 max pooling layer. Two more convolutions are performed on top of this, the first with 48 5x5 filters, the second with 60 2x2 filters; both convolutions are fed into a max pooling layer. Two fully connected layers with 50\% dropout on their inputs conclude the network. We used a learning rate of 0.005 and an L2 regularization weight of 0.0001, both arbitrarily chosen. Normalization was performed to place all pixel intensities between a range of 0 and 255. Training was performed with a batch size of 60 by stochastic gradient descent.
 
 \subsection{Results}
 Images pertaining to the results of our CNN in figures \ref{cnn_cm} and \ref{cnn_plot} in the Appendix. The table below shows the best error costs found on our training, validation and test sets. 

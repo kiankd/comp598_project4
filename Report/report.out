@@ -6,3 +6,13 @@
 \BOOKMARK [2][-]{subsection.4.2}{Data and Pre-Processing Methods}{section.4}% 6
 \BOOKMARK [1][-]{section.5}{Baseline Classification Approach}{}% 7
 \BOOKMARK [1][-]{section.6}{Random Forest Approach}{}% 8
+\BOOKMARK [1][-]{section.7}{Neural Networks Approach}{}% 9
+\BOOKMARK [2][-]{subsection.7.1}{Results}{section.7}% 10
+\BOOKMARK [2][-]{subsection.7.2}{Discussion}{section.7}% 11
+\BOOKMARK [1][-]{section.8}{Convolutional Neural Network Approach}{}% 12
+\BOOKMARK [2][-]{subsection.8.1}{Results}{section.8}% 13
+\BOOKMARK [2][-]{subsection.8.2}{Discussion}{section.8}% 14
+\BOOKMARK [1][-]{section.9}{Reflection}{}% 15
+\BOOKMARK [1][-]{appendix.A}{Baseline Classification Results}{}% 16
+\BOOKMARK [1][-]{appendix.B}{Neural Network Trained on LBP Results}{}% 17
+\BOOKMARK [1][-]{appendix.C}{Convolutional Neural Network Results}{}% 18
