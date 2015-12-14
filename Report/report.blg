@@ -3,49 +3,46 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: report.aux
 The style file: plainnat.bst
 Database file #1: ref.bib
-Warning--empty journal in chenlearning
-Warning--empty year in chenlearning
-Warning--empty year in chenlearning
 Warning--empty journal in work_A
-You've used 13 entries,
+You've used 12 entries,
             2773 wiz_defined-function locations,
-            679 strings with 8147 characters,
-and the built_in function-call counts, 7754 in all, are:
-= -- 653
-> -- 623
-< -- 7
-+ -- 210
-- -- 196
-* -- 672
-:= -- 1223
-add.period$ -- 47
-call.type$ -- 13
-change.case$ -- 103
-chr.to.int$ -- 12
-cite$ -- 30
-duplicate$ -- 306
-empty$ -- 511
-format.name$ -- 209
-if$ -- 1599
+            676 strings with 8073 characters,
+and the built_in function-call counts, 7458 in all, are:
+= -- 630
+> -- 613
+< -- 6
++ -- 206
+- -- 193
+* -- 653
+:= -- 1177
+add.period$ -- 45
+call.type$ -- 12
+change.case$ -- 99
+chr.to.int$ -- 11
+cite$ -- 25
+duplicate$ -- 287
+empty$ -- 481
+format.name$ -- 205
+if$ -- 1540
 int.to.chr$ -- 2
 int.to.str$ -- 1
-missing$ -- 12
-newline$ -- 78
-num.names$ -- 54
-pop$ -- 219
+missing$ -- 11
+newline$ -- 74
+num.names$ -- 50
+pop$ -- 204
 preamble$ -- 1
-purify$ -- 90
+purify$ -- 87
 quote$ -- 0
-skip$ -- 255
+skip$ -- 245
 stack$ -- 0
-substring$ -- 191
+substring$ -- 189
 swap$ -- 48
 text.length$ -- 4
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 143
-warning$ -- 4
-while$ -- 56
+type$ -- 132
+warning$ -- 1
+while$ -- 53
 width$ -- 0
-write$ -- 182
-(There were 4 warnings)
+write$ -- 173
+(There was 1 warning)

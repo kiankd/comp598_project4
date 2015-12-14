@@ -1,11 +1,11 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.8.13)  14 DEC 2015 16:03
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.8.8)  14 DEC 2015 17:28
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **report.tex
 (./report.tex
 LaTeX2e <2011/06/27>
-Babel <3.9h> and hyphenation patterns for 78 languages loaded.
+Babel <3.9h> and hyphenation patterns for 4 languages loaded.
 (./preamble.tex (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 (/usr/share/texlive/texmf-dist/tex/latex/base/size10.clo
@@ -1041,7 +1041,11 @@ File: block.tss 2011/12/15
 \f@ncyO@erf=\skip79
 \f@ncyO@olf=\skip80
 \f@ncyO@orf=\skip81
-) (./report.aux)
+) (./report.aux
+
+LaTeX Warning: Label `fig:lbp_basic' multiply defined.
+
+)
 \openout1 = `report.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 70.
@@ -1059,8 +1063,7 @@ LaTeX Font Info:    ... okay on input line 70.
 LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 70.
 LaTeX Font Info:    ... okay on input line 70.
 \c@lstlisting=\count162
-
-(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
+ (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count163
 \scratchdimen=\dimen227
@@ -1205,34 +1208,52 @@ Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 121.
 See the caption package documentation for explanation.
 
+
+Underfull \hbox (badness 10000) in paragraph at lines 126--126
+|\OT1/cmr/bx/n/12 4.2. Dataset and Pre-Processing
+ []
+
 [2 <./images/lbp_basic.pdf>]
-Overfull \hbox (11.04698pt too wide) in paragraph at lines 134--143
+<images/dataset_sample.png, id=146, 171.16579pt x 101.93874pt>
+File: images/dataset_sample.png Graphic file (type png)
+
+<use images/dataset_sample.png>
+Package pdftex.def Info: images/dataset_sample.png used on input line 132.
+(pdftex.def)             Requested size: 195.39728pt x 116.37468pt.
+
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 133.
+See the caption package documentation for explanation.
+
+
+Overfull \hbox (11.04698pt too wide) in paragraph at lines 143--152
  [] 
  []
 
-<images/random_forest_results.pdf, id=147, 578.16pt x 433.62pt>
+<images/random_forest_results.pdf, id=152, 578.16pt x 433.62pt>
 File: images/random_forest_results.pdf Graphic file (type pdf)
 
 <use images/random_forest_results.pdf>
 Package pdftex.def Info: images/random_forest_results.pdf used on input line 15
-0.
+9.
 (pdftex.def)             Requested size: 229.8775pt x 172.40613pt.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 151.
+(caption)                particular \caption on input line 160.
 See the caption package documentation for explanation.
 
-[3 <./images/boxes_results.png>] [4 <./images/random_forest_results.pdf>]
-[5] (./baseline_cms.tex
-<images/baseline/cm_log_reg.pdf, id=239, 433.62pt x 433.62pt>
+[3 <./images/boxes_results.png> <./images/dataset_sample.png>] [4 <./images/ran
+dom_forest_results.pdf>] [5] (./baseline_cms.tex
+<images/baseline/cm_log_reg.pdf, id=244, 433.62pt x 433.62pt>
 File: images/baseline/cm_log_reg.pdf Graphic file (type pdf)
 
 <use images/baseline/cm_log_reg.pdf>
 Package pdftex.def Info: images/baseline/cm_log_reg.pdf used on input line 5.
 (pdftex.def)             Requested size: 211.38832pt x 211.39055pt.
 
-<images/baseline/cm_naive_bayes.pdf, id=240, 433.62pt x 433.62pt>
+<images/baseline/cm_naive_bayes.pdf, id=245, 433.62pt x 433.62pt>
 File: images/baseline/cm_naive_bayes.pdf Graphic file (type pdf)
 
 <use images/baseline/cm_naive_bayes.pdf>
@@ -1240,7 +1261,7 @@ Package pdftex.def Info: images/baseline/cm_naive_bayes.pdf used on input line
 11.
 (pdftex.def)             Requested size: 211.38832pt x 211.39055pt.
 
-<images/baseline/cm_linear_svm.pdf, id=241, 433.62pt x 433.62pt>
+<images/baseline/cm_linear_svm.pdf, id=246, 433.62pt x 433.62pt>
 File: images/baseline/cm_linear_svm.pdf Graphic file (type pdf)
 
 <use images/baseline/cm_linear_svm.pdf>
@@ -1248,7 +1269,7 @@ Package pdftex.def Info: images/baseline/cm_linear_svm.pdf used on input line 1
 7.
 (pdftex.def)             Requested size: 211.38832pt x 211.39055pt.
 
-<images/baseline/cm_svm.pdf, id=242, 433.62pt x 433.62pt>
+<images/baseline/cm_svm.pdf, id=247, 433.62pt x 433.62pt>
 File: images/baseline/cm_svm.pdf Graphic file (type pdf)
 
 <use images/baseline/cm_svm.pdf>
@@ -1267,55 +1288,55 @@ ion: multiple pdfs with page group included in a single page
 pdfTeX warning: pdflatex (file ./images/baseline/cm_svm.pdf): PDF inclusion: mu
 ltiple pdfs with page group included in a single page
 >] (./shrine1_figures.tex
-<images/1/train_val_cost.pdf, id=396, 578.16pt x 433.62pt>
+<images/1/train_val_cost.pdf, id=401, 578.16pt x 433.62pt>
 File: images/1/train_val_cost.pdf Graphic file (type pdf)
 
 <use images/1/train_val_cost.pdf>
 Package pdftex.def Info: images/1/train_val_cost.pdf used on input line 5.
 (pdftex.def)             Requested size: 211.38832pt x 158.53795pt.
 
-<images/1/train_val_error.pdf, id=397, 578.16pt x 433.62pt>
+<images/1/train_val_error.pdf, id=402, 578.16pt x 433.62pt>
 File: images/1/train_val_error.pdf Graphic file (type pdf)
 
 <use images/1/train_val_error.pdf>
 Package pdftex.def Info: images/1/train_val_error.pdf used on input line 11.
 (pdftex.def)             Requested size: 211.38832pt x 158.53795pt.
 
-<images/1/cm_valid.pdf, id=398, 433.62pt x 433.62pt>
+<images/1/cm_valid.pdf, id=403, 433.62pt x 433.62pt>
 File: images/1/cm_valid.pdf Graphic file (type pdf)
 
 <use images/1/cm_valid.pdf>
 Package pdftex.def Info: images/1/cm_valid.pdf used on input line 21.
 (pdftex.def)             Requested size: 211.38832pt x 211.39055pt.
 
-<images/1/cm_test.pdf, id=399, 433.62pt x 433.62pt>
+<images/1/cm_test.pdf, id=404, 433.62pt x 433.62pt>
 File: images/1/cm_test.pdf Graphic file (type pdf)
  <use images/1/cm_test.pdf>
 Package pdftex.def Info: images/1/cm_test.pdf used on input line 27.
 (pdftex.def)             Requested size: 211.38832pt x 211.39055pt.
 ) (./shrine0_figures.tex
-<images/0/train_val_cost.pdf, id=400, 578.16pt x 433.62pt>
+<images/0/train_val_cost.pdf, id=405, 578.16pt x 433.62pt>
 File: images/0/train_val_cost.pdf Graphic file (type pdf)
 
 <use images/0/train_val_cost.pdf>
 Package pdftex.def Info: images/0/train_val_cost.pdf used on input line 5.
 (pdftex.def)             Requested size: 211.38832pt x 158.53795pt.
 
-<images/0/train_val_error.pdf, id=401, 578.16pt x 433.62pt>
+<images/0/train_val_error.pdf, id=406, 578.16pt x 433.62pt>
 File: images/0/train_val_error.pdf Graphic file (type pdf)
 
 <use images/0/train_val_error.pdf>
 Package pdftex.def Info: images/0/train_val_error.pdf used on input line 11.
 (pdftex.def)             Requested size: 211.38832pt x 158.53795pt.
 
-<images/0/cm_valid.pdf, id=402, 433.62pt x 433.62pt>
+<images/0/cm_valid.pdf, id=407, 433.62pt x 433.62pt>
 File: images/0/cm_valid.pdf Graphic file (type pdf)
 
 <use images/0/cm_valid.pdf>
 Package pdftex.def Info: images/0/cm_valid.pdf used on input line 21.
 (pdftex.def)             Requested size: 211.38832pt x 211.39055pt.
 
-<images/0/cm_test.pdf, id=403, 433.62pt x 433.62pt>
+<images/0/cm_test.pdf, id=408, 433.62pt x 433.62pt>
 File: images/0/cm_test.pdf Graphic file (type pdf)
  <use images/0/cm_test.pdf>
 Package pdftex.def Info: images/0/cm_test.pdf used on input line 27.
@@ -1336,28 +1357,28 @@ e pdfs with page group included in a single page
 pdfTeX warning: pdflatex (file ./images/1/cm_test.pdf): PDF inclusion: multiple
  pdfs with page group included in a single page
 >]) (./shrine2_figures.tex
-<images/2/train_val_cost.pdf, id=555, 578.16pt x 433.62pt>
+<images/2/train_val_cost.pdf, id=560, 578.16pt x 433.62pt>
 File: images/2/train_val_cost.pdf Graphic file (type pdf)
 
 <use images/2/train_val_cost.pdf>
 Package pdftex.def Info: images/2/train_val_cost.pdf used on input line 5.
 (pdftex.def)             Requested size: 211.38832pt x 158.53795pt.
 
-<images/2/train_val_error.pdf, id=556, 578.16pt x 433.62pt>
+<images/2/train_val_error.pdf, id=561, 578.16pt x 433.62pt>
 File: images/2/train_val_error.pdf Graphic file (type pdf)
 
 <use images/2/train_val_error.pdf>
 Package pdftex.def Info: images/2/train_val_error.pdf used on input line 11.
 (pdftex.def)             Requested size: 211.38832pt x 158.53795pt.
 
-<images/2/cm_valid.pdf, id=557, 433.62pt x 433.62pt>
+<images/2/cm_valid.pdf, id=562, 433.62pt x 433.62pt>
 File: images/2/cm_valid.pdf Graphic file (type pdf)
 
 <use images/2/cm_valid.pdf>
 Package pdftex.def Info: images/2/cm_valid.pdf used on input line 21.
 (pdftex.def)             Requested size: 211.38832pt x 211.39055pt.
 
-<images/2/cm_test.pdf, id=558, 433.62pt x 433.62pt>
+<images/2/cm_test.pdf, id=563, 433.62pt x 433.62pt>
 File: images/2/cm_test.pdf Graphic file (type pdf)
  <use images/2/cm_test.pdf>
 Package pdftex.def Info: images/2/cm_test.pdf used on input line 27.
@@ -1389,26 +1410,26 @@ e pdfs with page group included in a single page
 
 pdfTeX warning: pdflatex (file ./images/2/cm_test.pdf): PDF inclusion: multiple
  pdfs with page group included in a single page
->] (./cnn_cm.tex <images/3/cm_valid.pdf, id=857, 433.62pt x 433.62pt>
+>] (./cnn_cm.tex <images/3/cm_valid.pdf, id=862, 433.62pt x 433.62pt>
 File: images/3/cm_valid.pdf Graphic file (type pdf)
 
 <use images/3/cm_valid.pdf>
 Package pdftex.def Info: images/3/cm_valid.pdf used on input line 5.
 (pdftex.def)             Requested size: 211.38832pt x 211.39055pt.
 
-<images/3/cm_test.pdf, id=858, 433.62pt x 433.62pt>
+<images/3/cm_test.pdf, id=863, 433.62pt x 433.62pt>
 File: images/3/cm_test.pdf Graphic file (type pdf)
  <use images/3/cm_test.pdf>
 Package pdftex.def Info: images/3/cm_test.pdf used on input line 11.
 (pdftex.def)             Requested size: 211.38832pt x 211.39055pt.
-) (./cnn_plot.tex <images/3/train_val_cost.pdf, id=859, 578.16pt x 433.62pt>
+) (./cnn_plot.tex <images/3/train_val_cost.pdf, id=864, 578.16pt x 433.62pt>
 File: images/3/train_val_cost.pdf Graphic file (type pdf)
 
 <use images/3/train_val_cost.pdf>
 Package pdftex.def Info: images/3/train_val_cost.pdf used on input line 5.
 (pdftex.def)             Requested size: 211.38832pt x 158.53795pt.
 
-<images/3/train_val_error.pdf, id=860, 578.16pt x 433.62pt>
+<images/3/train_val_error.pdf, id=865, 578.16pt x 433.62pt>
 File: images/3/train_val_error.pdf Graphic file (type pdf)
 
 <use images/3/train_val_error.pdf>
@@ -1429,22 +1450,22 @@ multiple pdfs with page group included in a single page
 >]
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <17.7389> not available
-(Font)              size <17.28> substituted on input line 227.
+(Font)              size <17.28> substituted on input line 234.
 
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <26.65816> not available
-(Font)              size <24.88> substituted on input line 227.
+(Font)              size <24.88> substituted on input line 234.
 
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/it' in size <26.65816> not available
-(Font)              size <24.88> substituted on input line 227.
+(Font)              size <24.88> substituted on input line 234.
 
 Package microtype Info: Loading generic settings for font family
 (microtype)             `cmtt' (encoding: OT1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 (./report.bbl
-Underfull \hbox (badness 10000) in paragraph at lines 60--67
+Underfull \hbox (badness 10000) in paragraph at lines 56--63
 \OT1/cmr/m/n/10 (+20) URL []$\OT1/cmtt/m/n/10 http : \OML/cmm/m/it/10 ==\OT1/cm
 tt/m/n/10 papers\OML/cmm/m/it/10 :\OT1/cmtt/m/n/10 nips\OML/cmm/m/it/10 :\OT1/c
 mtt/m/n/10 cc\OML/cmm/m/it/10 =\OT1/cmtt/m/n/10 paper\OML/cmm/m/it/10 =\OT1/cmt
@@ -1452,12 +1473,12 @@ t/m/n/10 4824 -[]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 60--67
+Underfull \hbox (badness 10000) in paragraph at lines 56--63
 \OT1/cmtt/m/n/10 imagenet -[] classification -[] with -[] deep -[]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 70--77
+Underfull \hbox (badness 10000) in paragraph at lines 66--73
 \OT1/cmr/m/n/10 (+20) URL []$\OT1/cmtt/m/n/10 http : \OML/cmm/m/it/10 ==\OT1/cm
 tt/m/n/10 dx\OML/cmm/m/it/10 :\OT1/cmtt/m/n/10 doi\OML/cmm/m/it/10 :\OT1/cmtt/m
 /n/10 org\OML/cmm/m/it/10 =\OT1/cmtt/m/n/10 10\OML/cmm/m/it/10 :\OT1/cmtt/m/n/1
@@ -1466,13 +1487,13 @@ tt/m/n/10 dx\OML/cmm/m/it/10 :\OT1/cmtt/m/n/10 doi\OML/cmm/m/it/10 :\OT1/cmtt/m
  []
 
 ) [11]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 237.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 237.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 244.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 244.
  (./report.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 237.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 237.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 244.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 244.
 Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: DEE57C8C029BA5EB4D68025094368CDC;1109.
+(rerunfilecheck)             Checksum: ECCB57E98E3C960631E1F2FD02B9CF54;1112.
 
 
 LaTeX Font Warning: Size substitutions with differences
@@ -1481,16 +1502,19 @@ LaTeX Font Warning: Size substitutions with differences
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 237.
+
+LaTeX Warning: There were multiply-defined labels.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 244.
  ) 
 Here is how much of TeX's memory you used:
- 20416 strings out of 493304
- 336163 string characters out of 6139871
- 576144 words of memory out of 5000000
- 23235 multiletter control sequences out of 15000+600000
- 17639 words of font info for 113 fonts, out of 8000000 for 9000
- 957 hyphenation exceptions out of 8191
- 49i,11n,53p,1176b,533s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 20420 strings out of 494985
+ 336245 string characters out of 6180357
+ 570928 words of memory out of 5000000
+ 22994 multiletter control sequences out of 15000+600000
+ 17747 words of font info for 114 fonts, out of 8000000 for 9000
+ 36 hyphenation exceptions out of 8191
+ 49i,11n,53p,1155b,537s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texl
@@ -1503,10 +1527,10 @@ sfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
 m/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti
 10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb
 ></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on report.pdf (11 pages, 3547004 bytes).
+Output written on report.pdf (11 pages, 3583966 bytes).
 PDF statistics:
- 1078 PDF objects out of 1200 (max. 8388607)
- 388 compressed objects within 4 object streams
+ 1083 PDF objects out of 1200 (max. 8388607)
+ 390 compressed objects within 4 object streams
  55 named destinations out of 1000 (max. 500000)
- 19216 words of extra memory for PDF output out of 20736 (max. 10000000)
+ 19221 words of extra memory for PDF output out of 20736 (max. 10000000)
 

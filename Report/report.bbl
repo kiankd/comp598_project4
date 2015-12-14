@@ -1,4 +1,4 @@
-\begin{thebibliography}{13}
+\begin{thebibliography}{12}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -36,10 +36,6 @@ James Bergstra, Olivier Breuleux, Fr{\'{e}}d{\'{e}}ric Bastien, Pascal Lamblin,
 \newblock In \emph{Proceedings of the Python for Scientific Computing
   Conference ({SciPy})}, June 2010.
 \newblock Oral Presentation.
-
-\bibitem[Chen()]{chenlearning}
-Liran Chen.
-\newblock Learning ensembles of convolutional neural networks.
 
 \bibitem[Coelho(2012)]{coelho2012mahotas}
 Luis~Pedro Coelho.
