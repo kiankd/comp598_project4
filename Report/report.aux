@@ -28,85 +28,28 @@
 \citation{kylberg2011virus}
 \citation{kylberg2011virus}
 \citation{kylberg2011virus}
-\citation{maenpaa2003multi}
-\citation{kylberg2011virus}
-\citation{kylberg2011virus}
-\@writefile{toc}{\contentsline {section}{\numberline {3}Methodology}{2}{section.3}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Feature Design and Selection Methods}{2}{subsection.3.1}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.1}Related Work}{2}{subsubsection.3.1.1}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Local Binary Pattern (LBP)}{2}{subsection.3.2}}
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Example of LBP sampling: The green points are the neighbouring sample points at distance $r$ from the central white point. In this case, we are sampling with $n=8$ neighbour points.\relax }}{2}{figure.1}}
-\newlabel{fig:lbp_basic}{{1}{2}{Example of LBP sampling: The green points are the neighbouring sample points at distance $r$ from the central white point. In this case, we are sampling with $n=8$ neighbour points.\relax }{figure.1}{}}
-\@writefile{toc}{\contentsline {paragraph}{Rotational Invariant LBP}{2}{figure.1}}
-\@writefile{toc}{\contentsline {paragraph}{Uniform LBP}{2}{figure.1}}
-\@writefile{toc}{\contentsline {paragraph}{Gaussian Filtered LBP}{2}{figure.1}}
-\citation{maenpaa2003multi}
-\citation{maenpaa2003multi}
-\citation{kylberg2011virus}
-\citation{kylberg2011virus}
 \citation{kylberg2011virus}
 \citation{kylberg2011virus}
 \citation{kylberg2011virus}
 \citation{kylberg2011virus}
 \citation{kylberg2011virus}
 \citation{JMI:JMI3556}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Example of LBPF sampling: In the simple LBP, the points would be sampled at equal distances around the dotted circles for one radius as in figure \ref  {fig:lbp_basic} but with this extension, the points are sampled according to a Gaussian distribution inside the solid black circles at multiple radii. In this picture, the number of neighbours also vary with the radii. This image comes from \citet  {maenpaa2003multi}.\relax }}{3}{figure.2}}
-\newlabel{fig:lbpf}{{2}{3}{Example of LBPF sampling: In the simple LBP, the points would be sampled at equal distances around the dotted circles for one radius as in figure \ref {fig:lbp_basic} but with this extension, the points are sampled according to a Gaussian distribution inside the solid black circles at multiple radii. In this picture, the number of neighbours also vary with the radii. This image comes from \citet {maenpaa2003multi}.\relax }{figure.2}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Radial Density Profile (RDP)}{3}{subsection.3.3}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Example of RDP sampling: The green zone is the set of sampled pixels for a given radius $r$.\relax }}{3}{figure.3}}
-\newlabel{fig:rdp}{{3}{3}{Example of RDP sampling: The green zone is the set of sampled pixels for a given radius $r$.\relax }{figure.3}{}}
-\@writefile{toc}{\contentsline {paragraph}{Fourier RDP}{3}{figure.3}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Results}{3}{subsection.3.4}}
-\newlabel{text:relwork_results}{{3.4}{3}{Results}{subsection.3.4}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3}Related Work}{2}{section.3}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Methodology}{2}{section.4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Feature Design and Selection Methods}{2}{subsection.4.1}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Example of LBP sampling: The green points are the neighbouring sample points at distance $r$ from the central white point. In this case, we are sampling with $n=8$ neighbour points.\relax }}{2}{figure.2}}
+\newlabel{fig:lbp_basic}{{2}{2}{Example of LBP sampling: The green points are the neighbouring sample points at distance $r$ from the central white point. In this case, we are sampling with $n=8$ neighbour points.\relax }{figure.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Data and Pre-Processing Methods}{2}{subsection.4.2}}
+\newlabel{text:dataset}{{4.2}{2}{Data and Pre-Processing Methods}{subsection.4.2}{}}
 \citation{scikit-learn}
 \citation{kylberg2011virus}
-\citation{Bastien-Theano-2012,bergstra+al:2010-scipy}
-\citation{coelho2012mahotas}
 \citation{kylberg2011virus}
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces This figure comes from \citet  {kylberg2011virus}. The classification errors are shown for a Random Forest classifier using the 6 different texture extractors as described in section \ref  {text:relwork_results}. The boxes' vertical lines represent the median and the red $\times $ represent outliers that are at least 1.5 times the size of the box away from it. The error bars are from the lower to the upper quartile.\relax }}{4}{figure.caption.1}}
+\citation{kylberg2011virus}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces This figure comes from \citet  {kylberg2011virus}. The classification errors are shown for a Random Forest classifier using the 6 different texture extractors as described in section \ref  {text:relwork_results}. The boxes' vertical lines represent the median and the red $\times $ represent outliers that are at least 1.5 times the size of the box away from it. The error bars are from the lower to the upper quartile. We're only concerned with the first row of results for LBP$^\textnormal  {ri}$.\relax }}{3}{figure.caption.1}}
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
-\newlabel{fig:relwork_results}{{4}{4}{This figure comes from \citet {kylberg2011virus}. The classification errors are shown for a Random Forest classifier using the 6 different texture extractors as described in section \ref {text:relwork_results}. The boxes' vertical lines represent the median and the red $\times $ represent outliers that are at least 1.5 times the size of the box away from it. The error bars are from the lower to the upper quartile.\relax }{figure.caption.1}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.5}Data and Pre-Processing Methods}{4}{subsection.3.5}}
-\newlabel{text:dataset}{{3.5}{4}{Data and Pre-Processing Methods}{subsection.3.5}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {4}Baseline Classification Approach}{4}{section.4}}
-\@writefile{toc}{\contentsline {section}{\numberline {5}Neural Networks Approach}{4}{section.5}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Results}{4}{subsection.5.1}}
+\newlabel{fig:relwork_results}{{1}{3}{This figure comes from \citet {kylberg2011virus}. The classification errors are shown for a Random Forest classifier using the 6 different texture extractors as described in section \ref {text:relwork_results}. The boxes' vertical lines represent the median and the red $\times $ represent outliers that are at least 1.5 times the size of the box away from it. The error bars are from the lower to the upper quartile. We're only concerned with the first row of results for LBP$^\textnormal {ri}$.\relax }{figure.caption.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Baseline Classification Approach}{3}{section.5}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Random Forest Approach}{3}{section.6}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Test-set results from random forest classification with default parameters.\relax }}{3}{figure.3}}
+\newlabel{fig:random_forest}{{3}{3}{Test-set results from random forest classification with default parameters.\relax }{figure.3}{}}
 \citation{kylberg2011virus}
-\citation{work_A}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Discussion}{5}{subsection.5.2}}
-\@writefile{toc}{\contentsline {section}{\numberline {6}Convolutional Neural Network Approach}{5}{section.6}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Results}{5}{subsection.6.1}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Discussion}{5}{subsection.6.2}}
-\@writefile{toc}{\contentsline {section}{\numberline {7}Reflection}{5}{section.7}}
-\@writefile{toc}{\contentsline {section}{\numberline {A}Baseline Classification Results}{6}{appendix.A}}
-\@writefile{toc}{\contentsline {section}{\numberline {B}Neural Network Trained on LBP - Results}{6}{appendix.B}}
-\newlabel{appendix:images}{{B}{6}{Neural Network Trained on LBP - Results}{appendix.B}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Confusion Matrices for the different baseline classifiers.\relax }}{7}{figure.caption.3}}
-\newlabel{baselines}{{5}{7}{Confusion Matrices for the different baseline classifiers.\relax }{figure.caption.3}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Learning curves for a feed-forward neural network with one hidden layer of 256 units trained on LBP.\relax }}{8}{figure.caption.4}}
-\newlabel{shrine1_curves}{{6}{8}{Learning curves for a feed-forward neural network with one hidden layer of 256 units trained on LBP.\relax }{figure.caption.4}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Confusion Matrices for a feed-forward neural network with one hidden layer of 256 unit trained on LBP.\relax }}{8}{figure.caption.5}}
-\newlabel{shrine1_mat}{{7}{8}{Confusion Matrices for a feed-forward neural network with one hidden layer of 256 unit trained on LBP.\relax }{figure.caption.5}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Learning curves for a feed-forward neural network with two hidden layers of 256 units each trained on LBP.\relax }}{9}{figure.caption.6}}
-\newlabel{shrine0_curves}{{8}{9}{Learning curves for a feed-forward neural network with two hidden layers of 256 units each trained on LBP.\relax }{figure.caption.6}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Confusion Matrices for a feed-forward neural network with two hidden layers of 256 units each trained on LBP.\relax }}{9}{figure.caption.7}}
-\newlabel{shrine0_mat}{{9}{9}{Confusion Matrices for a feed-forward neural network with two hidden layers of 256 units each trained on LBP.\relax }{figure.caption.7}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Learning curves for a feed-forward neural network with three hidden layers of 256, 128, 64 units trained on LBP.\relax }}{10}{figure.caption.8}}
-\newlabel{shrine2_curves}{{10}{10}{Learning curves for a feed-forward neural network with three hidden layers of 256, 128, 64 units trained on LBP.\relax }{figure.caption.8}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Confusion Matrices for a feed-forward neural network with three hidden layers of 256, 128, 64 units trained on LBP.\relax }}{10}{figure.caption.9}}
-\newlabel{shrine2_mat}{{11}{10}{Confusion Matrices for a feed-forward neural network with three hidden layers of 256, 128, 64 units trained on LBP.\relax }{figure.caption.9}{}}
-\bibdata{ref}
-\bibcite{work_B}{{1}{2009}{{Attaluri et~al.}}{{Attaluri, Zheng, Chen, and Lu}}}
-\bibcite{work_C}{{2}{2010}{{Attaluri et~al.}}{{Attaluri, Chen, and Lu}}}
-\bibcite{Bastien-Theano-2012}{{3}{2012}{{Bastien et~al.}}{{Bastien, Lamblin, Pascanu, Bergstra, Goodfellow, Bergeron, Bouchard, and Bengio}}}
-\bibcite{bergstra+al:2010-scipy}{{4}{2010}{{Bergstra et~al.}}{{Bergstra, Breuleux, Bastien, Lamblin, Pascanu, Desjardins, Turian, Warde-Farley, and Bengio}}}
-\bibcite{coelho2012mahotas}{{5}{2012}{{Coelho}}{{}}}
-\bibcite{DBLP:journals/corr/GoodfellowBIAS13}{{6}{2013}{{Goodfellow et~al.}}{{Goodfellow, Bulatov, Ibarz, Arnoud, and Shet}}}
-\bibcite{NIPS2012_4824}{{7}{2012}{{Krizhevsky et~al.}}{{Krizhevsky, Sutskever, and Hinton}}}
-\bibcite{JMI:JMI3556}{{8}{2011{}}{{Kylberg et~al.}}{{Kylberg, Uppstr\IeC {\"o}m, Hedlund, Borgefors, and Sintorn}}}
-\bibcite{kylberg2011virus}{{9}{2011{}}{{Kylberg et~al.}}{{Kylberg, Uppstr{\"o}m, and Sintorn}}}
-\bibcite{maenpaa2003multi}{{10}{2003}{{M{\"a}enp{\"a}{\"a} and Pietik{\"a}inen}}{{}}}
-\bibcite{scikit-learn}{{11}{2011}{{Pedregosa et~al.}}{{Pedregosa, Varoquaux, Gramfort, Michel, Thirion, Grisel, Blondel, Prettenhofer, Weiss, Dubourg, Vanderplas, Passos, Cournapeau, Brucher, Perrot, and Duchesnay}}}
-\bibcite{work_A}{{12}{2011}{{Raj et~al.}}{{Raj, Dewar, Palacios, Rabadan, and Wiggins}}}
-\bibcite{Juergen_2015}{{13}{2015}{{Schmidhuber}}{{}}}
-\bibstyle{plainnat}

@@ -37,6 +37,10 @@ James Bergstra, Olivier Breuleux, Fr{\'{e}}d{\'{e}}ric Bastien, Pascal Lamblin,
   Conference ({SciPy})}, June 2010.
 \newblock Oral Presentation.
 
+\bibitem[Chen()]{chenlearning}
+Liran Chen.
+\newblock Learning ensembles of convolutional neural networks.
+
 \bibitem[Coelho(2012)]{coelho2012mahotas}
 Luis~Pedro Coelho.
 \newblock Mahotas: Open source software for scriptable computer vision.
@@ -59,7 +63,8 @@ Alex Krizhevsky, Ilya Sutskever, and Geoffrey~E. Hinton.
   editors, \emph{Advances in Neural Information Processing Systems 25}, pages
   1097--1105. Curran Associates, Inc., 2012.
 \newblock URL
-  \url{http://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf}.
+  \url{http://papers.nips.cc/paper/4824-imagenet-classification-with-deep-\newline
+  convolutional-neural-networks.pdf}.
 
 \bibitem[Kylberg et~al.(2011{\natexlab{a}})Kylberg, Uppström, Hedlund,
   Borgefors, and Sintorn]{JMI:JMI3556}
@@ -79,11 +84,6 @@ Gustaf Kylberg, Mats Uppstr{\"o}m, and Ida-Maria Sintorn.
 \newblock In \emph{Progress in Pattern Recognition, Image Analysis, Computer
   Vision, and Applications}, pages 573--580. Springer Berlin Heidelberg,
   2011{\natexlab{b}}.
-
-\bibitem[M{\"a}enp{\"a}{\"a} and Pietik{\"a}inen(2003)]{maenpaa2003multi}
-Topi M{\"a}enp{\"a}{\"a} and Matti Pietik{\"a}inen.
-\newblock Multi-scale binary patterns for texture analysis.
-\newblock In \emph{Image Analysis}, pages 885--892. Springer, 2003.
 
 \bibitem[Pedregosa et~al.(2011)Pedregosa, Varoquaux, Gramfort, Michel, Thirion,
   Grisel, Blondel, Prettenhofer, Weiss, Dubourg, Vanderplas, Passos,
