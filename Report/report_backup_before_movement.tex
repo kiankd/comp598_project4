@@ -1,0 +1,180 @@
+\input{./preamble.tex}
+\input{./title.tex}
+\linespread{1.05}
+\usepackage{lipsum}
+\usepackage{multicol}
+\usepackage{alltt}
+\usepackage[margin=1in]{geometry}
+\usepackage{mathtools}
+% \usepackage{subcaption}
+\usepackage{hyperref}
+\usepackage{paralist}
+\usepackage{float}
+\usepackage{microtype}
+\usepackage{abstract}
+\usepackage[utf8]{inputenc}
+\usepackage[numbers]{natbib}
+\usepackage{graphicx}
+\renewcommand{\abstractnamefont}{\large\bfseries} % Set the "Abstract" text to bold
+\renewcommand{\abstracttextfont}{\normalfont\itshape} % Set the abstract itself to small italic text
+\usepackage{lettrine}
+\usepackage{tabulary}
+\usepackage{import}
+\usepackage{enumitem}
+\usepackage{paralist}
+\usepackage{pgf}
+\usepackage{caption}
+\usepackage{subcaption}
+\newenvironment{Figure}
+  {\par\medskip\noindent\minipage{\linewidth}}
+  {\endminipage\par\medskip}
+
+\usepackage{titlesec} % Allows customization of titles
+%\renewcommand\thesection{\Roman{section}} % Roman numerals for the sections
+%\renewcommand\thesubsection{\Roman{subsection}} % Roman numerals for subsections
+\titleformat{\section}[block]{\Large\scshape\centering\bfseries}{\thesection.}{1em}{} % Change the look of the section titles
+\titleformat{\subsection}[block]{\large\bfseries}{\thesubsection.}{1em}{} % Change the look of the section titles
+
+\usepackage{fancyhdr} % Headers and footers
+\pagestyle{fancy} % All pages have headers and footers
+\fancyhead{} % Blank out the default header
+\fancyfoot{} % Blank out the default footer
+\fancyhead[C]{Virus Classification from Transmission Electron Microscopy $\bullet$ Fall 2015} % Custom header text
+\fancyfoot[RO,LE]{\thepage} % Custom footer text
+
+\title{\fontsize{18pt}{10pt}\textbf{Classifiying Transmission Electron Microscopy Virus Textures}} % Article title
+
+% \author{
+% \large{Alan Do-Omri}\\[2mm] % Your name
+% \normalsize McGill University \\ % Your institution
+% \normalsize \href{mailto:alan.do-omri@mail.mcgill.ca}{alan.do-omri@mail.mcgill.ca}}
+
+\author{
+\large{Alan Do-Omri}\\[2mm] 
+\normalsize 260532985 \\ 
+\and 
+\large{Kian Kenyon-Dean}\\[2mm]
+\normalsize 260564475 \\
+\and
+\large{Genevieve Fried}\\[2mm]
+\normalsize 260564432 \\
+}
+
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+On a daily basis doctors are tasked with determining the identity of viruses from blood samples. Even with advanced microscopy techniques, viruses can be difficult to discern by the expert human eye. Unfortunately, Misclassifying can have grave implications, not only for the patients in question but also for those who come into contact with him or her. Fortunately, virus classification is an image classification problem, and machine learning methods present exceedingly high accuracy rates for image classification tasks and don't require expert knowledge to do so. Here we present a successful application of convolutional neural networks to the problem of virus classification. Using the Virus Texture Dataset from Uppsala University, we classify viruses samples into one of 15 categories and compare its performance to previous work done on the same task.
+
+\end{abstract} 
+\vspace{0.5cm}
+
+\begin{multicols}{2}
+\section{Introduction}
+Identifying viral pathogens is a continuous endeavor medical professionals  essential to public health. 
+
+\section{Dataset}
+\label{text:dataset}
+
+
+\section{Methods}
+Convolutional Neural Networks (CNN) are biologically inspired variants of Multi-Layered Perceptrons that can encode non-linear features with atleast one hidden layer, and are specifically architected for image classification. Image processing with a Neural Network is computationally infeasible given how quickly parameters scale. CNN's on the other hand constrain their architecture to the nature of images. A neuron in the nth layer is not fully connected to all neurons before it, rather, 
+
+
+They work as follows. 
+
+ They're constrained to work with images, which specifically oriented towards image processi Image processing with a fully connected Neural Network 
+
+Unlike a fully connectd Neural Network, CNN's  a Neural Network, image classification is infeasibly computationally expensive, and CNN's  CNN's are made up of several layers: input, convolutional, pooling and fully connected.  
+
+\section{Related Work}
+In the work of \citet{kylberg2011virus}, texture analysis is performed on a dataset composed of 22 different  virus samples and the resulting feature vector is fed into a Random Forest classifier. The authors first compare the performance of different texture analysers, such as Local Binary Patterns, Radial Density Profile and their respective variants before proceeding to detail their results. We will briefly explain their feature extractors and results here. 
+\subsection{Local Binary Pattern (LBP)}
+Local Binary Pattern works such that, given an image, for each pixel $p_i$ in it we sample $n$ equally-spaced points on the circle of radius $r$ with center $p_i$ -- an example of sampling is shown in figure \ref{fig:lbp_basic} -- and construct a vector $v(p_i)$ such that its $i$th entry is a 1 if the $i$th sampled pixel has a value bigger than $p_i$ and 0 otherwise. 
+\begin{Figure}
+	\centering
+	\includegraphics[width=0.5\linewidth]{images/lbp_basic.pdf}
+	\captionof{figure}{Example of LBP sampling: The green points are the neighbouring sample points at distance $r$ from the central white point. In this case, we are sampling with $n=8$ neighbour points.}
+	\label{fig:lbp_basic}
+\end{Figure}
+A sequence of 0s and 1s are constructed $v(p_i)$ to form a binary number $v_{p_i}$, hence the name. Once we have the $v_{p_i}$ for all pixels, we construct a histogram counting the number of appearances of each value $v_{p_i}$. The histogram forms the feature vector associated with the given image. \citet{kylberg2011virus} denote this feature extraction method by LBP$_{n, r}$, where $n$ is the number of sampled points and $r$ is the radius, as described above. The resulting histogram is represented in a vector of counts with $2^n$ elements. 
+\paragraph{Rotational Invariant LBP} In order to reduce the size of the feature vector, \citet{kylberg2011virus} mention a modification of LBP in the following sense: instead of creating $v_{p_i}$ by interpreting the vector $v(p_i)$ and using $v_{p_i}$ as is, rotate the number $v_{p_i}$ bitwise until you get the smallest possible number. For example, the number 110 becomes 011. They name this technique the rotational invariant and denote it with LBP$^{\textnormal{ri}}_{n,r}$.
+\paragraph{Uniform LBP} To further reduce the size of the histogram, Kylberg et. al also restrict the values of $v_{p_i}$ to only numbers that have 2 or less transitions from 0 to 1 or from 1 to 0, and they call this variant \emph{uniform binary patterns with at most 2 spatial transitions}, denoted LBP$^{\textnormal{u2}}_{n,r}$. For example, 01010 has 2 transitions from 0 to 1 and 2 transitions from 1 to 0 which makes 4 transitions in total. This version then LBP$^{\textnormal{u2}}_{n,r}$ does not count the number 01010. On the other hand, 00111 has only 1 transition from 0 to 1 so it is accepted. 
+\par 
+\paragraph{Gaussian Filtered LBP} Finally, \citet{maenpaa2003multi} talk about an extension to the LBP that is also used in the work of \citet{kylberg2011virus}, which consists of sampling neighbours about a central pixel at different radii. Instead of sampling these points equidistantly in a circle, the authors sample according to a Gaussian distribution. Figure \ref{fig:rdp} shows an example of such a sampling. \citet{kylberg2011virus} denote it as LBPF$^{\textnormal{ri}}_{n_1,r_1}$ $+$ $^{\textnormal{ri}}_{n_2,r_2}$ $+$ $\cdots$ $+$ $^{\textnormal{ri}}_{n_j,r_j}$ for the different numbers of sample points $n_1, n_2, \cdots, n_j$ and different radii distances $r_1, r_2, \cdots, r_j$.
+\begin{Figure}
+	\centering
+	\includegraphics[width=0.5\linewidth]{images/lbpf.pdf}
+	\captionof{figure}{Example of LBPF sampling: In the simple LBP, the points would be sampled at equal distances around the dotted circles for one radius as in figure \ref{fig:lbp_basic} but with this extension, the points are sampled according to a Gaussian distribution inside the solid black circles at multiple radii. In this picture, the number of neighbours also vary with the radii. This image comes from \citet{maenpaa2003multi}.}
+	\label{fig:lbpf}
+\end{Figure}
+\subsection{Radial Density Profile (RDP)}
+This method is a way to get the mean intensity in a ring around each pixel in the image. \citet{kylberg2011virus} defines the \emph{radial mean intensity $f$} around a center pixel $q_c$ as 
+\[ f(q_c, r) = \frac{1}{|N|} \sum\limits_{q\in N} I(q) \]
+where $I(q)$ is the pixel value for pixel $q$ and $N = \left\{ q: \Vert q-q_c \Vert_2 \in \left( r-\frac{1}{2}, r+\frac{1}{2} \right] \right\}$ is the set of pixels in a ring around $q_c$ of width 1 at distance $r$ from $q_c$. Figure \ref{fig:rdp} shows an example of what the set $N$ may look like. Following the notation from \citet{kylberg2011virus}, let $\bar{f}_{q_c}$ be the mean of the set $\{ f(q_c,i) \}_{i = 1, \cdots, n}$. Then they define the radial density profile for that pixel $q_c$ as $\textnormal{RDP}_n = \left[ f(q_c,1)-\bar{f}_{q_c}, f(q_c, 2)-\bar{f}_{q_c}, \cdots, f(q_c,n)-\bar{f}_{q_c} \right]$. 
+\begin{Figure}
+	\centering
+	\includegraphics[width=0.5\linewidth]{images/rdp.pdf}
+	\captionof{figure}{Example of RDP sampling: The green zone is the set of sampled pixels for a given radius $r$.}
+	\label{fig:rdp}
+\end{Figure}
+\par It is not explained how the pixel features are combined to make the feature vector for the whole image but we would imagine that the feature vector for the whole image is either a concatenation of the pixel features or the concatenation of the mean of each pixel feature. 
+\paragraph{Fourier RDP} One variation \citet{kylberg2011virus} introduced is applying the same RDP technique on the image after it undergoes a Fourier transform and looking at it with respect to a base $e$ logarithmic scale. They denote it with FRDP$_n$. 
+
+\subsection{Results}
+\label{text:relwork_results}
+The first thing to note is that \citet{kylberg2011virus} made modifications to the images' scales. In one case, one pixel in the image corresponded to 1 nanometer, they refer to that scale as \emph{fixed scale}. In the other case, the radius of the virus is set to take 20 pixels, they refer to that scale as \emph{object scale}. The classifier used was a Random forest with 100 trees (they tried up to 200 with no significant improvement with respect to 100 trees). The different textures \citet{kylberg2011virus} used were among 
+\begin{compactenum}
+\item LBP$^\textnormal{ri}_{8,2}$
+\item LBP$^\textnormal{riu2}_{8,2}$
+\item LBPF$^\textnormal{ri}_{8,1}+^\textnormal{ri}_{8,2.4}+^\textnormal{ri}_{8, 5.4}$
+\item LBPF$^\textnormal{riu2}_{8,1}+^\textnormal{riu2}_{8,2.4}+^\textnormal{riu2}_{8, 5.4}$
+\item RDP$_{20}$
+\item FRDP$_{20}$
+\end{compactenum}
+All values are chosen after a grid search. Figure \ref{fig:relwork_results} shows their results with respect to the six aforementioned texture extractors and on both fixed and object scale images. They conclude that LBPF$^\textnormal{ri}_{8,1}+^\textnormal{ri}_{8,2.4}+^\textnormal{ri}_{8, 5.4}$ performed the best in fixed scale (median 21\% error) whereas FRDP$_{20}$ performed the best in object scale (median 22\% error). They also noticed that combining these two texture extractors, they could get an even better result (median 13\% error). 
+\begin{figure*}
+	\centering
+	\includegraphics[width=\linewidth]{images/boxes_results.png}
+	\captionof{figure}{This figure comes from \citet{kylberg2011virus}. The classification errors are shown for a Random Forest classifier using the 6 different texture extractors as described in section \ref{text:relwork_results}. The boxes' vertical lines represent the median and the red $\times$ represent outliers that are at least 1.5 times the size of the box away from it. The error bars are from the lower to the upper quartile.}
+	\label{fig:relwork_results}
+\end{figure*}
+
+\section{Neural Networks Approach}
+In order to establish a baseline, we combine ideas from \citet{kylberg2011virus} and ourselves by attempting to use a neural network with the LBP features. Our neural networks are built using the Lasagne and Theano \cite{Bastien-Theano-2012, bergstra+al:2010-scipy} libraries. In our experiments, we will not rescale the images and we will use LBP$_{8,2}$, an implementation given by the \emph{Mahotas} computer vision library \citet{coelho2012mahotas}. We are not scaling the images because we are later comparing to convolutional neural networks which will not used rescaled images. The values of $8,2$ come from the best values as checked by \citet{kylberg2011virus}. \emph{Mahotas}' implementation of LBP is done so that the feature vector is of smaller dimension than the usual dimension of a histogram with $2^N$ values where $N$ is the number of sampled points. This is achieved by some optimization on their end. 
+\subsection{Results}
+To normalize the data, we chose to divide the entire dataset by 1.1 times the maximum value of a feature in the training set in order to be more certain that no features in the normalized test set would have a value greater than 1. In all cases, we are using a learning rate of 0.005 and an L2 regularization weight of 0.0001, both arbitrarily chosen and the last layer was a 15 units softmax layer. The dataset described in section \ref{text:dataset} is shuffled and the training is done with a batch size of 16 by stochastic gradient descent. All images pertaining to the results such as the confusion matrices for the validation and testing set and the learning curves can be found in the Appendix: the first neural network results are found in figures \ref{shrine1_curves} and \ref{shrine1_mat}; the second neural network results are found in figures \ref{shrine0_curves} and \ref{shrine0_mat}; the third nerual network results are found in figures \ref{shrine2_curves} and \ref{shrine2_mat}. The table below shows the results obtained on the test set. The first column represent, in order, the number of units in each of the hidden layers. 
+
+\begin{tabular}{lc}
+\multicolumn{1}{c}{\textbf{Hidden Layers}} & \textbf{Test Error} \\
+\textbf{256 units}                         &         99\%            \\
+\textbf{256 and 256 units}                 &   52.22 \%                \\
+\textbf{256, 128 and 64 units}             &   51.94 \%                 
+\end{tabular}
+
+\subsection{Discussion}
+We notice that the neural network with one hidden layer took the longest time to converge whereas the one with three hidden layers took the shortest time. On the other hand, the network with three hidden layers overfitted the quickest. This is to be expected since it has many more parameters than the network with one layer. We also notice that the network with one hidden layer has the biggest error and we think this is because the network does not have enough neurons to learn properly. The three hidden layers network has too many neurons and is overfitting but we think its results can be improved by adding Gaussian noise to neurons and dropping out some of them. This is why the two hidden layers network performs the best. 
+\par Compared to the work of \citet{kylberg2011virus}, we can see from Figure \ref{fig:relwork_results} that the LBP$^{\textnormal{ri}}$ on fixed scale performed at about 30 \% error whereas on the object scale it performed at about 63 \%. Since we didn't perform any rescaling of the images, we expect the error to be within that interval. Finally, \emph{Mahotas}' implementation of LBP does not necessarily match the implementation of LBP$^{\textnormal{ri}}$ so this can induce some error as well. 
+\end{multicols}
+
+\newpage
+\section*{Appendix}
+\appendix
+\section{Neural Network Trained on LBP - Results} \label{appendix:images}
+\input{shrine1_figures.tex}
+\input{shrine0_figures.tex}
+\input{shrine2_figures.tex}
+
+\newpage
+\begin{multicols}{2}
+\paragraph*{} \lettrine[nindent=0em,lines=1]{\textit{W}}{}\textit{e hereby state that all the work presented in this report is that of the authors. }
+\paragraph*{} Alan wrote the sections \emph{Related Work} and \emph{Neural Network Approach}. Alan programmed the feed-forward neural network in \texttt{emerald.py} and extracted the Local Binary Patterns from the dataset in \texttt{purify\_dataset.py}. 
+\par Kian created the rotated dataset and wrote its section \emph{Transformed Dataset}, programmed the baseline learners and wrote its section \emph{Baseline Results} and also wrote the \emph{Conclusion}. 
+\par Genevieve wrote the \emph{Introduction} and the CNN results and discussion. 
+\par Kian and Genevieve both collaborated to writing the CNN with help from Alan's \texttt{emerald.py}. 
+\bibliography{ref}
+\bibliographystyle{plainnat}
+\end{multicols}
+\end{document}

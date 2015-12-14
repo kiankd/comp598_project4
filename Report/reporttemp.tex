@@ -6,7 +6,7 @@
 \usepackage{alltt}
 \usepackage[margin=1in]{geometry}
 \usepackage{mathtools}
-\usepackage{subcaption}
+% \usepackage{subcaption}
 \usepackage{hyperref}
 \usepackage{paralist}
 \usepackage{float}
@@ -28,7 +28,6 @@
 \usepackage{subcaption}
 \usepackage{booktabs}
 \usepackage{cite}
-\def\UrlBreaks{\do-}
 
 
 \newenvironment{Figure}
@@ -95,7 +94,6 @@ From our survey of the work done in virus classification, treating virus classif
 
 
 \section{Related Work}
-\label{text:relwork_results}
 In the work of \citet{kylberg2011virus}, texture analysis is performed on a dataset composed of 22 different  virus samples and the resulting feature vector is fed into a Random Forest classifier. The authors first compare the performance of different texture analysers. Included in their study were Local Binary Patterns (LBP), Radial Density Profile (RDP) and their respective variants, before proceeding to detail their results. 
 
 We implement the LBP feature extraction method in our Feed Forward Neural Networks because a variant of it performs best among the texture measures used on virus images in \citet{kylberg2011virus}. With respect to \citet{kylberg2011virus} results, the first thing to note is the differences betwen our and their preprocessing methods. \citet{kylberg2011virus} made modifications to the scales of their images'. In one case, one pixel in the image corresponds to 1 nanometer, which they refer to as \emph{fixed scale}. In the other case, the radius of the virus is set to take 20 pixels, and they refer to this as \emph{object scale}. 
@@ -225,10 +223,9 @@ The nature of viruses is that they're constantly evolving, but we'd like to posi
 \newpage
 \begin{multicols}{2}
 \paragraph*{} \lettrine[nindent=0em,lines=1]{\textit{W}}{}\textit{e hereby state that all the work presented in this report is that of the authors. }
-\paragraph*{} Alan wrote the LBP explanations and \emph{Neural Network Approach}. Alan programmed the feed-forward neural network in \texttt{emerald.py} and extracted the Local Binary Patterns from the dataset via \texttt{purify\_dataset.py}. 
-\par Kian created the rotated dataset and wrote its section \emph{Transformed Dataset}, he also wrote the \emph{Baseline Classification Approach} and \emph{Random Forest Approach} sections and programmed the baseline learners and wrote the content for \emph{Baseline Results} and \emph{Conclusion}. 
-\par Genevieve wrote the \emph{Introduction}, \emph{Problem Definition}, \emph{Related Work}, \emph{Convolutional Neural Network Approach} and \emph{Reflection} sections.
-\par Alan and Genevieve wrote the \emph{Related Work} and \emph{Methodology} sections together. 
+\paragraph*{} Alan wrote the LBP explanations and \emph{Neural Network Approach}. Alan programmed the feed-forward neural network in \texttt{emerald.py} and extracted the Local Binary Patterns from the dataset in \texttt{purify\_dataset.py}. 
+\par Kian created the rotated dataset and wrote its section \emph{Transformed Dataset}, programmed the baseline learners and wrote the content for \emph{Baseline Results} and \emph{Conclusion}. 
+\par Genevieve wrote the \emph{Introduction}, \emph{Related Work}, \emph{Problem Definition} sections, and the results and discussion of CNN.
 \par Genevieve and Kian programmed the CNN with help from Alan's \texttt{emerald.py}. 
 
 \bibliography{ref}
